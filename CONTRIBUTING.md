@@ -10,7 +10,7 @@ We pledge to act and interact in ways that contribute to an open, welcoming, div
 
 ---
 
-# How to submit a bug repot
+# How to submit a bug report
 1. Open the [issue tracker](https://github.com/FrancisVillarba/2020-Curtin-DPD-GradShow/issues)
 2. Press *New Issue*
 3. On the Bug Report Panel, Press *Get Started*
