@@ -5,9 +5,9 @@ Created by the awesome graduating students of 2020!
 ---
 
 ## Contributors
-See CONTRIBUTORS.md for a list of contributors to the project
+See [CONTRIBUTORS.md](CONTRIBUTORS.md) for a list of contributors to the project
 
 ---
 
 ## To Contributors
-To make things super smooth, please refer to CONTRIBUTING.md
+To make things super smooth, please refer to [CONTRIBUTING.md](CONTRIBUTING.md)
