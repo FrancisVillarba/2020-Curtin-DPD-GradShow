@@ -105,3 +105,5 @@ dist
 
 ## Because Webpack
 _includes/webpack.njk
+public/favicons/
+.DS_Store

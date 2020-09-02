@@ -11,6 +11,7 @@ module.exports = (config) => {
   config.addDataExtension('yml', (contents) => yaml.safeLoad(contents));
 
   // Pass-through files
+  config.addPassthroughCopy('public/favicons');
   config.addPassthroughCopy('public/robots.txt');
   config.addPassthroughCopy('public/favicon.ico');
   config.addPassthroughCopy('src/assets/images');

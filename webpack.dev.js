@@ -2,6 +2,7 @@ const path = require('path');
 const PostCSSPresetEnv = require('postcss-preset-env');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -32,6 +33,11 @@ module.exports = {
       // while keeping the same file name in the output
       hash: true,
       inject: false
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './src/assets/logo.png',
+      cache: true,
+      outputPath: '../../public/favicons'
     })
   ],
   module: {
