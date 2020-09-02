@@ -1,27 +1,29 @@
-$blue: darkslateblue;
-$bg-body: antiquewhite;
+@charset "utf-8";
 
-html,
-body {
-  height: 100%;
-  margin: 0;
-  font-family: 'Courier New', Courier, monospace;
-}
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
-body {
-  background-color: $bg-body;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+// Set your brand colors
+$purple: #eec9e2;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
 
-h1 {
-  color: $blue;
-}
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
 
-img {
-  width: 15vw;
-  max-width: 6.25rem;
-}
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Import only what you need from Bulma
+@import "bulma";
