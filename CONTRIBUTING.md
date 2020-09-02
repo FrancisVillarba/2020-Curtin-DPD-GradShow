@@ -1,6 +1,14 @@
 # Contributing to the project
 Please ensure you follow the guide to make development as smooth as possible :smile:!
 
+## Standard Procedure
+Unless you feel comfortable with cli, we recommend using a client (like https://git-fork.com/).
+1. Create a new branch
+2. Make your changes
+3. Create a pull request into staging
+
+In coding team meetings staging will be merged into master.
+
 ---
 
 ## Contributor Code of Conduct
