@@ -1,6 +1,6 @@
 {
   "license": "MIT",
-  "name": "eleventy-webpack",
+  "name": "2020-Curtin-DPD-GradShow",
   "scripts": {
     "format": "prettier --write **/*.{js,s?css,yml} !dist",
     "start": "cross-env NODE_ENV=development run-p -l start:*",

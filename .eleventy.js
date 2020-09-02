@@ -11,8 +11,8 @@ module.exports = (config) => {
   config.addDataExtension('yml', (contents) => yaml.safeLoad(contents));
 
   // Pass-through files
-  config.addPassthroughCopy('src/robots.txt');
-  config.addPassthroughCopy('src/favicon.ico');
+  config.addPassthroughCopy('public/robots.txt');
+  config.addPassthroughCopy('public/favicon.ico');
   config.addPassthroughCopy('src/assets/images');
 
   // Minify eleventy pages in production
@@ -32,7 +32,12 @@ module.exports = (config) => {
   }
 
   return {
-    dir: { input: 'src', output: 'dist' },
+    dir: { 
+      includes: "../_includes",
+      data: "../_data",
+      input: './src', 
+      output: './dist'
+    },
     htmlTemplateEngine: 'njk'
   };
 };

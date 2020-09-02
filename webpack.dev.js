@@ -27,7 +27,7 @@ module.exports = {
     // that then gets picked up by eleventy
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'webpack.html'),
-      filename: path.resolve(__dirname, 'src/_includes/webpack.njk'),
+      filename: path.resolve(__dirname, '_includes/webpack.njk'),
       // Hash is used for cache busting the generated webpack.html
       // while keeping the same file name in the output
       hash: true,
