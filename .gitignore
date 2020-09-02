@@ -102,3 +102,8 @@ dist
 
 # TernJS port file
 .tern-port
+
+## Because Webpack
+_includes/webpack.njk
+public/favicons/
+.DS_Store

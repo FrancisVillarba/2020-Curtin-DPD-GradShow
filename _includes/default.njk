@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html class="{{ htmlClass }}" lang="{{ site.lang }}">
+  <head>
+    {% include "head.njk" %}
+  </head>
+  <body class="{{ bodyClass }}">
+    <main id="swup" class="transition-slide-in">
+      {{ content | safe }}
+    </main>
+  </body>
+</html>
