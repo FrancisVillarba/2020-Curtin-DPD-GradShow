@@ -11,8 +11,8 @@ module.exports = {
   // see https://github.com/webpack-contrib/mini-css-extract-plugin/issues/29
   devtool: 'cheap-module-source-map',
   entry: [
-    path.resolve(__dirname, 'src/assets/scripts/index.js'),
-    path.resolve(__dirname, 'src/assets/styles/index.scss')
+    path.resolve(__dirname, 'src/index.js'),
+    path.resolve(__dirname, 'src/styles/index.scss')
   ],
   output: {
     filename: '[name].js',

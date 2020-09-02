@@ -13,7 +13,6 @@ module.exports = (config) => {
   // Pass-through files
   config.addPassthroughCopy('public/robots.txt');
   config.addPassthroughCopy('public/favicon.ico');
-  config.addPassthroughCopy('src/assets/images');
 
   // Minify eleventy pages in production
   if (process.env.NODE_ENV === 'production') {
@@ -35,9 +34,17 @@ module.exports = (config) => {
     dir: { 
       includes: "../_includes",
       data: "../_data",
-      input: './src', 
-      output: './dist'
+      input: 'src', 
+      output: 'dist'
     },
+    templateFormats: [
+      "md",
+      "njk",
+      "png",
+      "jpg",
+      "jpeg"
+    ],
+    passthroughFileCopy: true,
     htmlTemplateEngine: 'njk'
   };
 };
