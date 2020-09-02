@@ -35,7 +35,7 @@ module.exports = {
       inject: false
     }),
     new FaviconsWebpackPlugin({
-      logo: './src/assets/logo.png',
+      logo: './src/images/logo.png',
       cache: true,
       outputPath: '../../public/favicons'
     })

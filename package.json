@@ -51,6 +51,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "bulma": "^0.9.0"
+    "bulma": "^0.9.0",
+    "swup": "^2.0.11"
   }
 }
