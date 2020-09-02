@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.9.6",
     "babel-loader": "^8.1.0",
     "babel-plugin-transform-es2015-modules-commonjs-simple": "^6.7.4",
+    "chokidar": "^3.4.2",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
@@ -37,7 +38,8 @@
     "rimraf": "^3.0.2",
     "sass-loader": "^8.0.2",
     "source-map-explorer": "^2.4.2",
-    "webpack": "^4.43.0",
+    "watchpack": "^1.7.4",
+    "webpack": "^4.44.1",
     "webpack-cli": "^3.3.11",
     "webpack-merge": "^4.2.2"
   }
