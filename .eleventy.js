@@ -11,8 +11,7 @@ module.exports = (config) => {
   config.addDataExtension('yml', (contents) => yaml.safeLoad(contents));
 
   // Pass-through files
-  config.addPassthroughCopy('public/robots.txt');
-  config.addPassthroughCopy('public/favicon.ico');
+  config.addPassthroughCopy({'public': './'});
 
   // Minify eleventy pages in production
   if (process.env.NODE_ENV === 'production') {
