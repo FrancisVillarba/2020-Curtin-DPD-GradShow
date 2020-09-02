@@ -10,3 +10,4 @@ Here is the list of people who have contributed to the project (In alphabetical 
 | Naomi Gunton | TBD | TBD | TBD |
 | Francis Villarba | Digital Design | https://www.linkedin.com/in/francisvillarba/ | francis.villarba@student.curtin.edu.au |
 | Daniel Westbrook | Digital Design & Graphic Design | https://www.linkedin.com/in/daniel-westbrook-692227196/ | 19479699@student.curtin.edu.au |
+| Luke Fordham | Digital Design | https://www.linkedin.com/in/luke-fordham-5411451b5/ | 19423683@student.curtin.edu.au |
