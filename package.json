@@ -1,6 +1,10 @@
 {
   "license": "MIT",
-  "name": "2020-Curtin-DPD-GradShow",
+  "name": "2020-curtin-dpd-gradshow",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FrancisVillarba/2020-Curtin-DPD-GradShow"
+  },
   "scripts": {
     "format": "prettier --write **/*.{js,s?css,yml} !dist",
     "start": "cross-env NODE_ENV=development run-p -l start:*",
@@ -24,9 +28,11 @@
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
+    "favicons-webpack-plugin": "^4.2.0",
     "file-loader": "^6.0.0",
     "html-minifier": "^4.0.0",
     "html-webpack-plugin": "^4.3.0",
+    "img-optimize-loader": "^1.0.7",
     "js-yaml": "^3.14.0",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.14.1",
@@ -41,6 +47,7 @@
     "watchpack": "^1.7.4",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.11",
+    "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
