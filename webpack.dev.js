@@ -17,8 +17,8 @@ module.exports = {
   ],
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist/assets'),
-    publicPath: '/assets/'
+    path: path.resolve(__dirname, 'dist/public'),
+    publicPath: '/public/'
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -35,9 +35,9 @@ module.exports = {
       inject: false
     }),
     new FaviconsWebpackPlugin({
-      logo: './src/images/logo.png',
+      logo: './logo.png',
       cache: true,
-      outputPath: '../../public/favicons'
+      outputPath: 'favicons',
     })
   ],
   module: {
