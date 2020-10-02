@@ -3,9 +3,11 @@
   <head>
     {% include "head.njk" %}
   </head>
-  <body class="{{ bodyClass }}">
-    <main id="swup" class="transition-slide-in">
+  <body class="layout {{ bodyClass }}">
+    {% include "layout/header.njk" %}
+    <main id="swup" class="layout-main transition-slide-in">
       {{ content | safe }}
     </main>
+    {% include "layout/footer.njk" %}
   </body>
 </html>
