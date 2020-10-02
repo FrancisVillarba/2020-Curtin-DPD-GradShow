@@ -48,3 +48,30 @@ html.is-animating .transition-slide-in {
 .layout-main {
   flex-grow: 1;
 }
+
+.min-h-600 {
+  min-height: 600px;
+}
+
+.max-w-600 {
+  max-width: 600px;
+}
+
+.fit-cover {
+  object-fit: cover;
+}
+
+.w-full {
+  width: 100%;
+}
+
+@media only screen and (max-width: 769px) {
+  .stacked-max-h-600 {
+    max-height: 600px;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .wide-min-h-600 {
+    min-height: 600px;
+  }
+}
