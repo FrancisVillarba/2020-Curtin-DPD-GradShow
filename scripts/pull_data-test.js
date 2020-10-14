@@ -1,5 +1,5 @@
 /**
- * update_data_test.js
+ * pull_data_test.js
  * 
  * For testing and debugging only, use the standard update_data.js script
  * from node instead as this version contains loads of console logging 
@@ -15,8 +15,16 @@
  * @since 14th October 2020
  */
 
+// Imports ----------------------------------------------------------------- //
+
 // Globals ----------------------------------------------------------------- //
 
 // Functionality ----------------------------------------------------------- //
 
 // Running ----------------------------------------------------------------- //
+
+console.log('Hello World!');
+
+process.on('exit', function (code) {
+    return console.log(`Catch you next time! Exited with code ${code}`);
+});
