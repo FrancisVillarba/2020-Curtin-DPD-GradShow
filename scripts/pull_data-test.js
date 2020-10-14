@@ -34,6 +34,9 @@ const DATABASE = FIREBASE_ADMIN.firestore();
 
 // Functionality ----------------------------------------------------------- //
 
+/**
+ * Tests pulling data from the database and outputs it to the console
+ */
 async function testPull() {
     console.log('Student Data System', '[Test] Pull Data Script');
     console.log('Written by Francis Villarba <francis.villarba@me.com>', '\n');
