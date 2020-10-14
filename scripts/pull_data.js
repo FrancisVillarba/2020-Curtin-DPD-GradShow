@@ -223,7 +223,7 @@ async function pullMajorsData() {
  * 
  */
 async function saveData( filename, data ) {
-    console.log('\x1b[34m', `- Saving ${filename}`);
+    console.log('\x1b[34m', `- Saving ${filename}...`);
 
     // Convert the data to json
     let jsonData = JSON.stringify( data );
@@ -235,7 +235,7 @@ async function saveData( filename, data ) {
     }
 
     // Save the data
-    return await fs.writeFile( `${ELEVENTY_DATA_PATH}${filename}...`, jsonData, "utf8", (err) => {
+    return await fs.writeFile( `${ELEVENTY_DATA_PATH}${filename}`, jsonData, "utf8", (err) => {
         if( err ) {
             console.log("\x1b[31m", '\nStudent Data System - Pull Data Script\n');
             console.log("\x1b[31m", `Could not save ${filename} into ${ELEVENTY_DATA_PATH}!`);
