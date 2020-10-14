@@ -107,3 +107,6 @@ dist
 _includes/webpack.njk
 public/favicons/
 .DS_Store
+
+# Because Firebase
+.firebase/
