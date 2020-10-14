@@ -1,0 +1,198 @@
+.banner {
+    background-color: #736969;
+
+    .banner-text {
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        height: 40vh;
+        text-align: center;
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+    }
+}
+
+.filter {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0vw 5vw 0vw;
+    font-weight: bold;
+
+    a {
+        text-transform: uppercase;
+        color: #505050;
+        text-align: center;
+
+    }
+    a:hover {
+        color: black;
+        border-bottom: 1px solid black;
+    }
+}
+
+.search-bar-section {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0vw 5vw 0vw;
+
+    .search-bar-wrapper {
+        padding: 10px 0px 10px;
+    }
+
+    .search-bar {
+        width: 90vw;
+        height: 2rem;
+        background: none;
+        border-style: none;
+        border-bottom: 4px solid black;
+        padding-left: 50px;
+        padding-bottom: 5px;
+        font-size: 1.5rem;
+    }
+
+    .search-bar:focus {
+        outline: none;
+
+    }
+
+    .search-icon {
+        font-size: 1.5rem;
+        transform: translateY(-20px) translateX(-18px);
+        
+    }
+
+}
+
+// INDIVIDUAL STUDENT LISTINGS
+.student-profiles {
+    margin: 0 auto;
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+
+.profile-container {
+    width: 250px;
+    height: 400px;
+    background-color: #ebebeb;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 10px 20px;
+    transition: 0.5s;
+    box-shadow: 0px 0px 10px #ebebeb;
+    opacity: 0;
+
+    .student-name {
+        margin-top: 5px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #433737;
+    }
+    .student-spec {
+        color: black;
+        text-transform: uppercase;
+    }
+    .student-img {
+        width: 250px;
+        height: 250px;
+        transition: 0.2s;
+    }
+    .profile-btn {
+        background-color: #fff;
+        border-radius: 25px;
+        border: none;
+        outline: none;
+        padding: 10px 20px 10px;
+        font-size: 1.5rem;
+        color: #433737;
+        margin: 20px 10px 0px;
+    }
+}
+
+// MEDIA QUERY
+
+@media screen and(max-width: 690px) {
+    .filter {
+
+        a {
+            font-size: 0.7rem;
+            margin: 2px;
+            
+        }
+    }
+}
+
+@media screen and (max-width: 960px) {
+
+    .filter {
+        padding: 0 10px 0;
+        a {
+            font-size: 0.8rem;
+        }
+    }
+
+    .profile-container {
+        width: 200px;
+        height: 350px;
+
+        .student-name {
+            margin-top: 5px;
+            font-size: 1.2rem;
+            
+        }
+        .student-spec {
+            
+        }
+        .student-img {
+            width: 200px;
+            height: 200px;
+        }
+        .profile-btn {
+
+            padding: 10px 20px 10px;
+            font-size: 1.5rem;
+          
+            margin: 20px 10px 0px;
+        }
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .profile-container {
+        width: 175px;
+        height: 300px;
+
+        .student-name {
+            margin-top: 5px;
+            font-size: 1.2rem;
+            
+        }
+        .student-spec {
+            
+        }
+        .student-img {
+            width: 200px;
+            height: 200px;
+        }
+        .profile-btn {
+
+            padding: 10px 20px 10px;
+            font-size: 1.5rem;
+          
+            margin: 20px 10px 0px;
+        }
+    }
+}
