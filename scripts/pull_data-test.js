@@ -16,15 +16,47 @@
  */
 
 // Imports ----------------------------------------------------------------- //
+const FIREBASE_ADMIN = require('firebase-admin');
 
 // Globals ----------------------------------------------------------------- //
+const FIREBASE_SERVICE_ACCOUNT = require('../.firebase/firebase-adminsdk.json');
+
+// Setup and Inits --------------------------------------------------------- //
+
+// Init the Firebase Admin SDK
+FIREBASE_ADMIN.initializeApp({
+    credential: FIREBASE_ADMIN.credential.cert(FIREBASE_SERVICE_ACCOUNT),
+    databaseURL: "https://curtin-dpd-gradshow-2020.firebaseio.com"
+});
+
+// Declare the database object
+const DATABASE = FIREBASE_ADMIN.firestore();
 
 // Functionality ----------------------------------------------------------- //
 
+async function testPull() {
+    console.log('Student Data System', '[Test] Pull Data Script');
+    console.log('Written by Francis Villarba <francis.villarba@me.com>', '\n');
+
+    const majors = await DATABASE.collection('majors').get();
+    const students = await DATABASE.collection('students').get();
+
+    console.log('Majors', '[Test] Database Output', '\n');
+    majors.forEach((doc) => {
+        console.log(doc.id, '==>', doc.data());
+    });
+
+    console.log('\n', '\n', 'Students', '[Test] Database Output', '\n');
+    students.forEach((doc) => {
+        console.log(doc.id, '==>', doc.data());
+    });
+};
+
 // Running ----------------------------------------------------------------- //
 
-console.log('Hello World!');
-
-process.on('exit', function (code) {
-    return console.log(`Catch you next time! Exited with code ${code}`);
-});
+testPull()
+.then( process.on('exit', (code) => {
+        return console.log('\n', '\n', `Test Complete!`, `Catch you next time! Exited with code ${code}`, '\n');
+    })
+)
+.catch( console.error );
