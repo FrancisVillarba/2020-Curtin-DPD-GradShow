@@ -39,5 +39,14 @@ html.is-animating .transition-slide-in {
   opacity: 0;
 }
 
-@import 'student-listing.scss';
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.layout-main {
+  flex-grow: 1;
+}
 
+@import './home.scss';
+@import './listing.scss';
