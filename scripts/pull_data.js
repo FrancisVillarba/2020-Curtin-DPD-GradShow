@@ -70,6 +70,9 @@ async function pullStudentData(majorsList) {
     const students = await DATABASE.collection('students').get();
     let studentObj = [];
 
+    // Convert the majorsList into an object for us to parse
+    let majorsListObj = convertArrayToObject(majorsList, 'id');
+
     // Parse the response from the database and append the data to an object
     console.log('\x1b[34m', '- Parsing Student Data...', '\x1b[0m');
     students.forEach( (doc) => {
@@ -95,13 +98,16 @@ async function pullStudentData(majorsList) {
 
             // Get the information we need for this
             let majorId = major.path.split('/')[1];
-            // TODO - Get the major title
-            let majorTitle = majorsList[majorId].title;
+            // Get the major title
+            let majorTitle = majorsListObj[majorId].title;
+
+            // Populate the majors array element
             let majorElement = {
                 id: majorId,
                 title: majorTitle,
             };
 
+            // Add it to the student's array
             tempDoc.majors.push( majorElement );
         });
 
@@ -110,8 +116,9 @@ async function pullStudentData(majorsList) {
     });
 
     // Return the object representation of the database response (after conversion)
-    let studentObjConversion = convertArrayToObject( studentObj, 'id' );
-    return studentObjConversion;
+    // let studentObjConversion = convertArrayToObject( studentObj, 'id' );
+    // return studentObjConversion;
+    return studentObj;
 };
 
 /**
@@ -171,8 +178,9 @@ async function parseStudentList(studentData) {
     }
 
     // Convert and return
-    let studentListObject = convertArrayToObject( studentListTemp, 'id' );
-    return studentListObject;
+    // let studentListObject = convertArrayToObject( studentListTemp, 'id' );
+    // return studentListObject;
+    return studentListTemp;
 };
 
 /**
@@ -209,8 +217,9 @@ async function pullMajorsData() {
     // console.log(majorsTemp);
 
     // Convert the array then return the object
-    let majorsObj = convertArrayToObject( majorsTemp, 'id' ); 
-    return majorsObj;
+    // let majorsObj = convertArrayToObject( majorsTemp, 'id' ); 
+    // return majorsObj;
+    return majorsTemp;
 }
 
 /**
@@ -223,13 +232,14 @@ async function pullMajorsData() {
  * 
  */
 async function saveData( filename, data ) {
-    console.log('\x1b[34m', `- Saving ${filename}...`);
+    console.log('\x1b[33m', `+ Saving ${filename}...`);
 
     // Convert the data to json
     let jsonData = JSON.stringify( data );
 
     // Check if the file already exists
     if (fs_sync.existsSync(`${ELEVENTY_DATA_PATH}${filename}`)) {
+        // If the file already exists, remove it
         console.log('\x1b[33m', `- Removing previous ${filename}`);
         fs_sync.unlink(`${ELEVENTY_DATA_PATH}${filename}`);
     }
@@ -301,7 +311,13 @@ function pullData() {
                         .then( process.on('exit', () => {
                             // Farewell the user on script completion
                             farewell();
-                        }));
+                        }))
+                        .catch( (error) => {
+                            console.log("\x1b[31m", '\nStudent Data System - Pull Data Script\n');
+                            console.log("\x1b[31m", '[ERROR] - An error occured during saveData of student list!');
+                            console.error("\x1b[31m", error, '\n\n');
+                            return process.exit(5);
+                        });
                     })
                     .catch( (error) => {
                         console.log("\x1b[31m", '\nStudent Data System - Pull Data Script\n');
@@ -310,6 +326,12 @@ function pullData() {
                         return process.exit(5);
                     });
                 })
+                .catch( (error) => {
+                    console.log("\x1b[31m", '\nStudent Data System - Pull Data Script\n');
+                    console.log("\x1b[31m", '[ERROR] - An error occured during saveData of student data!');
+                    console.error("\x1b[31m", error, '\n\n');
+                    return process.exit(5);
+                });
             })
             .catch( (error) => {
                 console.log("\x1b[31m", '\nStudent Data System - Pull Data Script\n');
@@ -318,6 +340,12 @@ function pullData() {
                 return process.exit(5);
             });
         })
+        .catch( (error) => {
+            console.log("\x1b[31m", '\nStudent Data System - Pull Data Script\n');
+            console.log("\x1b[31m", '[ERROR] - An error occured during saveData of Majors Data!');
+            console.error("\x1b[31m", error, '\n\n');
+            return process.exit(5);
+        });
     })
     .catch( (error) => {
         console.log("\x1b[31m", '\nStudent Data System - Pull Data Script\n' );
