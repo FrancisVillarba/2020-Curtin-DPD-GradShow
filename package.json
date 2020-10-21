@@ -11,7 +11,6 @@
     "start:webpack": "webpack --config webpack.dev.js ",
     "start:eleventy": "eleventy --serve",
     "push:data-core": "cross-env NODE_ENV=development node ./scripts/push_core_data.js",
-    "pull:data-test": "cross-env NODE_ENV=development node ./scripts/pull_data-test.js",
     "pull:data": "cross-env NODE_ENV=development node ./scripts/pull_data.js",
     "build": "cross-env NODE_ENV=production run-s -l build:*",
     "build:clean": "rimraf dist",
