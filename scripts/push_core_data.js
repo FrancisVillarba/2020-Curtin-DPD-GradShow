@@ -19,6 +19,7 @@ const csv_parser = require('csv-parser');
 
 // Globals ----------------------------------------------------------------- //
 const FIREBASE_SERVICE_ACCOUNT = require('../.firebase/firebase-adminsdk.json');
+const { parse } = require('url');
 
 const INPUT_DATA_PATH = './input/';
 
@@ -44,7 +45,7 @@ function welcome() {
     console.log('\x1b[36m', 'Written by Francis Villarba <francis.villarba@me.com> for Curtin DPD Graduation Show 2020\n');
     console.log('\x1b[0m', `Timestamp: ${new Date().toTimeString()}`);
     console.log('\x1b[34m', 'Ensure input data is located at ./input/coredata.csv \n', '\x1b[0m');
-    console.log('\x1b[33m', 'Please wait while we communicate to the database...\n', '\x1b[0m');
+    console.log('\x1b[33m', 'Please wait we run tasks...\n', '\x1b[0m');
 };
 
 /**
@@ -57,48 +58,101 @@ function farewell() {
 }
 
 /**
- * Push student data to the database
- * @param {Object} studentDataInput - The core student data
+ * Pulls majors data from the database
+ * @return {Object} majorsData - The array of majors in the database
  */
-async function pushStudentData( studentDataInput ) {
-    console.log('\x1b[34m', '- Pushing Student Data...');
+async function pullMajorsData() {
+    console.log('\x1b[34m', '- Pulling Majors Data...');
+    let majorsTemp = [];
 
-    // TODO REMINDER - Don't forget to make a document reference for the student's majors
+    const majors = await DATABASE.collection('majors').get();
+
+    // Iterate through the majors data and pull what we need
+    console.log('\x1b[34m', '- Parsing Majors Data...');
+    majors.forEach( (major) => {
+        let majorList = {
+            id: major.id,
+            title: major.data().title
+        }
+
+        majorsTemp.push(majorList);
+    });
+
+    console.log('\x1b[32m', '+ Finished pulling majors data from database!', '\x1b[0m');
+    return majorsTemp;
 };
 
 /**
  * Parse student data from the csv file and returns an object
  * @return {Object} studentData - The student data as an array
  */
-function parseStudentData() {
+async function parseStudentData() {
     console.log('\x1b[34m', '- Parsing Student Data Input File...');
 
-    // This is what we will be returning
-    let results = [];
+    // Let's make it into a promise
+    let endData = new Promise( (resolve, reject) => {
+        let results = [];
 
-    // Actually parse the csv
-    fs.createReadStream(`${INPUT_DATA_PATH}coredata.csv`)
-    .pipe(csv_parser())
-    .on('data', (data) => {
-        results.push(data)
-    })
-    .on('end', () => {
-        // For debugging
-        console.log(results);
-
-        return results;
+        fs.createReadStream(`${INPUT_DATA_PATH}coredata.csv`)
+        .pipe(csv_parser())
+        .on('data', (data) => {
+            // console.log(data);
+            results.push(data)
+        })
+        .on('end', () => {
+            // For debugging
+            // console.log(results);
+            console.log('\x1b[32m', '+ Finished Parsing Student Data Input File!', '\x1b[0m');
+            resolve( results );
+        })
+        .on( 'error', () => {
+            // For debugging
+            console.log("\x1b[31m", '[ERROR] - An error occured when parsing student data!', '\x1b[0,');
+            reject;
+        });
     });
+    return await endData;
+};
+
+/**
+ * Push student data to the database
+ * @param {Object} studentDataObj - The core student data
+ * @param {Object} manjorDataObj - The majors data
+ */
+async function pushStudentData(studentDataObj, majorDataObj) {
+    console.log('\x1b[34m', '- Pushing Student Data...');
+
+    // For debugging
+    // console.log(studentDataObj);
+    // console.log(majorDataObj);
+
+    // TODO REMINDER - Don't forget to make a document reference for the student's majors
+
+    // Iterate through the student data object and push to the database
+    for (let i = 0; i < studentDataObj.length; i++) {
+        // For debugging
+        console.log(studentDataObj[i]);
+
+        // Create the data that we will be using to push to to the database
+        let studentDataTemp = {
+
+        }
+    }
 };
 
 /**
  * The main function for this script
  */
-function pushCoreData() {
+async function pushCoreData() {
     // Show MOTD - Welcome Message
     welcome();
-
-    // Actual work starts here
-    let studentDataObj = parseStudentData();
+    
+    // Because Daniel Westbrook said I should use promises haha :)
+    Promise.all([await parseStudentData(), await pullMajorsData()]).then(val => {
+        console.log({val});
+        const [data1, data2] = val;
+        pushStudentData(data1, data2);
+    });
 };
 
 // Running ----------------------------------------------------------------- //
