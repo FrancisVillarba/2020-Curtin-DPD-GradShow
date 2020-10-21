@@ -115,3 +115,6 @@ public/favicons/
 _data/majors.json
 _data/studentData.json
 _data/studentList.json
+
+# Because push data script
+input/
