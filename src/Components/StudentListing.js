@@ -107,12 +107,12 @@ let majors = [
     'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
 ]
 
-let profileContainer = document.querySelector("#student-profile-container");
-
 const Student = {
 
     // Create the MAJORS filter bar
     createMajors: () => {
+        let profileContainer = document.querySelector("#student-profile-container");
+
         const majorListing = document.querySelector(".major-container");
         let pageTitle = document.querySelector(".major-title");
 
@@ -120,13 +120,13 @@ const Student = {
         majors.forEach(major => {
             let majorEntry = document.createElement('a');
             // set majorEntry name to major name and id to major name
-            majorEntry.innerHTML = major;
+            majorEntry.innerText = major;
             majorEntry.setAttribute("id", major);
 
             // on click, page header to major name, reload profiles
             majorEntry.addEventListener("click", () => {
-                pageTitle.innerHTML = major;
-                profileContainer.innerHTML = null;
+                pageTitle.innerText = major;
+                profileContainer.innerText = null;
                 Student.generateStudentListing();
             })
 
@@ -138,6 +138,8 @@ const Student = {
     },
 
     generateStudentListing: () => {
+        let profileContainer = document.querySelector("#student-profile-container");
+
         testArray.forEach(student => {
             let profileEntry = document.createElement("div");
             profileEntry.className = "profile-container";
@@ -145,12 +147,12 @@ const Student = {
             // Create a name h3 tag for each student
             let studentName = document.createElement("h3");
             studentName.className="student-name";
-            studentName.innerHTML= student.first_name + ' ' + student.second_name;
+            studentName.innerText = student.first_name + ' ' + student.second_name;
 
             // Create a majorialisation tag for each student
             let studentSpec = document.createElement("p");
             studentSpec.className = "student-spec";
-            studentSpec.innerHTML = student.major;
+            studentSpec.innerText = student.major;
 
             // Create an image tag for each student
             let studentImg = document.createElement("img");
@@ -160,7 +162,7 @@ const Student = {
             // Create a button that links to the student's individual profile
             let profileBtn = document.createElement('a');
             profileBtn.className = "profile-btn";
-            profileBtn.innerHTML = "Portfolio"
+            profileBtn.innerText = "Portfolio"
 
             // Append name tag and spec to student's container
             profileEntry.appendChild(studentImg);
