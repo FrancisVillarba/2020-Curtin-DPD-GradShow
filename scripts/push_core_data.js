@@ -23,6 +23,8 @@ const { parse } = require('url');
 
 const INPUT_DATA_PATH = './input/';
 
+const MAJORS_COLLECTION = 'majors/';
+
 // Setup and Inits --------------------------------------------------------- //
 
 // Init the Firebase Admin SDK
@@ -131,12 +133,59 @@ async function pushStudentData(studentDataObj, majorDataObj) {
     // Iterate through the student data object and push to the database
     for (let i = 0; i < studentDataObj.length; i++) {
         // For debugging
-        console.log(studentDataObj[i]);
+        // console.log(studentDataObj[i]);
+        // console.log(majorDataObj);
+        console.log('Preparing data for:', studentDataObj[i]['First Name'], studentDataObj[i]['Last Name']);
 
+        // Turn the majors into document references for the database
+        let referencesTemp = [];
+        let studentMajorsTemp = studentDataObj[i]['Major'].split(', ');
+
+        // Iterate through the majors list and compare to our majorDataObj
+        for( let j = 0; j < studentMajorsTemp.length; j++ ) {
+            // For debugging
+            // console.log(studentMajorsTemp[j]);
+
+            let matchedData = majorDataObj[majorDataObj.findIndex( (major) => major.title == studentMajorsTemp[j])];
+            
+            if( !(matchedData === undefined) ) {
+                // Create document references and push to the collection
+                referencesTemp.push( DATABASE.doc(MAJORS_COLLECTION + matchedData['id']) );
+            }
+            else {
+                // Could not find the unit, we should raise this as an error
+                console.log("\x1b[31m", '[ERROR] - An error occured when parsing student majors data!');
+                console.log('Student: ', studentDataObj[i]['First Name'], studentDataObj[i]['Last Name']);
+                console.log('Could not find document with title', `"${studentMajorsTemp[j]}"`, 'to reference towards in the database! \n\n');
+                process.exit(5);
+            }
+        }
+
+        // For debugging the student's references
+        // console.log(referencesTemp);
+
+        let studentTemp = studentDataObj[i];
         // Create the data that we will be using to push to to the database
         let studentDataTemp = {
+            name: {
+                first: studentTemp['First Name'],
+                last: studentTemp['Last Name'],
+                preferred: studentTemp['Preferred Name']
+            },
+            email: studentTemp['Email Address'],
+            bio: studentTemp['Bio'],
+            statement: studentTemp['Short Creative Statement'],
+            majors: referencesTemp
+        };
 
-        }
+        // For debugging the student's final data
+        // console.log(studentDataTemp);
+
+        // TODO - Push this to the database
+        console.log('Pushing to firestore database...');
+        let res = await DATABASE.collection('students').add(studentDataTemp);
+
+        console.log(`Successfully added document: firebase/students/${res.id}!`);
     }
 };
 
@@ -149,7 +198,7 @@ async function pushCoreData() {
     
     // Because Daniel Westbrook said I should use promises haha :)
     Promise.all([await parseStudentData(), await pullMajorsData()]).then(val => {
-        console.log({val});
+        // console.log({val});
         const [data1, data2] = val;
         pushStudentData(data1, data2);
     });
