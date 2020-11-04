@@ -112,9 +112,9 @@ public/favicons/
 .firebase/
 
 # Because pull data output
-_data/majors.json
-_data/studentData.json
-_data/studentList.json
+# _data/majors.json
+# _data/studentData.json
+# _data/studentList.json
 
 # Because push data script
 input/
