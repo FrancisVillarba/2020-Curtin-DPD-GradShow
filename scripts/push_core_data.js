@@ -161,27 +161,59 @@ async function pushStudentData(studentDataObj, majorDataObj) {
             }
         }
 
+        // Declare the student's projects and convert them for our schema (with auto generated ALT tags)
+        let projectImagesTemp = [];
+        let projectImagesData = studentDataObj[i]['Upload Images Here'].split(', ');
+        for( let k = 0; k < projectImagesData.length; k++ ) {
+            let tempProject = {
+                src: projectImagesData[k],
+                alt: studentDataObj[i]['First Name'] + `'s Project Preview Image ${k}`
+            }
+            projectImagesTemp.push( tempProject );
+        }
+
+        // Some logic for us to create the array (TODO - Future - Make this nicer)
+        let socialLinksTemp = [];
+        if (studentDataObj[i]['Your Artstation link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Artstation link']); }
+        if (studentDataObj[i]['Your Behance link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Behance link']);}
+        if (studentDataObj[i]['Your CGSociety link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your CGSociety link']); }
+        if (studentDataObj[i]['Your Dribble link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Dribble link']); }
+        if (studentDataObj[i]['Your Facebook business page link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Facebook business page link']); }
+        if (studentDataObj[i]['Your Github link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Github link']); }
+        if (studentDataObj[i]['Your Instagram link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Instagram link']); }
+        if (studentDataObj[i]['Your LinkedIn link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your LinkedIn link']); }
+        if (studentDataObj[i]['Your Twitter link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Twitter link']); }
+        if (studentDataObj[i]['Your Vimeo link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Vimeo link']); }
+        if (studentDataObj[i]['Your Youtube link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Youtube link']); }
+        if (studentDataObj[i]['Your Bitbucket link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Bitbucket link']); }
+        if (studentDataObj[i]['Your CodePen link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your CodePen link']); }
+        if (studentDataObj[i]['Your Polycount link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Polycount link']); }
+        if (studentDataObj[i]['Your Tumblr link'] != "") { socialLinksTemp.push(studentDataObj[i]['Your Tumblr link']); }
+
         // For debugging the student's references
         // console.log(referencesTemp);
 
         let studentTemp = studentDataObj[i];
         // Create the data that we will be using to push to to the database
         let studentDataTemp = {
+            id: studentTemp['Student Number'],
             name: {
                 first: studentTemp['First Name'],
                 last: studentTemp['Last Name'],
                 preferred: studentTemp['Preferred Name']
             },
+            majors: referencesTemp,
             email: studentTemp['Email Address'],
             bio: studentTemp['Bio'],
             statement: studentTemp['Short Creative Statement'],
-            majors: referencesTemp
+            profile: studentTemp['Your portfolio link'],
+            projects: projectImagesTemp,
+            social: socialLinksTemp
         };
 
         // For debugging the student's final data
         // console.log(studentDataTemp);
 
-        // TODO - Push this to the database
         console.log('Pushing to firestore database...');
         let res = await DATABASE.collection('students').add(studentDataTemp);
 
