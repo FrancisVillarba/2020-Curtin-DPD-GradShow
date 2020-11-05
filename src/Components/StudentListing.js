@@ -1,115 +1,14 @@
 import anime from 'animejs';
 import studentList from '../../_data/studentList.json';
 
-
-// Array of sample students for demonstration purposes
-let testArray = [
-    { 
-        "first_name": "student",
-        "second_name": "one",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "2",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    }
-    
-]
-
 // Array for each major for demonstration purposes
 let majors = [
     'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
 ]
 
-const Student = {
+const studentListInstance = studentList
 
+const Student = {
     majors: [
         {name: 'Digital Design', color: 'red'},
         {name: 'Animation & Game Design', color: 'blue'},
@@ -117,19 +16,18 @@ const Student = {
         {name: 'Graphic Design', color: 'orange'},
         {name: 'Creative Advertising', color: 'purple'}
     ],
+    profileContainer: document.querySelector(".student-profile-container"),
+    searchBar: document.querySelector(".search-bar"),
 
     onMajor: 'Digital Design',
 
     // FILTERS
-    getSpecific: (data) => {
-        let profileContainer = document.querySelector("#student-profile-container");
+    getSpecific: (profileContainer = Student.profileContainer) => {
         
     },
 
     // Create the MAJORS filter bar
-    createMajors: () => {
-        let profileContainer = document.querySelector("#student-profile-container");
-
+    createMajors: (profileContainer = Student.profileContainer) => {
         const majorListing = document.querySelector(".major-container");
         let pageTitle = document.querySelector(".major-title");
 
@@ -155,18 +53,18 @@ const Student = {
 
     },
 
-    search: () => {
-        let searchBar = document.querySelector(".search-bar");
-        let searchValue = searchBar.value.toLowerCase();
+    search: (e) => {
+        const searchValue = e.target.value.toLowerCase()
         console.log(searchValue);
-        studentList.forEach(student => {
-
+        const newStudentList = [...studentList]
+        newStudentList.filter(student => {
             if(student.name.toLowerCase().includes(searchValue)){
                 console.log(student.name);
                 
             } 
         })
-
+        Student.studentListInstance = newStudentList
+        Student.generateStudentListing()
     },
 
     generateSearch: () => {
@@ -177,7 +75,7 @@ const Student = {
     },
 
     generateStudent: () => {
-        studentList.forEach(student => {
+        Student.studentListInstance.forEach(student => {
 
             let profileEntry = document.createElement("div");
             profileEntry.className = "profile-container";
@@ -244,10 +142,8 @@ const Student = {
     },
 
 
-    generateStudentListing: () => {
-        let profileContainer = document.querySelector("#student-profile-container");
-
-        studentList.forEach(student => {
+    generateStudentListing: (profileContainer = Student.profileContainer) => {
+        studentListInstance.forEach(student => {
 
             let profileEntry = document.createElement("div");
             profileEntry.className = "profile-container";

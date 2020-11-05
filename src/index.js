@@ -8,13 +8,15 @@ console.log("Hello World")
 
 // check if profile container exists before running Student component
 function init() {
-    if (document.querySelector("#student-profile-container")) {
+
+    const studentGridContainer = document.querySelector(".student-profile-container")
+    if (studentGridContainer) {
         Student.createMajors();
         Student.generateStudentListing();
-
+        
         let searchBar = document.querySelector(".search-bar");
-        searchBar.addEventListener("keydown", () => {
-            Student.search();
+        searchBar.addEventListener("input", (e) => {
+            Student.search(e);
         })
     }
 }
