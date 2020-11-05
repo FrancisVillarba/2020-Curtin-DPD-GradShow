@@ -1,7 +1,7 @@
-const dev = require('./webpack.dev.js');
-const { merge } = require('webpack-merge');
-const TerserPlugin = require('terser-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const dev = require('./webpack.dev.js')
+const { merge } = require('webpack-merge')
+const TerserPlugin = require('terser-webpack-plugin')
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 module.exports = merge(dev, {
   mode: 'production',
@@ -11,11 +11,11 @@ module.exports = merge(dev, {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        sourceMap: true
+        sourceMap: true,
       }),
       new OptimizeCssAssetsPlugin({
-        cssProcessorOptions: { map: true }
-      })
-    ]
-  }
-});
+        cssProcessorOptions: { map: true },
+      }),
+    ],
+  },
+})
