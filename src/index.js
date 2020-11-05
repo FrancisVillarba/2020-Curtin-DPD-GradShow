@@ -9,9 +9,10 @@ console.log("Hello World")
 
 // check if profile container exists before running Student component
 function init() {
-    const studentGridContainer = document.querySelector(".student-profile-container")
-    if (studentGridContainer) {
-        const DDListing = new StudentListing('Digital Design')
+    if (document.querySelector(".student-profile-container")) {
+        const majorName = document.querySelector('.major-title').innerText
+        console.log(majorName);
+        const DDListing = new StudentListing(majorName)
         DDListing.generateStudentListing();
         
         let searchBar = document.querySelector(".search-bar");

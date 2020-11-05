@@ -1,12 +1,18 @@
 ---
 layout: default.njk
-title: Digital Design
+title: Major Page
+pagination:
+    data: majors
+    size: 1
+    alias: major
+permalink: "major/{{ major.title | slug }}/"
+
 --- 
 
 <section class="banner">
   <div class="banner-text">
     <h3 class="major-intro">Students From The Major Of</h3>
-    <h1 class="title major-title"></h1>
+    <h1 class="title major-title">{{ major.title }}</h1>
   </div>
   <img class="banner-img" src=".././imgs/orbs/dd.png"></img>
 </section>
