@@ -1,158 +1,38 @@
-// General Styles ----------------------------------------------------------- /
-
-body {
-    width: 100vw;
+.banner-img {
+  filter: grayscale(1);
+  height: 100vh;
+  object-fit: cover;
 }
 
-section {
-    position: relative;
-    background-color: black;
-    height: fit-content;
+.home-left {
+  max-width: 900px;
 }
 
-.section-divider {
-    border: 3px solid black;
-    margin: 0;
+.home-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
-.main-content {
-    padding: 48px;
-    padding-bottom: 128px;
+.disciplines-container {
+  max-width: 800px;
+  display: flex;
 }
 
-// Shapes ------------------------------------------------------------------- /
-
-.shape-square {
-    height: 75vh;
-    width: 95vw;
-    background-color: $b-darker-gray;
+.disciplines-container > * + * {
+  margin-left: 20px;
 }
 
-// Hero --------------------------------------------------------------------- /
-
-.home-banner {
-    height: 80vh;
-    margin: 0;
-
-    // Used temporarily until we have the actual hero asset put onto the page
-    background-image: url(https://images.prismic.io/iaesydney/bda3aa62a7bb8d70ae9221b61b263a2c4f97593b_curtin-1.jpg?auto=compress,format);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto 100%;
-    filter: grayscale(100%);
-    -webkit-filter: greyscale(100%);
-
-    h1 {
-        backdrop-filter: brightness(50%);
-    }
+@media only screen and (max-width: 500px) {
+  .disciplines-container {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .disciplines-container > * + * {
+    margin-left: 0;
+  }  
+  .home-right {
+      align-items: flex-start;
+  }
 }
-
-// Content ------------------------------------------------------------------ /
-
-.main-content {
-    display: flex;
-    flex-direction: column;
-
-
-    article.left {
-        max-width: 700px;
-    }
-
-    article.left>p {
-        margin-right: 5vw;
-    }
-
-    article.right {
-        text-align: right;
-        max-width: 700px;
-        align-self: flex-end;
-    }
-
-    .disciplines-container {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: flex-end;
-        text-align: center;
-
-        div + div {
-            margin-left: 24px;
-        }
-    }
-
-    .discipline {
-        cursor: pointer;
-    }
-}
-
-// Secondary Content
-.secondary-content {
-    display: flex;
-    justify-content: center;
-}
-
-.media-content {
-    height: 85vh;
-    padding-bottom: 15vh;
-}
-
-// Responsiveness ----------------------------------------------------------- /
-
-@media screen and (max-width: 650px) {
-    // TODO - Make this two column but smaller
-
-    .main-content {
-        text-align: flex-start;
-
-        article.left>p {
-            margin-right: 0px;
-        }
-
-        article.right {
-            text-align: left;
-            align-self: flex-start !important;
-        }
-
-        .disciplines-container {
-            text-align: center;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-
-            img {
-                height: 180px;
-                width: auto;
-            }
-
-            div + div {
-                margin: 0px;
-            }
-
-            .discipline {
-                margin: 24px;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 560px) {
-    .disciplines-container {
-        img {
-            height: 120px !important;
-        }
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .disciplines-container {
-        img {
-            height: 80px !important;
-        }
-
-        .discipline {
-            margin: 8px;
-        }
-    }
-}
-
-// TODO - FUTURE - Convert to bulma (where possible)

@@ -1,14 +1,10 @@
-.layout-main {
-    background-color: #191919;
-}
-
 .profile-listing-showreel-container {
     height: 80vh;
-    background-color: #303030;
+    background-color: $b-darker-gray;
 }
 
 .banner {
-    background-color: #191919;
+    background-color: $b-black;
     display: flex;
     flex-direction: row;
     height: 20vh;
@@ -54,11 +50,10 @@
         text-transform: uppercase;
         color: #505050;
         text-align: center;
-
     }
     a:hover {
-        color: #191919;
-        border-bottom: 1px solid #191919;
+        color: $b-black;
+        border-bottom: 1px solid $b-darker-gray;
     }
 }
 
@@ -73,7 +68,7 @@
         width: 100%;
         height: 2rem;
         background: #fff;
-        color: #191919;
+        color: $b-black;
         border-style: none;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -89,15 +84,12 @@
     }
 
     .search-icon {
-
         i {
-            color: #191919;
+            color: $b-black;
 
         }
         font-size: 1rem;
-        
     }
-
 }
 
 // INDIVIDUAL STUDENT LISTINGS
@@ -123,7 +115,7 @@
         margin-top: 5px;
         font-size: 1.1rem;
         font-weight: bold;
-        color: #433737;
+        color: $b-darker-gray;
         text-align: left;
         margin-left: 10px;
         margin-bottom: 10px;
@@ -153,7 +145,7 @@
         
     }
     .profile-btn {
-        background-color: #191919;
+        background-color: $b-black;
         border: none;
         outline: none;
         font-size: 0.7rem;

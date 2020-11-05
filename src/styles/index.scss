@@ -15,7 +15,7 @@
 }
 
 // Set your brand colors
-$b-black: #292929;
+$b-black: #1a1a1a;
 $b-white: #ffffff;
 $b-darker-gray: #515151;
 $b-dark-gray: #979797;
@@ -91,6 +91,10 @@ html.is-animating .transition-slide-in {
   opacity: 0;
 }
 
+body {
+  background-color: $b-black;
+}
+
 .layout {
   display: flex;
   flex-direction: column;
@@ -139,8 +143,10 @@ html.is-animating .transition-slide-in {
 
 $tooltip-radius: 0px;
 $tooltip-background-color: $b-black;
-$tooltip-arrow-size: 12px;
 $tooltip-padding: 0.7rem 1.5rem;
+$tooltip-background-opacity: 1;
+$tooltip-font-size: 1rem;
+$tooltip-radius: 0;
 @import '@creativebulma/bulma-tooltip';
 
 // Page Styling Imports
