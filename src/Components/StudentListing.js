@@ -1,202 +1,108 @@
-import anime from 'animejs'
-
-// Array of sample students for demonstration purposes
-let testArray = [
-  {
-    first_name: 'student',
-    second_name: 'one',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: '2',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-  {
-    first_name: 'student',
-    second_name: 'name',
-    major: 'Digital Design',
-    img:
-      'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg',
-  },
-]
+import anime from 'animejs';
+import studentList from '../../_data/studentList.json';
 
 // Array for each major for demonstration purposes
 let majors = [
-  'Digital Design',
-  'Animation & Game Design',
-  'Illustration',
-  'Graphic Design',
-  'Creative Advertising',
+    'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
 ]
 
-const Student = {
-  // Create the MAJORS filter bar
-  createMajors: () => {
-    let profileContainer = document.querySelector('#student-profile-container')
+class StudentListing {
+    constructor(major) {
+        this.majors = [
+            {name: 'Digital Design', color: '.././imgs/orbs/dd.png'},
+            {name: 'Animation & Game Design', color: '.././imgs/orbs/agd.png'},
+            {name: 'Illustration', color: '.././imgs/orbs/ill.png'},
+            {name: 'Graphic Design', color: '.././imgs/orbs/gd.png'},
+            {name: 'Creative Advertising', color: '.././imgs/orbs/ca.png'}
+        ];
+        this.profileContainer = document.querySelector(".student-profile-container");
+        this.searchBar = document.querySelector(".search-bar");
+    
+        this.onMajor = major;
+        this.studentListInstance = studentList;
 
-    const majorListing = document.querySelector('.major-container')
-    let pageTitle = document.querySelector('.major-title')
+        const pageTitle = document.querySelector(".major-title");
+        const bannerImg = document.querySelector(".banner-img"); 
+        bannerImg.setAttribute("src", this.majors.find(major => major.name === this.onMajor)?.color)
+        pageTitle.innerText = this.onMajor;
+    }
 
-    // Create an anchor tag for each major
-    majors.forEach(major => {
-      let majorEntry = document.createElement('a')
-      // set majorEntry name to major name and id to major name
-      majorEntry.innerText = major
-      majorEntry.setAttribute('id', major)
+    search(e) {
+        const searchValue = e.target.value.toLowerCase()
+        console.log(searchValue);
+        const newStudentList = [...studentList]
+        this.studentListInstance = newStudentList.filter(student => {
+            if(student.name.toLowerCase().includes(searchValue)){
+                return student        
+            } 
+        })
+        console.log(this.studentListInstance.length);
+        this.generateStudentListing()
+    }
 
-      // on click, page header to major name, reload profiles
-      majorEntry.addEventListener('click', () => {
-        pageTitle.innerText = major
-        profileContainer.innerText = null
-        Student.generateStudentListing()
-      })
+    generateStudentListing() {
+        this.profileContainer.innerHTML = ''
+        this.studentListInstance.forEach(student => {
 
-      // Append anchor tags to their container
-      majorListing.appendChild(majorEntry)
-    })
-  },
+            let profileEntry = document.createElement("div");
+            profileEntry.className = "profile-container";
 
-  generateStudentListing: () => {
-    let profileContainer = document.querySelector('#student-profile-container')
+            // Create a name h3 tag for each student
+            let studentName = document.createElement("h3");
+            studentName.className="student-name";
+            studentName.innerText = student.name
 
-    testArray.forEach(student => {
-      let profileEntry = document.createElement('div')
-      profileEntry.className = 'profile-container'
+            // Create a major colour for each student
+            let majorBalls = document.createElement("div");
+            majorBalls.className = 'major-ball-container';
 
-      // Create a name h3 tag for each student
-      let studentName = document.createElement('h3')
-      studentName.className = 'student-name'
-      studentName.innerText = student.first_name + ' ' + student.second_name
+            let studentSpec = document.createElement('div');
+            studentSpec.className = 'student-major-container';
+            student.majors.forEach(major => {
+                let majorBall = document.createElement("img");
+                majorBall.className = "student-major";
+                if(major.title == 'Graphic Design') {
+                    majorBall.setAttribute("src", ".././imgs/orbs/gd.png");
+            } else if (major.title == 'Digital Design') {
+                majorBall.setAttribute("src", ".././imgs/orbs/dd.png");  
 
-      // Create a majorialisation tag for each student
-      let studentSpec = document.createElement('p')
-      studentSpec.className = 'student-spec'
-      studentSpec.innerText = student.major
+            } else if(major.title == 'Creative Advertising') {
+                majorBall.setAttribute("src", ".././imgs/orbs/ca.png");
 
-      // Create an image tag for each student
-      let studentImg = document.createElement('img')
-      studentImg.className = 'student-img'
-      studentImg.setAttribute('src', student.img)
+            } else if(major.title == 'Animation & Game Design') {
+                majorBall.setAttribute("src", ".././imgs/orbs/agd.png");
 
-      // Create a button that links to the student's individual profile
-      let profileBtn = document.createElement('a')
-      profileBtn.className = 'profile-btn'
-      profileBtn.innerText = 'Portfolio'
+            } else if(major.title == 'Illustration') {
+                majorBall.setAttribute("src", ".././imgs/orbs/ill.png");
 
-      // Append name tag and spec to student's container
-      profileEntry.appendChild(studentImg)
-      profileEntry.appendChild(studentName)
-      profileEntry.appendChild(studentSpec)
-      profileEntry.appendChild(profileBtn)
+            }
+                majorBalls.appendChild(majorBall);
+            })
+            studentSpec.appendChild(majorBalls);
 
-      // Append to profile container
-      profileContainer.appendChild(profileEntry)
-    })
 
-    let profileEntry = document.querySelectorAll('.profile-container')
-    // Animate profiles into view
-    anime({
-      targets: profileEntry,
-      keyframes: [{ opacity: 0 }, { opacity: 1 }],
-      delay: anime.stagger(50),
-    })
-  },
+            // Create an image tag for each student
+            let studentImg = document.createElement("img");
+            studentImg.className = "student-img";
+            studentImg.setAttribute("src", student.img);
+
+            // Create a button that links to the student's individual profile
+            let profileBtn = document.createElement('a');
+            profileBtn.className = "profile-btn";
+            profileBtn.innerText = "Portfolio"
+            studentSpec.appendChild(profileBtn);
+
+            // Append name tag and spec to student's container
+            profileEntry.appendChild(studentImg);
+            profileEntry.appendChild(studentName);
+            profileEntry.appendChild(studentSpec);
+
+            // Append to profile container
+            this.profileContainer.appendChild(profileEntry);
+        })
+
+        let profileEntry = document.querySelectorAll(".profile-container");
+    }
+    
 }
-
-export { Student }
+export { StudentListing }

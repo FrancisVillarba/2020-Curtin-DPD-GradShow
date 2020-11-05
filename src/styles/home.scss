@@ -1,65 +1,13 @@
+// General Styles ----------------------------------------------------------- /
+
 body {
     width: 100vw;
 }
 
 section {
     position: relative;
-}
-
-.home-slideshow {
-    height: 80vh;
-    margin: 0;
-    background-image: url(https://images.prismic.io/iaesydney/bda3aa62a7bb8d70ae9221b61b263a2c4f97593b_curtin-1.jpg?auto=compress,format);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto 100%;
-
-    h1 {
-        backdrop-filter: brightness(50%);
-    }
-}
-
-.home-about {
-    padding: 35vh 5vw;
-    
-    .heading-column {
-        justify-content: flex-start;
-        
-        h2 {
-            text-align: right;
-            font-size: 5vw;
-            margin-right: 15px;
-        }
-    }
-
-    .text-column {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-.home-map {
-    padding: 15vh 5vw;
-
-    .text-column {
-        font-size: 5vw;
-    }
-
-    .img-placeholder {
-        width: 600px;
-        height: 400px;
-        border-radius: 10px;
-        border: 5px solid black;
-    }
-
-    .map-column {
-        padding: 0px 5%;
-        display: flex;
-        justify-content: center;
-        
-
-    }
+    background-color: black;
+    height: fit-content;
 }
 
 .section-divider {
@@ -67,145 +15,144 @@ section {
     margin: 0;
 }
 
-.filter-button-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+.main-content {
+    padding: 48px;
+    padding-bottom: 128px;
+}
 
-    button {
-        margin: 5px;
+// Shapes ------------------------------------------------------------------- /
+
+.shape-square {
+    height: 75vh;
+    width: 95vw;
+    background-color: $b-darker-gray;
+}
+
+// Hero --------------------------------------------------------------------- /
+
+.home-banner {
+    height: 80vh;
+    margin: 0;
+
+    // Used temporarily until we have the actual hero asset put onto the page
+    background-image: url(https://images.prismic.io/iaesydney/bda3aa62a7bb8d70ae9221b61b263a2c4f97593b_curtin-1.jpg?auto=compress,format);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    filter: grayscale(100%);
+    -webkit-filter: greyscale(100%);
+
+    h1 {
+        backdrop-filter: brightness(50%);
     }
 }
 
-.awards-button-container {
+// Content ------------------------------------------------------------------ /
+
+.main-content {
     display: flex;
-    justify-content: center;
-    
-    .awards-button {
-        width: 200px;
-        border-radius: 15px 15px 0px 0px;
-        border-style: none;
+    flex-direction: column;
+
+
+    article.left {
+        max-width: 700px;
     }
-}
 
+    article.left>p {
+        margin-right: 5vw;
+    }
 
-.award-img-container {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    justify-content: center;
+    article.right {
+        text-align: right;
+        max-width: 700px;
+        align-self: flex-end;
+    }
 
-    .awards-img-wrapper {
+    .disciplines-container {
         display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        width: 100%;
-        height: 600px;
-        background-color: $grey-dark;
-        box-shadow: 0 0 10px inset black;
-        transition: 0.2s;
-    }
-
-    .awards-img-wrapper:hover {
-        width: calc(100% + 200px);
-        box-shadow: 0 0 10px inset white;
-    }
-}
-
-.quick-filter-container {
-    display: flex;
-
-    .column {
-        display: flex;
-        margin: 20px 5%;
-        border-radius: 0 0 15px 15px;
-        flex-direction: column;
-
-
-        .container {
-            background-color: $grey-dark;
-            width: 100%;
-            border-radius: 0 0 15px 15px;
-            padding: 8px 0;
-        }
-
-        h3 {
-            text-align: center;
-            color: white;
-        }
-    }
-}
-
-
-// Responsiveness
-
-@media screen and (max-width: 1024px) {
-
-    .home-map {
-        .map-column {
-            .img-placeholder {
-                width: 100%;
-                height: 250px;
-            }
-        }
-    }
-}
-@media screen and (max-width: 770px) {
-
-
-
-    .home-map {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
         text-align: center;
 
-        .text-column {
-            margin-top: 25px;
-            font-size: 5rem;
-
-        }
-        .map-column {
-            .img-placeholder {
-                width: 80vw;
-                height: 400px;
-                padding: 0px 50px;
-            }
+        div + div {
+            margin-left: 24px;
         }
     }
 
-    .quick-filter-container {
-        justify-content: space-around;
-        margin: 0 10px;
-        .column {
-            margin: 0;
-        }
+    .discipline {
+        cursor: pointer;
     }
+}
 
-    .award-img-container {
-        flex-direction: column;
+// Secondary Content
+.secondary-content {
+    display: flex;
+    justify-content: center;
+}
 
-        .awards-img-wrapper {
-            height: 250px;
+.media-content {
+    height: 85vh;
+    padding-bottom: 15vh;
+}
+
+// Responsiveness ----------------------------------------------------------- /
+
+@media screen and (max-width: 650px) {
+    // TODO - Make this two column but smaller
+
+    .main-content {
+        text-align: flex-start;
+
+        article.left>p {
+            margin-right: 0px;
         }
-    }
 
-    .home-about {
-        padding: 15vh 0;
-
-        .heading-column {
-
-            h2 {
-                text-align: center;
-                font-size: 5rem;
-            }
+        article.right {
+            text-align: left;
+            align-self: flex-start !important;
         }
 
-        p {
+        .disciplines-container {
             text-align: center;
-            margin: 0;
-            padding: 0 15px !important;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            img {
+                height: 180px;
+                width: auto;
+            }
+
+            div + div {
+                margin: 0px;
+            }
+
+            .discipline {
+                margin: 24px;
+            }
         }
     }
 }
+
+@media screen and (max-width: 560px) {
+    .disciplines-container {
+        img {
+            height: 120px !important;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .disciplines-container {
+        img {
+            height: 80px !important;
+        }
+
+        .discipline {
+            margin: 8px;
+        }
+    }
+}
+
+// TODO - FUTURE - Convert to bulma (where possible)
