@@ -21,12 +21,6 @@ section {
 }
 
 // Shapes ------------------------------------------------------------------- /
-.shape-circle {
-    height: 128px;
-    width: 128px;
-    border-radius: 50%;
-    background-color: $b-black;
-}
 
 .shape-square {
     height: 75vh;
@@ -52,19 +46,6 @@ section {
         backdrop-filter: brightness(50%);
     }
 }
-
-// Tooltip ------------------------------------------------------------------ /
-// [data-tooltip]:not(.is-loading).has-tooltip-bottom::before,
-// [data-tooltip]:not(.is-disabled).has-tooltip-bottom::before,
-// [data-tooltip]:not([disabled]).has-tooltip-bottom::before {
-//     transform: translate(-50%, 250%);
-// }
-
-// [data-tooltip]:not(.is-loading).has-tooltip-bottom.has-tooltip-arrow::after,
-// [data-tooltip]:not(.is-disabled).has-tooltip-bottom.has-tooltip-arrow::after,
-// [data-tooltip]:not([disabled]).has-tooltip-bottom.has-tooltip-arrow::after {
-//     transform: translateY(250%);
-// }
 
 // Content ------------------------------------------------------------------ /
 
@@ -122,26 +103,40 @@ section {
 // Responsiveness ----------------------------------------------------------- /
 
 @media screen and (max-width: 650px) {
+    // TODO - Make this two column but smaller
+
     .main-content {
-        text-align: center;
+        text-align: flex-start;
 
         article.left>p {
             margin-right: 0px;
         }
 
         article.right {
-            text-align: center;
-            align-self: center;
+            text-align: left;
+            align-self: flex-start !important;
         }
 
         .disciplines-container {
-            flex-direction: column;
-            justify-content: center;
+            text-align: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            img {
+                height: 200px;
+                width: auto;
+            }
 
             div + div {
-                margin-left: 0px;
-                margin-top: 12px;
+                margin: 0px;
+            }
+
+            .discipline {
+                margin: 24px;
             }
         }
     }
 }
+
+// TODO - FUTURE - Convert to bulma (where possible)
