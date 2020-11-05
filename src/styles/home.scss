@@ -69,12 +69,16 @@ section {
 // Content ------------------------------------------------------------------ /
 
 .main-content {
+    display: flex;
+    flex-direction: column;
+
     article {
         padding-top: 12px;
+        padding-bottom: 48px;
     }
 
     article.left {
-        margin-right: 40vw;
+        max-width: 700px;
     }
 
     article.left>p {
@@ -83,7 +87,8 @@ section {
 
     article.right {
         text-align: right;
-        margin-left: 40vw;
+        max-width: 700px;
+        align-self: flex-end;
     }
 
     .disciplines-container {
