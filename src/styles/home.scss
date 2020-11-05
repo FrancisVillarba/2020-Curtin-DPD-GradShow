@@ -17,20 +17,20 @@ section {
 
 .main-content {
     padding: 48px;
+    padding-bottom: 128px;
 }
 
 // Shapes ------------------------------------------------------------------- /
 .shape-circle {
-    // TODO - Make the size responsive
-    height: 96px;
-    width: 96px;
+    height: 128px;
+    width: 128px;
     border-radius: 50%;
     background-color: $b-black;
 }
 
 .shape-square {
     height: 75vh;
-    width: 90vw;
+    width: 95vw;
     background-color: $b-darker-gray;
 }
 
