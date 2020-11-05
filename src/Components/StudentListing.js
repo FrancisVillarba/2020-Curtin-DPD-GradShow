@@ -190,22 +190,23 @@ const Student = {
             // Create a major colour for each student
             let studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';
+            
             student.majors.forEach(major => {
-                let majorBall = document.createElement("div");
+                let majorBall = document.createElement("img");
                 majorBall.className = "student-major";
                 if(major.title == 'Graphic Design') {
-                    majorBall.style.background = "#21bace"
+                    majorBall.setAttribute("src", "./imgs/gd.png");
             } else if (major.title == 'Digital design') {
-                majorBall.style.background = "#f79421"
+                majorBall.setAttribute("src", "./imgs/dd.png");
 
             } else if(major.title == 'Creative Advertising') {
-                majorBall.style.background = "#ee2d2a"
+                majorBall.setAttribute("src", "./imgs/ca.png");
 
             } else if(major.title == 'Animation & Game Design') {
-                majorBall.style.background = "#92298d"
+                majorBall.setAttribute("src", "./imgs/agd.png");
 
             } else if(major.title == 'Illustration') {
-                majorBall.style.background = "#00aa6c";
+                majorBall.setAttribute("src", "./imgs/ill.png");
 
             }
                 studentSpec.appendChild(majorBall);
@@ -258,28 +259,33 @@ const Student = {
             studentName.innerText = student.name
 
             // Create a major colour for each student
+            let majorBalls = document.createElement("div");
+            majorBalls.className = 'major-ball-container';
+
             let studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';
             student.majors.forEach(major => {
-                let majorBall = document.createElement("div");
+                let majorBall = document.createElement("img");
                 majorBall.className = "student-major";
                 if(major.title == 'Graphic Design') {
-                    majorBall.style.background = "#21bace"
-            } else if (major.title == 'Digital design') {
-                majorBall.style.background = "#f79421"
+                    majorBall.setAttribute("src", ".././imgs/gd.png");
+            } else if (major.title == 'Digital Design') {
+                majorBall.setAttribute("src", ".././imgs/dd.png");  
 
             } else if(major.title == 'Creative Advertising') {
-                majorBall.style.background = "#ee2d2a"
+                majorBall.setAttribute("src", ".././imgs/ca.png");
 
             } else if(major.title == 'Animation & Game Design') {
-                majorBall.style.background = "#92298d"
+                majorBall.setAttribute("src", ".././imgs/agd.png");
 
             } else if(major.title == 'Illustration') {
-                majorBall.style.background = "#00aa6c";
+                majorBall.setAttribute("src", ".././imgs/ill.png");
 
             }
-                studentSpec.appendChild(majorBall);
+                majorBalls.appendChild(majorBall);
             })
+            studentSpec.appendChild(majorBalls);
+
 
             // Create an image tag for each student
             let studentImg = document.createElement("img");
@@ -290,12 +296,12 @@ const Student = {
             let profileBtn = document.createElement('a');
             profileBtn.className = "profile-btn";
             profileBtn.innerText = "Portfolio"
+            studentSpec.appendChild(profileBtn);
 
             // Append name tag and spec to student's container
             profileEntry.appendChild(studentImg);
             profileEntry.appendChild(studentName);
             profileEntry.appendChild(studentSpec);
-            profileEntry.appendChild(profileBtn);
 
             // Append to profile container
             profileContainer.appendChild(profileEntry);
