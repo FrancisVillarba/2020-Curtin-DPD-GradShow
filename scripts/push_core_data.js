@@ -213,54 +213,128 @@ async function pushStudentData(studentDataObj, majorDataObj) {
       projectImagesTemp.push(tempProject)
     }
 
-    // Some logic for us to create the array (TODO - Future - Make this nicer)
-    let socialLinksTemp = []
+    // Some logic for us to create the array of objects for the social links
+    let socialLinksTemp = [];
+
     if (studentDataObj[i]['Your Artstation link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Artstation link'])
+      let artstationData = {
+        name: "Artstation",
+        link: studentDataObj[i]['Your Artstation link']
+      };
+      socialLinksTemp.push(artstationData);
     }
+
     if (studentDataObj[i]['Your Behance link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Behance link'])
+      let behanceData = {
+        name: "Behance",
+        link: studentDataObj[i]['Your Behance link']
+      }
+      socialLinksTemp.push(behanceData);
     }
+
     if (studentDataObj[i]['Your CGSociety link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your CGSociety link'])
+      let cgsocietyData = {
+        name: "CGSociety",
+        link: studentDataObj[i]['Your CGSociety link']
+      }
+      socialLinksTemp.push(cgsocietyData);
     }
-    if (studentDataObj[i]['Your Dribble link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Dribble link'])
+
+    // Bugfix for the input data having the wrong label
+    if (studentDataObj[i]['Your Dribble link'] != '' || studentDataObj[i]['Your Dribbble link'] != '') {
+      let dribbbleData = {
+        name: "Dribbble",
+        link: studentDataObj[i]['Your Dribble link']
+      }
+      socialLinksTemp.push(dribbbleData);
     }
+
     if (studentDataObj[i]['Your Facebook business page link'] != '') {
-      socialLinksTemp.push(
-        studentDataObj[i]['Your Facebook business page link']
-      )
+      let facebookData = {
+        name: "Facebook",
+        link: studentDataObj[i]['Your Facebook business page link']
+      }
+      socialLinksTemp.push(facebookData);
     }
+
     if (studentDataObj[i]['Your Github link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Github link'])
+      let githubData = {
+        name: "GitHub",
+        link: studentDataObj[i]['Your Github link']
+      }
+      socialLinksTemp.push(githubData);
     }
+
     if (studentDataObj[i]['Your Instagram link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Instagram link'])
+      let instagramData = {
+        name: "Instagram",
+        link: studentDataObj[i]['Your Instagram link']
+      }
+      socialLinksTemp.push(instagramData);
     }
+
     if (studentDataObj[i]['Your LinkedIn link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your LinkedIn link'])
+      let linkedInData = {
+        name: "LinkedIn",
+        link: studentDataObj[i]['Your LinkedIn link']
+      }
+      socialLinksTemp.push(linkedInData);
     }
+
     if (studentDataObj[i]['Your Twitter link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Twitter link'])
+      let twitterData = {
+        name: "Twitter",
+        link: studentDataObj[i]['Your Twitter link']
+      }
+      socialLinksTemp.push(twitterData);
     }
+
     if (studentDataObj[i]['Your Vimeo link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Vimeo link'])
+      let vimeoData = {
+        name: "Vimeo",
+        link: studentDataObj[i]['Your Vimeo link']
+      }
+      socialLinksTemp.push(vimeoData);
     }
+
     if (studentDataObj[i]['Your Youtube link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Youtube link'])
+      let youtubeData = {
+        name: "YouTube",
+        link: studentDataObj[i]['Your Youtube link']
+      }
+      socialLinksTemp.push(youtubeData)
     }
+
     if (studentDataObj[i]['Your Bitbucket link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Bitbucket link'])
+      let bitbucketData = {
+        name: "Bitbucket",
+        link: studentDataObj[i]['Your Bitbucket link']
+      }
+      socialLinksTemp.push(bitbucketData);
     }
+
     if (studentDataObj[i]['Your CodePen link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your CodePen link'])
+      let codepenData = {
+        name: "CodePen",
+        link: studentDataObj[i]['Your CodePen link']
+      }
+      socialLinksTemp.push(codepenData);
     }
+
     if (studentDataObj[i]['Your Polycount link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Polycount link'])
+      let polycountData = {
+        name: "PolyCount",
+        link: studentDataObj[i]['Your Polycount link']
+      }
+      socialLinksTemp.push(polycountData);
     }
+
     if (studentDataObj[i]['Your Tumblr link'] != '') {
-      socialLinksTemp.push(studentDataObj[i]['Your Tumblr link'])
+      let tumblrData = {
+        name: "Tumblr",
+        link: studentDataObj[i]['Your Tumblr link']
+      }
+      socialLinksTemp.push(tumblrData);
     }
 
     // For debugging the student's references
