@@ -1,9 +1,5 @@
 @charset "utf-8";
 
-// Page Styling Imports
-@import './home.scss';
-@import './listing.scss';
-
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
 
@@ -79,3 +75,7 @@ html.is-animating .transition-slide-in {
     min-height: 600px;
   }
 }
+
+// Page Styling Imports
+@import './home.scss';
+@import './listing.scss';
