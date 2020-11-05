@@ -54,24 +54,23 @@ section {
 }
 
 // Tooltip ------------------------------------------------------------------ /
-[data-tooltip]:not(.is-loading).has-tooltip-bottom::before,
-[data-tooltip]:not(.is-disabled).has-tooltip-bottom::before,
-[data-tooltip]:not([disabled]).has-tooltip-bottom::before {
-    transform: translate(-50%, 250%);
-}
+// [data-tooltip]:not(.is-loading).has-tooltip-bottom::before,
+// [data-tooltip]:not(.is-disabled).has-tooltip-bottom::before,
+// [data-tooltip]:not([disabled]).has-tooltip-bottom::before {
+//     transform: translate(-50%, 250%);
+// }
 
-[data-tooltip]:not(.is-loading).has-tooltip-bottom.has-tooltip-arrow::after,
-[data-tooltip]:not(.is-disabled).has-tooltip-bottom.has-tooltip-arrow::after,
-[data-tooltip]:not([disabled]).has-tooltip-bottom.has-tooltip-arrow::after {
-    transform: translateY(250%);
-}
+// [data-tooltip]:not(.is-loading).has-tooltip-bottom.has-tooltip-arrow::after,
+// [data-tooltip]:not(.is-disabled).has-tooltip-bottom.has-tooltip-arrow::after,
+// [data-tooltip]:not([disabled]).has-tooltip-bottom.has-tooltip-arrow::after {
+//     transform: translateY(250%);
+// }
 
 // Content ------------------------------------------------------------------ /
 
 .main-content {
     article {
         padding-top: 12px;
-        padding-bottom: 12px;
     }
 
     article.left {
@@ -88,7 +87,6 @@ section {
     }
 
     .disciplines-container {
-        margin-top: 12px;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
@@ -98,11 +96,10 @@ section {
         div + div {
             margin-left: 12px;
         }
+    }
 
-        div > p {
-            position: relative;
-            top: 120%;
-        }
+    .discipline {
+        cursor: pointer;
     }
 }
 
@@ -115,47 +112,6 @@ section {
 .media-content {
     height: 85vh;
     padding-bottom: 15vh;
-}
-
-// Placeholder Student Navigation Button Orbs
-
-.illustration-discipline,
-.digital-discipline,
-.ca-cd-discipline,
-.agd-discipline {
-    cursor: ponter;
-}
-
-.illustration-discipline {
-    background: rgb(31, 166, 59);
-    background: -moz-radial-gradient(circle, rgba(31, 166, 59, 1) 0%, rgba(44, 113, 39, 0.4086021505376344) 100%);
-    background: -webkit-radial-gradient(circle, rgba(31, 166, 59, 1) 0%, rgba(44, 113, 39, 0.4086021505376344) 100%);
-    background: radial-gradient(circle, rgba(31, 166, 59, 1) 0%, rgba(44, 113, 39, 0.4086021505376344) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1fa63b", endColorstr="#2c7127", GradientType=1);
-}
-
-.digital-discipline {
-    background: rgb(47, 193, 240);
-    background: -moz-radial-gradient(circle, rgba(47, 193, 240, 1) 0%, rgba(49, 104, 191, 0.25268817204301075) 100%);
-    background: -webkit-radial-gradient(circle, rgba(47, 193, 240, 1) 0%, rgba(49, 104, 191, 0.25268817204301075) 100%);
-    background: radial-gradient(circle, rgba(47, 193, 240, 1) 0%, rgba(49, 104, 191, 0.25268817204301075) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2fc1f0", endColorstr="#3168bf", GradientType=1);
-}
-
-.ca-cd-discipline {
-    background: rgb(236, 69, 47);
-    background: -moz-radial-gradient(circle, rgba(236, 69, 47, 1) 0%, rgba(236, 96, 47, 0.3306451612903226) 100%);
-    background: -webkit-radial-gradient(circle, rgba(236, 69, 47, 1) 0%, rgba(236, 96, 47, 0.3306451612903226) 100%);
-    background: radial-gradient(circle, rgba(236, 69, 47, 1) 0%, rgba(236, 96, 47, 0.3306451612903226) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ec452f", endColorstr="#ec602f", GradientType=1);
-}
-
-.agd-discipline {
-    background: rgb(128, 47, 159);
-    background: -moz-radial-gradient(circle, rgba(128, 47, 159, 1) 0%, rgba(209, 11, 180, 0.3306451612903226) 100%);
-    background: -webkit-radial-gradient(circle, rgba(128, 47, 159, 1) 0%, rgba(209, 11, 180, 0.3306451612903226) 100%);
-    background: radial-gradient(circle, rgba(128, 47, 159, 1) 0%, rgba(209, 11, 180, 0.3306451612903226) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#802f9f", endColorstr="#d10bb4", GradientType=1);
 }
 
 // Responsiveness ----------------------------------------------------------- /
