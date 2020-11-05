@@ -11,7 +11,6 @@ console.log("Hello World")
 function init() {
     if (document.querySelector(".student-profile-container")) {
         const majorName = document.querySelector('.major-title').innerText
-        console.log(majorName);
         const DDListing = new StudentListing(majorName)
         DDListing.generateStudentListing();
         

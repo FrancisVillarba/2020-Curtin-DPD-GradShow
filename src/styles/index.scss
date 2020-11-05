@@ -31,7 +31,10 @@ $family-primary: 'DIN Regular', 'Helvetica Neue', -apple-system,
 $grey-dark: $b-black;
 $grey-light: $b-lighter-gray;
 $primary: $b-light-gray;
-$link: $b-black;
+$link: $b-white;
+$link-hover: $b-white;
+$link-focus: $b-light-gray;
+$link-active: $b-light-gray;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 $text: $b-white;

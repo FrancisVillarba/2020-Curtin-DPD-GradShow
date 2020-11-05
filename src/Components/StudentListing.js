@@ -21,15 +21,19 @@ class StudentListing {
         this.onMajor = major.toLowerCase();
         this.studentDataInstance = studentData;
 
+        const majorSrc = this.majors.find(major => major.name.toLowerCase() === this.onMajor)?.color
+        if (majorSrc) {
+            const bannerImg = document.createElement('img')
+            bannerImg.classList = 'banner-img'
+            bannerImg.setAttribute("src", majorSrc)    
+            document.querySelector('.banner').appendChild(bannerImg)
+        }
         const pageTitle = document.querySelector(".major-title");
-        const bannerImg = document.querySelector(".banner-img"); 
-        bannerImg.setAttribute("src", this.majors.find(major => major.name.toLowerCase() === this.onMajor)?.color)
         pageTitle.innerText = this.onMajor;
     }
 
     search(e) {
         const searchValue = e.target.value.toLowerCase()
-        console.log(searchValue);
         const newStudentData = [...studentData]
         this.studentDataInstance = newStudentData.filter(student => {
             const fullName = student.name.first + ' ' + student.name.last
@@ -40,7 +44,6 @@ class StudentListing {
                 return student        
             } 
         })
-        console.log(this.studentDataInstance.length);
         this.generateStudentListing()
     }
 
@@ -80,6 +83,8 @@ class StudentListing {
                 } else if (major.title == 'Illustration') {
                     majorBall.setAttribute("src", "/imgs/orbs/ill.png");
 
+                } else {
+                    return
                 }
                 studentSpec.appendChild(majorBall);
             })
