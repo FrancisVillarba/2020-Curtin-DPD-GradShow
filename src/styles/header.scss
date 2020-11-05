@@ -1,0 +1,35 @@
+.navbar-burger {
+    color: $b-black;
+}
+.navbar-item {
+    color: $b-black;
+}
+.navbar-link {
+    color: $b-black;
+}
+.navbar-students {
+    margin: auto 2em;
+    padding: 0 1em !important;
+    a {
+        font-weight: bold;
+    }
+}
+
+.dynamic-gradient{
+    background: linear-gradient(45deg, #f5b01b, #f15528, #d82690, #40c3d4, #39ac5b);
+    background-size: 200% 200%;
+    animation: gradient 5s infinite;
+
+  }
+  
+  @keyframes gradient {
+    0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+  }

@@ -1,25 +1,36 @@
-import Swup from 'swup';
-const swup = new Swup();
-import { Student } from './Components/StudentListing';
-
+import Swup from 'swup'
+const swup = new Swup()
+import { Student } from './Components/StudentListing'
 
 // Entry Point for JS
-console.log("Hello World")
+console.log('Hello World')
 
 // check if profile container exists before running Student component
 function init() {
-    if (document.querySelector("#student-profile-container")) {
-        Student.createMajors();
-        Student.generateStudentListing();
-    }
+  if (document.querySelector('#student-profile-container')) {
+    Student.createMajors()
+    Student.generateStudentListing()
+  }
 }
 
 // run check on page load
-init();
-
+init()
 
 // run check on swup page transition
-swup.on('contentReplaced', function() {
-    init();
-})  
+swup.on('contentReplaced', function () {
+  init()
+})
 
+// nav hamburger show/hide 
+function  toggleNav() {
+  const burger = document.querySelector(".navbar-burger");
+  const menu = document.querySelector(".navbar-menu");
+  const elements = [burger, menu];
+  burger.addEventListener('click', () => {
+    elements.forEach(element => {
+      element.classList.toggle('is-active');
+    });
+  })
+}
+// listen for nav being toggled
+toggleNav();
