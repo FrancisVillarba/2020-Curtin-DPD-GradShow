@@ -68,10 +68,22 @@ $input-shadow: none;
   background-color: $b-black;
 }
 
+.button.is-medium {
+  font-size: inherit;
+  padding: 1.5rem 2rem;
+}
+
 .transition-slide-in {
   transition: 0.3s;
   opacity: 1;
   transform: translateX(0);
+}
+
+.items-center {
+  align-items: center;
+}
+.spaced > * + * {
+  margin-left: 20px;
 }
 
 html.is-animating .transition-slide-in {
@@ -88,8 +100,8 @@ html.is-animating .transition-slide-in {
   flex-grow: 1;
 }
 
-.min-h-600 {
-  min-height: 600px;
+.min-h-900 {
+  min-height: 900px;
 }
 
 .max-w-600 {
@@ -113,12 +125,10 @@ html.is-animating .transition-slide-in {
   width: 100%;
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (min-width: 769px) {
   .stacked-max-h-600 {
     max-height: 600px;
   }
-}
-@media only screen and (min-width: 769px) {
   .wide-min-h-600 {
     min-height: 600px;
   }

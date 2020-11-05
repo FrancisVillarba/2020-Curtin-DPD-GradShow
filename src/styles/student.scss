@@ -8,3 +8,17 @@
     grid-column: span 2;
 }
 
+.img-socials {
+    width: 40px;
+    height: 40px;
+}
+
+.student-large-title {
+    font-size: 5em;
+}
+
+@media only screen and (max-width: 1200px) {
+    .student-large-title {
+        font-size: 3em;
+    }
+}

@@ -1,29 +1,39 @@
 ---
 layout: default
-title: Stephanie Day
+title: Student Page
+pagination:
+    data: studentData
+    size: 1
+    alias: student
+permalink: "student/{{ student.name.first + student.name.last | slug }}/"
 ---
 
 <div>
-    <div class="columns dark min-h-600 mb-0 mt-0">
+    <div class="columns dark min-h-900 mb-0 mt-0">
         <div class="column is-one-third pb-0 pt-0">
-            <img src="./sample-student.jpg" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student">
+            <img src="{{ student.headshots.pro }}" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student">
         </div>
         <div class="column is-flex flex-column py-6 px-6">
-                <div class="layout-main">
-                    <h4 class="sub-title is-size-4 max-w-600">Digital Design</h4>
-                    <h1 class="title is-size-1 max-w-600 is-uppercase">Stephanie Day</h1>
-                    <p class="max-w-600">Tagline Lorem Ipsum Details Details</p>
+            <div class="layout-main">
+                <h4 class="is-size-5 mb-3 max-w-600">{{ student.majors | join(", ", "title") }}</h4>
+                <h1 class="title student-large-title is-uppercase mb-2">{{ student.name.first }} {{ student.name.last }}</h1>
+                <p class="max-w-600">{{ student.statement }}</p>
+            </div>
+            <div class="mb-2 is-relative">
+                <p class="max-w-600 mb-2">
+                    {{ student.bio }}
+                </p>
+                
+                <div class="is-flex w-full mt-6">
+                    <button class="button is-white is-medium">Portfolio</button>
+                    <div class="is-flex items-center ml-5 spaced layout-main">
+                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
+                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
+                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
+                    </div>
                 </div>
-                <div class="">
-                    <p class="max-w-500">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Enim nulla aliquet porttitor lacus luctus accumsan tortor. 
-                        Donec adipiscing tristique risus nec feugiat in fermentum.
-                    </p>
-                    
-                    <button class="mt-4 button">Portfolio</button>
-                </div>
+                <div></div>
+            </div>
         </div>
     </div>
     <div class="student-image-grid px-6 py-6 has-background-white">
