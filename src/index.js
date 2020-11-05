@@ -11,6 +11,11 @@ function init() {
     if (document.querySelector("#student-profile-container")) {
         Student.createMajors();
         Student.generateStudentListing();
+
+        let searchBar = document.querySelector(".search-bar");
+        searchBar.addEventListener("keydown", () => {
+            Student.search();
+        })
     }
 }
 

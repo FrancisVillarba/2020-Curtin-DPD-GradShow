@@ -1,12 +1,31 @@
 .banner {
-    background-color: #736969;
+    background-color: #191919;
+    display: flex;
+    flex-direction: row;
+    height: 20vh;
+    align-items: center;
+    padding-left: 5%;
+
+    .banner-img {
+        border-radius: 2000px;
+        background-color: #fff;
+        height: 60vh;
+        width: 60vh;
+        margin-left: auto;
+        transform: translateX(10vw);
+        clip-path: inset(20vh 0);
+    }
 
     .banner-text {
         display: flex;
-        justify-content: center;
-        align-self: center;
-        height: 40vh;
-        text-align: center;
+        text-align: left;
+        margin: 0 !important;
+        color: white;
+        flex-direction: column;
+
+        .major-intro {
+            
+        }
 
         h1 {
             color: white;
@@ -31,31 +50,33 @@
 
     }
     a:hover {
-        color: black;
-        border-bottom: 1px solid black;
+        color: #191919;
+        border-bottom: 1px solid #191919;
     }
 }
 
 .search-bar-section {
-    width: 100%;
+    width: 30%;
     display: flex;
     align-items: stretch;
     justify-content: center;
-    padding: 0vw 5vw 0vw;
 
     .search-bar-wrapper {
-        padding: 10px 0px 10px;
+
     }
 
     .search-bar {
-        width: 90vw;
+        width: 100%;
         height: 2rem;
-        background: none;
+        background: #fff;
+        color: #191919;
         border-style: none;
-        border-bottom: 4px solid black;
-        padding-left: 50px;
-        padding-bottom: 5px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 40px;
         font-size: 1.5rem;
+        box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
+        font-size: 0.8rem;
     }
 
     .search-bar:focus {
@@ -64,8 +85,7 @@
     }
 
     .search-icon {
-        font-size: 1.5rem;
-        transform: translateY(-20px) translateX(-18px);
+        font-size: 1rem;
         
     }
 
@@ -83,9 +103,8 @@
 }
 
 .profile-container {
-    width: 250px;
-    height: 400px;
-    background-color: #ebebeb;
+    width: 20vw;
+    background-color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -96,29 +115,43 @@
 
     .student-name {
         margin-top: 5px;
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         font-weight: bold;
-        text-transform: uppercase;
         color: #433737;
+        text-align: left;
+        margin-left: 10%;
+        margin-bottom: 5%;
+        margin-top: 5%;
     }
-    .student-spec {
-        color: black;
-        text-transform: uppercase;
+    .student-major {
+        background-color: red;
+        border-radius: 30000px;
+        width: 30px;
+        height: 30px;
+    }
+    .student-major-container {
+        display: flex;
+        flex-direction: row;
+        justify-items: flex-end;
+        margin-left: auto
     }
     .student-img {
-        width: 250px;
+        width: 100%;
         height: 250px;
         transition: 0.2s;
     }
     .profile-btn {
-        background-color: #fff;
-        border-radius: 25px;
+        background-color: #191919;
         border: none;
         outline: none;
-        padding: 10px 20px 10px;
-        font-size: 1.5rem;
-        color: #433737;
-        margin: 20px 10px 0px;
+        padding: 6px 8px;
+        font-size: 0.7rem;
+        color: white;
+        margin-top: auto;
+        margin-bottom: 8%;
+        margin-left: 10%;
+        width: 30%;
+        text-align: center;
     }
 }
 
