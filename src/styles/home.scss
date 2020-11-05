@@ -53,17 +53,13 @@ section {
     display: flex;
     flex-direction: column;
 
-    article {
-        padding-top: 12px;
-        padding-bottom: 48px;
-    }
 
     article.left {
         max-width: 700px;
     }
 
     article.left>p {
-        margin-right: 20vw;
+        margin-right: 5vw;
     }
 
     article.right {
@@ -124,7 +120,7 @@ section {
             justify-content: flex-start;
 
             img {
-                height: 200px;
+                height: 180px;
                 width: auto;
             }
 
