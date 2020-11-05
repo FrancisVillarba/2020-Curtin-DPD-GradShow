@@ -25,10 +25,6 @@
         color: white;
         position: absolute;
         z-index: 2;
-        
-        .major-intro {
-            
-        }
 
         h1 {
             color: white;
@@ -38,31 +34,13 @@
     }
 }
 
-.filter {
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0vw 5vw 0vw;
-    font-weight: bold;
-
-    a {
-        text-transform: uppercase;
-        color: #505050;
-        text-align: center;
-    }
-    a:hover {
-        color: $b-black;
-        border-bottom: 1px solid $b-darker-gray;
-    }
+.search-bar-wrapper {
+    width: 100%;
+    max-width: 500px;  
 }
 
 .search-bar-section {
     display: flex;
-
-    .search-bar-wrapper {
-        margin: 25px;
-    }
 
     .search-bar {
         width: 100%;
@@ -73,14 +51,11 @@
         padding-top: 20px;
         padding-bottom: 20px;
         padding-left: 40px;
-        font-size: 1.5rem;
         box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
-        font-size: 0.8rem;
     }
 
     .search-bar:focus {
         outline: none;
-
     }
 
     .search-icon {
@@ -88,32 +63,25 @@
             color: $b-black;
 
         }
-        font-size: 1rem;
     }
 }
 
 // INDIVIDUAL STUDENT LISTINGS
 .student-profiles {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
 }
 
-
 .profile-container {
-    width: 250px;
     background-color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
-    margin: 10px;
     transition: 0.5s;
     
     .student-name {
         margin-top: 5px;
-        font-size: 1.1rem;
         font-weight: bold;
         color: $b-darker-gray;
         text-align: left;
@@ -128,8 +96,7 @@
     .student-major-container {
         display: flex;
         flex-direction: row-reverse;
-        justify-content: space-between;
-        width: 250px;
+        align-items: center;
         padding: 5px 8px 8px 10px;
 
         .student-major {
@@ -141,10 +108,9 @@
         height: 250px;
         transition: 0.2s;
     }
-    .major-ball-container {
-        
-    }
+
     .profile-btn {
+        flex-grow: 1;
         background-color: $b-black;
         border: none;
         outline: none;
@@ -154,82 +120,14 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 80px;
-        height: 30px;
+        padding: 8px 18px;
     }
 }
 
 // MEDIA QUERY
 
 @media screen and(max-width: 690px) {
-    .filter {
-        a {
-            font-size: 0.7rem;
-            margin: 2px;
-        }
-    }
     .banner-img {
         transform: translateX(70vw) !important; 
-    }
-}
-
-@media screen and (max-width: 960px) {
-
-    .banner-img {
-        transform: translateX(40vw);
-        width: 50vw;
-        height: 50vw;
-    }
-
-    .filter {
-        padding: 0 10px 0;
-        a {
-            font-size: 0.8rem;
-        }
-    }
-
-    .profile-container {
-        width: 200px;
-        height: 350px;
-
-        .student-major-container {
-            width: 200px;
-            margin-top: auto;
-        }
-
-        .student-name {
-            margin-top: 5px;
-            font-size: 1.2rem;
-            
-        }
-        .student-spec {
-            
-        }
-        .student-img {
-            width: 200px;
-            height: 200px;
-        }
-        .profile-btn {
-        }
-    }
-}
-
-@media screen and (max-width: 490px) {
-    .profile-container {
-
-        .student-name {
-            margin-top: 5px;
-            font-size: 1.2rem;
-            
-        }
-        .student-spec {
-            
-        }
-        .student-img {
-            width: 200px;
-            height: 200px;
-        }
-        .profile-btn {
-        }
     }
 }

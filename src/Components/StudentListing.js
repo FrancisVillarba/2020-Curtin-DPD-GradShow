@@ -1,5 +1,5 @@
 import anime from 'animejs';
-import studentList from '../../_data/studentList.json';
+import studentData from '../../_data/studentData.json';
 
 // Array for each major for demonstration purposes
 let majors = [
@@ -19,7 +19,7 @@ class StudentListing {
         this.searchBar = document.querySelector(".search-bar");
     
         this.onMajor = major;
-        this.studentListInstance = studentList;
+        this.studentDataInstance = studentData;
 
         const pageTitle = document.querySelector(".major-title");
         const bannerImg = document.querySelector(".banner-img"); 
@@ -30,19 +30,23 @@ class StudentListing {
     search(e) {
         const searchValue = e.target.value.toLowerCase()
         console.log(searchValue);
-        const newStudentList = [...studentList]
-        this.studentListInstance = newStudentList.filter(student => {
-            if(student.name.toLowerCase().includes(searchValue)){
+        const newStudentData = [...studentData]
+        this.studentDataInstance = newStudentData.filter(student => {
+            const fullName = student.name.first + ' ' + student.name.last
+            if(fullName.toLowerCase().includes(searchValue)){
+                return student        
+            } 
+            if(student.major){
                 return student        
             } 
         })
-        console.log(this.studentListInstance.length);
+        console.log(this.studentDataInstance.length);
         this.generateStudentListing()
     }
 
     generateStudentListing() {
         this.profileContainer.innerHTML = ''
-        this.studentListInstance.forEach(student => {
+        this.studentDataInstance.forEach(student => {
 
             let profileEntry = document.createElement("div");
             profileEntry.className = "profile-container";
@@ -50,11 +54,7 @@ class StudentListing {
             // Create a name h3 tag for each student
             let studentName = document.createElement("h3");
             studentName.className="student-name";
-            studentName.innerText = student.name
-
-            // Create a major colour for each student
-            let majorBalls = document.createElement("div");
-            majorBalls.className = 'major-ball-container';
+            studentName.innerText = student.name.first + ' ' + student.name.last
 
             let studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';
@@ -76,9 +76,8 @@ class StudentListing {
                 majorBall.setAttribute("src", ".././imgs/orbs/ill.png");
 
             }
-                majorBalls.appendChild(majorBall);
+            studentSpec.appendChild(majorBall);
             })
-            studentSpec.appendChild(majorBalls);
 
 
             // Create an image tag for each student
@@ -87,10 +86,13 @@ class StudentListing {
             studentImg.setAttribute("src", student.img);
 
             // Create a button that links to the student's individual profile
-            let profileBtn = document.createElement('a');
+            let profileBtn = document.createElement('button');
             profileBtn.className = "profile-btn";
             profileBtn.innerText = "Portfolio"
-            studentSpec.appendChild(profileBtn);
+            let btnCont = document.createElement('div');
+            btnCont.className = "layout-main";
+            btnCont.appendChild(profileBtn);
+            studentSpec.appendChild(btnCont);
 
             // Append name tag and spec to student's container
             profileEntry.appendChild(studentImg);
