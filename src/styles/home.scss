@@ -121,11 +121,27 @@ section {
 
 // Responsiveness ----------------------------------------------------------- /
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 650px) {
+    .main-content {
+        text-align: center;
 
+        article.left>p {
+            margin-right: 0px;
+        }
 
-}
-@media screen and (max-width: 770px) {
+        article.right {
+            text-align: center;
+            align-self: center;
+        }
 
+        .disciplines-container {
+            flex-direction: column;
+            justify-content: center;
 
+            div + div {
+                margin-left: 0px;
+                margin-top: 12px;
+            }
+        }
+    }
 }
