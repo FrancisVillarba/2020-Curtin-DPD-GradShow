@@ -30,3 +30,16 @@ swup.on('contentReplaced', function() {
     init();
 })  
 
+// nav hamburger show/hide 
+function  toggleNav() {
+  const burger = document.querySelector(".navbar-burger");
+  const menu = document.querySelector(".navbar-menu");
+  const elements = [burger, menu];
+  burger.addEventListener('click', () => {
+    elements.forEach(element => {
+      element.classList.toggle('is-active');
+    });
+  })
+}
+// listen for nav being toggled
+toggleNav();

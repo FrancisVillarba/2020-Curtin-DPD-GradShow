@@ -105,7 +105,4 @@ class StudentListing {
     }
     
 }
-
 export { StudentListing }
-
-
