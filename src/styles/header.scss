@@ -12,7 +12,28 @@
     padding: 0 1em !important;
     a {
         font-weight: bold;
+        color: $b-white;
     }
+    a::after {
+        border-color: $b-white !important;
+    }
+    .navbar-link:hover {
+        background-color: transparent !important;
+        color: $b-white !important;
+    }
+}
+.navbar-students:hover {
+    .navbar-link {
+        background-color: transparent !important;
+    }
+    a:not(.navbar-link) {
+        color: $b-black;
+    }
+}
+
+.navbar-dropdown {
+    right: 0 !important;
+    left: unset !important;
 }
 
 .dynamic-gradient{
