@@ -20,33 +20,11 @@ class StudentListing {
     
         this.onMajor = major;
         this.studentListInstance = studentList;
-    }
 
-    // Create the MAJORS filter bar
-    createMajors(profileContainer = this.profileContainer) {
-        const majorListing = document.querySelector(".major-container");
-        let pageTitle = document.querySelector(".major-title");
-
-        // Create an anchor tag for each major
-        this.majors.forEach(major => {
-            let majorEntry = document.createElement('a');
-            // set majorEntry name to major name and id to major name
-            majorEntry.innerText = major.name;
-            majorEntry.setAttribute("id", major.name);
-
-            // on click, page header to major name, reload profiles
-            majorEntry.addEventListener("click", () => {
-                let bannerImg = document.querySelector(".banner-img");
-                this.onMajor = major.name;
-                pageTitle.innerText = major.name;
-                bannerImg.style.background = major.color;
-            })
-
-            // Append anchor tags to their container
-            majorListing.appendChild(majorEntry);
-
-        })
-
+        const pageTitle = document.querySelector(".major-title");
+        const bannerImg = document.querySelector(".banner-img"); 
+        bannerImg.style.background = this.majors.find(major => major.name === this.onMajor)?.color
+        pageTitle.innerText = this.onMajor;
     }
 
     search(e) {
@@ -60,72 +38,6 @@ class StudentListing {
         })
         console.log(this.studentListInstance.length);
         this.generateStudentListing()
-    }
-
-    generateSearch() {
-        let profiles = document.querySelector(".profile-container");
-        let profileContainer = document.querySelector(".student-profiles");
-        profileContainer.innerHTML = null;
-
-    }
-
-    generateStudent() {
-        this.studentListInstance.forEach(student => {
-
-            let profileEntry = document.createElement("div");
-            profileEntry.className = "profile-container";
-
-            // Create a name h3 tag for each student
-            let studentName = document.createElement("h3");
-            studentName.className="student-name";
-            studentName.innerText = student.name
-
-            // Create a major colour for each student
-            let studentSpec = document.createElement('div');
-            studentSpec.className = 'student-major-container';
-            
-            student.majors.forEach(major => {
-                let majorBall = document.createElement("img");
-                majorBall.className = "student-major";
-                if(major.title == 'Graphic Design') {
-                    majorBall.setAttribute("src", "./imgs/gd.png");
-            } else if (major.title == 'Digital design') {
-                majorBall.setAttribute("src", "./imgs/dd.png");
-
-            } else if(major.title == 'Creative Advertising') {
-                majorBall.setAttribute("src", "./imgs/ca.png");
-
-            } else if(major.title == 'Animation & Game Design') {
-                majorBall.setAttribute("src", "./imgs/agd.png");
-
-            } else if(major.title == 'Illustration') {
-                majorBall.setAttribute("src", "./imgs/ill.png");
-
-            }
-                studentSpec.appendChild(majorBall);
-            })
-
-            // Create an image tag for each student
-            let studentImg = document.createElement("img");
-            studentImg.className = "student-img";
-            studentImg.setAttribute("src", student.img);
-
-            // Create a button that links to the student's individual profile
-            let profileBtn = document.createElement('a');
-            profileBtn.className = "profile-btn";
-            profileBtn.innerText = "Portfolio"
-
-            // Append name tag and spec to student's container
-            profileEntry.appendChild(studentImg);
-            profileEntry.appendChild(studentName);
-            profileEntry.appendChild(studentSpec);
-            profileEntry.appendChild(profileBtn);
-
-            // Append to profile container
-            profileContainer.appendChild(profileEntry);
-        })
-
-        let profileEntry = document.querySelectorAll(".profile-container");
     }
 
     generateStudentListing() {
