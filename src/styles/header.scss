@@ -13,6 +13,7 @@
     a {
         font-weight: bold;
         color: $b-white;
+        transition: all ease 0.3s;
     }
     a::after {
         border-color: $b-white !important;
@@ -53,4 +54,18 @@
   100% {
     background-position: 0% 50%;
   }
+  }
+
+  @media screen and (max-width: 1023px) {
+      .dynamic-gradient {
+          background: unset;
+      }
+      .navbar-students {
+          a {
+            color: $b-black;
+          }
+          .navbar-link:hover {
+            color: unset !important;
+          }
+      }
   }
