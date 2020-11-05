@@ -58,7 +58,7 @@ section {
 .main-content {
     article {
         padding-top: 12px;
-        padding-bottom: 48px;
+        padding-bottom: 12px;
     }
 
     article.left {
@@ -67,11 +67,6 @@ section {
 
     article.left>p {
         margin-right: 20vw;
-    }
-
-    article.left>h1,
-    article.right>h1 {
-        font-size: 2rem;
     }
 
     article.right {
