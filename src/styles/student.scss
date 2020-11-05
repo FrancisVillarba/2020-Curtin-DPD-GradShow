@@ -1,0 +1,10 @@
+.student-image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px
+}
+
+.student-grid-large-last.student-image-grid :last-child {
+    grid-column: span 2;
+}
+

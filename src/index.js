@@ -1,7 +1,8 @@
 import Swup from 'swup';
 const swup = new Swup();
-import { StudentListing } from './Components/StudentListing';
 
+import { StudentListing } from './Components/StudentListing';
+import { handleStudentImageGrid } from './student'
 
 // Entry Point for JS
 console.log("Hello World")
@@ -18,11 +19,11 @@ function init() {
             DDListing.search(e);
         })
     }
+    handleStudentImageGrid()
 }
 
 // run check on page load
 init();
-
 
 // run check on swup page transition
 swup.on('contentReplaced', function() {
