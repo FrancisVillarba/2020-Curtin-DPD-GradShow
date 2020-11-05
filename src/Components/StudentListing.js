@@ -47,7 +47,10 @@ class StudentListing {
     generateStudentListing() {
         this.profileContainer.innerHTML = ''
         this.studentDataInstance.forEach(student => {
-
+            if (!student.majors.find(major => major.title === this.onMajor)) {
+                return
+            }
+                
             let profileEntry = document.createElement("div");
             profileEntry.className = "profile-container";
 
@@ -61,22 +64,24 @@ class StudentListing {
             student.majors.forEach(major => {
                 let majorBall = document.createElement("img");
                 majorBall.className = "student-major";
-                if(major.title == 'Graphic Design') {
+
+                if (major.title == 'Graphic Design') {
                     majorBall.setAttribute("src", ".././imgs/orbs/gd.png");
-            } else if (major.title == 'Digital Design') {
-                majorBall.setAttribute("src", ".././imgs/orbs/dd.png");  
 
-            } else if(major.title == 'Creative Advertising') {
-                majorBall.setAttribute("src", ".././imgs/orbs/ca.png");
+                } else if (major.title == 'Digital Design') {
+                    majorBall.setAttribute("src", ".././imgs/orbs/dd.png");  
 
-            } else if(major.title == 'Animation & Game Design') {
-                majorBall.setAttribute("src", ".././imgs/orbs/agd.png");
+                } else if (major.title == 'Creative Advertising') {
+                    majorBall.setAttribute("src", ".././imgs/orbs/ca.png");
 
-            } else if(major.title == 'Illustration') {
-                majorBall.setAttribute("src", ".././imgs/orbs/ill.png");
+                } else if (major.title == 'Animation & Game Design') {
+                    majorBall.setAttribute("src", ".././imgs/orbs/agd.png");
 
-            }
-            studentSpec.appendChild(majorBall);
+                } else if (major.title == 'Illustration') {
+                    majorBall.setAttribute("src", ".././imgs/orbs/ill.png");
+
+                }
+                studentSpec.appendChild(majorBall);
             })
 
 
