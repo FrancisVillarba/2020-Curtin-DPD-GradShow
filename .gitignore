@@ -107,3 +107,14 @@ dist
 _includes/webpack.njk
 public/favicons/
 .DS_Store
+
+# Because Firebase
+.firebase/
+
+# Because pull data output
+# _data/majors.json
+# _data/studentData.json
+# _data/studentList.json
+
+# Because push data script
+input/
