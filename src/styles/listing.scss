@@ -66,8 +66,7 @@
     display: flex;
 
     .search-bar-wrapper {
-        margin-left: 5vw;
-
+        margin: 25px;
     }
 
     .search-bar {
@@ -90,6 +89,11 @@
     }
 
     .search-icon {
+
+        i {
+            color: #191919;
+
+        }
         font-size: 1rem;
         
     }

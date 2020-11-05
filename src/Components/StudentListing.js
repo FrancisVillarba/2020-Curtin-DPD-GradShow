@@ -9,11 +9,11 @@ let majors = [
 class StudentListing {
     constructor(major) {
         this.majors = [
-            {name: 'Digital Design', color: 'red'},
-            {name: 'Animation & Game Design', color: 'blue'},
-            {name: 'Illustration', color: 'yellow'},
-            {name: 'Graphic Design', color: 'orange'},
-            {name: 'Creative Advertising', color: 'purple'}
+            {name: 'Digital Design', color: '.././imgs/orbs/dd.png'},
+            {name: 'Animation & Game Design', color: '.././imgs/orbs/agd.png'},
+            {name: 'Illustration', color: '.././imgs/orbs/ill.png'},
+            {name: 'Graphic Design', color: '.././imgs/orbs/gd.png'},
+            {name: 'Creative Advertising', color: '.././imgs/orbs/ca.png'}
         ];
         this.profileContainer = document.querySelector(".student-profile-container");
         this.searchBar = document.querySelector(".search-bar");
@@ -23,7 +23,7 @@ class StudentListing {
 
         const pageTitle = document.querySelector(".major-title");
         const bannerImg = document.querySelector(".banner-img"); 
-        bannerImg.style.background = this.majors.find(major => major.name === this.onMajor)?.color
+        bannerImg.setAttribute("src", this.majors.find(major => major.name === this.onMajor)?.color)
         pageTitle.innerText = this.onMajor;
     }
 
@@ -62,18 +62,18 @@ class StudentListing {
                 let majorBall = document.createElement("img");
                 majorBall.className = "student-major";
                 if(major.title == 'Graphic Design') {
-                    majorBall.setAttribute("src", ".././imgs/gd.png");
+                    majorBall.setAttribute("src", ".././imgs/orbs/gd.png");
             } else if (major.title == 'Digital Design') {
-                majorBall.setAttribute("src", ".././imgs/dd.png");  
+                majorBall.setAttribute("src", ".././imgs/orbs/dd.png");  
 
             } else if(major.title == 'Creative Advertising') {
-                majorBall.setAttribute("src", ".././imgs/ca.png");
+                majorBall.setAttribute("src", ".././imgs/orbs/ca.png");
 
             } else if(major.title == 'Animation & Game Design') {
-                majorBall.setAttribute("src", ".././imgs/agd.png");
+                majorBall.setAttribute("src", ".././imgs/orbs/agd.png");
 
             } else if(major.title == 'Illustration') {
-                majorBall.setAttribute("src", ".././imgs/ill.png");
+                majorBall.setAttribute("src", ".././imgs/orbs/ill.png");
 
             }
                 majorBalls.appendChild(majorBall);
