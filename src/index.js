@@ -27,6 +27,7 @@ init();
 
 // run check on swup page transition
 swup.on('contentReplaced', function() {
+    window.scrollTo(0, 0)
     init();
 })  
 

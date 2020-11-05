@@ -76,6 +76,10 @@ $input-shadow: none;
   padding: 1.5rem 2rem;
 }
 
+.header-offset {
+  margin-top: 52px;
+}
+
 .transition-slide-in {
   transition: 0.3s;
   opacity: 1;
@@ -90,7 +94,7 @@ $input-shadow: none;
 }
 
 html.is-animating .transition-slide-in {
-  transform: translateX(-20px);
+  transform: translateY(-20px);
   opacity: 0;
 }
 

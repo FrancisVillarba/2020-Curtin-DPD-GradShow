@@ -73,6 +73,18 @@
     gap: 1rem;
 }
 
+.profile-link {
+    transition: 0.1s ease-in-out
+}
+.profile-link:hover {
+    z-index: 999;
+    transform: scale(1.03);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 10px 10px;
+}
+.profile-link:focus {
+    transform: scale(1);
+}
+
 .profile-container {
     background-color: white;
     text-align: center;

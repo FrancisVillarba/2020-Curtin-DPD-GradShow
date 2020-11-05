@@ -54,8 +54,12 @@ class StudentListing {
                 return
             }
                 
-            let profileEntry = document.createElement("div");
-            profileEntry.className = "profile-container";
+            let profileEntry = document.createElement("a");
+            profileEntry.href = `/student/${student.name.first.toLowerCase()}${student.name.last.toLowerCase()}`;
+            profileEntry.className = "profile-link"
+            let profileWrapper = document.createElement("div");
+            profileWrapper.className = "profile-container";
+            profileEntry.appendChild(profileWrapper)
 
             // Create a name h3 tag for each student
             let studentName = document.createElement("h3");
@@ -105,9 +109,9 @@ class StudentListing {
             studentSpec.appendChild(btnCont);
 
             // Append name tag and spec to student's container
-            profileEntry.appendChild(studentImg);
-            profileEntry.appendChild(studentName);
-            profileEntry.appendChild(studentSpec);
+            profileWrapper.appendChild(studentImg);
+            profileWrapper.appendChild(studentName);
+            profileWrapper.appendChild(studentSpec);
 
             // Append to profile container
             this.profileContainer.appendChild(profileEntry);
