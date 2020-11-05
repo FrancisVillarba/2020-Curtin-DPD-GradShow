@@ -127,6 +127,12 @@ html.is-animating .transition-slide-in {
   }
 }
 
+$tooltip-radius: 0px;
+$tooltip-background-color: $b-black;
+$tooltip-arrow-size: 12px;
+$tooltip-padding: 0.7rem 1.5rem;
+@import '@creativebulma/bulma-tooltip';
+
 // Page Styling Imports
 @import './home.scss';
 @import './listing.scss';
