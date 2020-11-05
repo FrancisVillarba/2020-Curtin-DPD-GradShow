@@ -76,7 +76,7 @@ section {
         text-align: center;
 
         div + div {
-            margin-left: 12px;
+            margin-left: 24px;
         }
     }
 
@@ -131,6 +131,14 @@ section {
             .discipline {
                 margin: 24px;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .disciplines-container {
+        img {
+            height: 120px !important;
         }
     }
 }
