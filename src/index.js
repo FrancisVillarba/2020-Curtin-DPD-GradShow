@@ -1,6 +1,6 @@
 import Swup from 'swup';
 const swup = new Swup();
-import { Student } from './Components/StudentListing';
+import { StudentListing } from './Components/StudentListing';
 
 
 // Entry Point for JS
@@ -8,13 +8,15 @@ console.log("Hello World")
 
 // check if profile container exists before running Student component
 function init() {
-    if (document.querySelector("#student-profile-container")) {
-        Student.createMajors();
-        Student.generateStudentListing();
-
+    const studentGridContainer = document.querySelector(".student-profile-container")
+    if (studentGridContainer) {
+        const DDListing = new StudentListing('Digital Design')
+        DDListing.createMajors();
+        DDListing.generateStudentListing();
+        
         let searchBar = document.querySelector(".search-bar");
-        searchBar.addEventListener("keydown", () => {
-            Student.search();
+        searchBar.addEventListener("input", (e) => {
+            DDListing.search(e);
         })
     }
 }

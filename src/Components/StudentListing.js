@@ -1,140 +1,34 @@
 import anime from 'animejs';
 import studentList from '../../_data/studentList.json';
 
-
-// Array of sample students for demonstration purposes
-let testArray = [
-    { 
-        "first_name": "student",
-        "second_name": "one",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "2",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    },
-    { 
-        "first_name": "student",
-        "second_name": "name",
-        "major":  'Digital Design',
-        "img": 'https://sociology.columbia.edu/themes/custom/columbia/assets/img/people-default.svg'
-    }
-    
-]
-
 // Array for each major for demonstration purposes
 let majors = [
     'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
 ]
 
-const Student = {
-
-    majors: [
-        {name: 'Digital Design', color: 'red'},
-        {name: 'Animation & Game Design', color: 'blue'},
-        {name: 'Illustration', color: 'yellow'},
-        {name: 'Graphic Design', color: 'orange'},
-        {name: 'Creative Advertising', color: 'purple'}
-    ],
-
-    onMajor: 'Digital Design',
-
-    // FILTERS
-    getSpecific: (data) => {
-        let profileContainer = document.querySelector("#student-profile-container");
-        
-    },
+class StudentListing {
+    constructor(major) {
+        this.majors = [
+            {name: 'Digital Design', color: 'red'},
+            {name: 'Animation & Game Design', color: 'blue'},
+            {name: 'Illustration', color: 'yellow'},
+            {name: 'Graphic Design', color: 'orange'},
+            {name: 'Creative Advertising', color: 'purple'}
+        ];
+        this.profileContainer = document.querySelector(".student-profile-container");
+        this.searchBar = document.querySelector(".search-bar");
+    
+        this.onMajor = major;
+        this.studentListInstance = studentList;
+    }
 
     // Create the MAJORS filter bar
-    createMajors: () => {
-        let profileContainer = document.querySelector("#student-profile-container");
-
+    createMajors(profileContainer = this.profileContainer) {
         const majorListing = document.querySelector(".major-container");
         let pageTitle = document.querySelector(".major-title");
 
         // Create an anchor tag for each major
-        Student.majors.forEach(major => {
+        this.majors.forEach(major => {
             let majorEntry = document.createElement('a');
             // set majorEntry name to major name and id to major name
             majorEntry.innerText = major.name;
@@ -143,7 +37,7 @@ const Student = {
             // on click, page header to major name, reload profiles
             majorEntry.addEventListener("click", () => {
                 let bannerImg = document.querySelector(".banner-img");
-                Student.onMajor = major.name;
+                this.onMajor = major.name;
                 pageTitle.innerText = major.name;
                 bannerImg.style.background = major.color;
             })
@@ -153,31 +47,30 @@ const Student = {
 
         })
 
-    },
+    }
 
-    search: () => {
-        let searchBar = document.querySelector(".search-bar");
-        let searchValue = searchBar.value.toLowerCase();
+    search(e) {
+        const searchValue = e.target.value.toLowerCase()
         console.log(searchValue);
-        studentList.forEach(student => {
-
+        const newStudentList = [...studentList]
+        this.studentListInstance = newStudentList.filter(student => {
             if(student.name.toLowerCase().includes(searchValue)){
-                console.log(student.name);
-                
+                return student        
             } 
         })
+        console.log(this.studentListInstance.length);
+        this.generateStudentListing()
+    }
 
-    },
-
-    generateSearch: () => {
+    generateSearch() {
         let profiles = document.querySelector(".profile-container");
         let profileContainer = document.querySelector(".student-profiles");
         profileContainer.innerHTML = null;
 
-    },
+    }
 
-    generateStudent: () => {
-        studentList.forEach(student => {
+    generateStudent() {
+        this.studentListInstance.forEach(student => {
 
             let profileEntry = document.createElement("div");
             profileEntry.className = "profile-container";
@@ -233,22 +126,11 @@ const Student = {
         })
 
         let profileEntry = document.querySelectorAll(".profile-container");
-                    // Animate profiles into view
-                    anime({
-                        targets: profileEntry,
-                        keyframes: [
-                            { opacity: 0, },
-                            { opacity: 1, }
-                        ],
-                        delay: anime.stagger(50)
-                    })
-    },
+    }
 
-
-    generateStudentListing: () => {
-        let profileContainer = document.querySelector("#student-profile-container");
-
-        studentList.forEach(student => {
+    generateStudentListing() {
+        this.profileContainer.innerHTML = ''
+        this.studentListInstance.forEach(student => {
 
             let profileEntry = document.createElement("div");
             profileEntry.className = "profile-container";
@@ -304,23 +186,14 @@ const Student = {
             profileEntry.appendChild(studentSpec);
 
             // Append to profile container
-            profileContainer.appendChild(profileEntry);
+            this.profileContainer.appendChild(profileEntry);
         })
 
         let profileEntry = document.querySelectorAll(".profile-container");
-                    // Animate profiles into view
-                    anime({
-                        targets: profileEntry,
-                        keyframes: [
-                            { opacity: 0, },
-                            { opacity: 1, }
-                        ],
-                        delay: anime.stagger(50)
-                    })
-    },
+    }
     
 }
 
-export { Student }
+export { StudentListing }
 
 
