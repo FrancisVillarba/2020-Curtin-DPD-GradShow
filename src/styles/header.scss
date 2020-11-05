@@ -61,11 +61,16 @@
           background: unset;
       }
       .navbar-students {
+          margin: 0;
+          padding: unset !important;
           a {
             color: $b-black;
           }
           .navbar-link:hover {
             color: unset !important;
           }
+      }
+      .navbar-item .navbar-link {
+          padding: unset unset unset 1em !important;
       }
   }
