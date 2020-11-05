@@ -143,4 +143,16 @@ section {
     }
 }
 
+@media screen and (max-width: 480px) {
+    .disciplines-container {
+        img {
+            height: 80px !important;
+        }
+
+        .discipline {
+            margin: 8px;
+        }
+    }
+}
+
 // TODO - FUTURE - Convert to bulma (where possible)
