@@ -1,65 +1,13 @@
+// General Styles ----------------------------------------------------------- /
+
 body {
     width: 100vw;
 }
 
 section {
     position: relative;
-}
-
-.home-slideshow {
-    height: 80vh;
-    margin: 0;
-    background-image: url(https://images.prismic.io/iaesydney/bda3aa62a7bb8d70ae9221b61b263a2c4f97593b_curtin-1.jpg?auto=compress,format);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto 100%;
-
-    h1 {
-        backdrop-filter: brightness(50%);
-    }
-}
-
-.home-about {
-    padding: 35vh 5vw;
-    
-    .heading-column {
-        justify-content: flex-start;
-        
-        h2 {
-            text-align: right;
-            font-size: 5vw;
-            margin-right: 15px;
-        }
-    }
-
-    .text-column {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-}
-
-.home-map {
-    padding: 15vh 5vw;
-
-    .text-column {
-        font-size: 5vw;
-    }
-
-    .img-placeholder {
-        width: 600px;
-        height: 400px;
-        border-radius: 10px;
-        border: 5px solid black;
-    }
-
-    .map-column {
-        padding: 0px 5%;
-        display: flex;
-        justify-content: center;
-        
-
-    }
+    background-color: black;
+    height: fit-content;
 }
 
 .section-divider {
@@ -67,145 +15,141 @@ section {
     margin: 0;
 }
 
-.filter-button-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+.main-content {
+    padding: 48px;
+}
 
-    button {
-        margin: 5px;
+// Shapes ------------------------------------------------------------------- /
+.shape-circle {
+    // TODO - Make the size responsive
+    height: 96px;
+    width: 96px;
+    border-radius: 50%;
+    background-color: $b-black;
+}
+
+.shape-square {
+    height: 75vh;
+    width: 90vw;
+    background-color: $b-darker-gray;
+}
+
+// Hero --------------------------------------------------------------------- /
+
+.home-banner {
+    height: 80vh;
+    margin: 0;
+
+    // Used temporarily until we have the actual hero asset put onto the page
+    background-image: url(https://images.prismic.io/iaesydney/bda3aa62a7bb8d70ae9221b61b263a2c4f97593b_curtin-1.jpg?auto=compress,format);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    filter: grayscale(100%);
+    -webkit-filter: greyscale(100%);
+
+    h1 {
+        backdrop-filter: brightness(50%);
     }
 }
 
-.awards-button-container {
-    display: flex;
-    justify-content: center;
-    
-    .awards-button {
-        width: 200px;
-        border-radius: 15px 15px 0px 0px;
-        border-style: none;
+// Content ------------------------------------------------------------------ /
+
+.main-content {
+    article {
+        padding-top: 12px;
+        padding-bottom: 48px;
     }
-}
 
+    article.left {
+        margin-right: 40vw;
+    }
 
-.award-img-container {
-    display: flex;
-    flex-direction: row;
-    width: 100vw;
-    justify-content: center;
+    article.left>p {
+        margin-right: 20vw;
+    }
 
-    .awards-img-wrapper {
+    article.left>h1,
+    article.right>h1 {
+        font-size: 2rem;
+    }
+
+    article.right {
+        text-align: right;
+        margin-left: 40vw;
+    }
+
+    .disciplines-container {
+        margin-top: 12px;
         display: flex;
-        align-items: flex-end;
-        justify-content: center;
-        width: 100%;
-        height: 600px;
-        background-color: $grey-dark;
-        box-shadow: 0 0 10px inset black;
-        transition: 0.2s;
-    }
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        text-align: center;
 
-    .awards-img-wrapper:hover {
-        width: calc(100% + 200px);
-        box-shadow: 0 0 10px inset white;
-    }
-}
-
-.quick-filter-container {
-    display: flex;
-
-    .column {
-        display: flex;
-        margin: 20px 5%;
-        border-radius: 0 0 15px 15px;
-        flex-direction: column;
-
-
-        .container {
-            background-color: $grey-dark;
-            width: 100%;
-            border-radius: 0 0 15px 15px;
-            padding: 8px 0;
+        div + div {
+            margin-left: 12px;
         }
 
-        h3 {
-            text-align: center;
-            color: white;
+        div > p {
+            position: relative;
+            top: 120%;
         }
     }
 }
 
+// Secondary Content
+.secondary-content {
+    display: flex;
+    justify-content: center;
+}
 
-// Responsiveness
+.media-content {
+    height: 85vh;
+    padding-bottom: 15vh;
+}
+
+// Placeholder Student Navigation Button Orbs
+
+.illustration-discipline {
+    background: rgb(31, 166, 59);
+    background: -moz-radial-gradient(circle, rgba(31, 166, 59, 1) 0%, rgba(44, 113, 39, 0.4086021505376344) 100%);
+    background: -webkit-radial-gradient(circle, rgba(31, 166, 59, 1) 0%, rgba(44, 113, 39, 0.4086021505376344) 100%);
+    background: radial-gradient(circle, rgba(31, 166, 59, 1) 0%, rgba(44, 113, 39, 0.4086021505376344) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#1fa63b", endColorstr="#2c7127", GradientType=1);
+}
+
+.digital-discipline {
+    background: rgb(47, 193, 240);
+    background: -moz-radial-gradient(circle, rgba(47, 193, 240, 1) 0%, rgba(49, 104, 191, 0.25268817204301075) 100%);
+    background: -webkit-radial-gradient(circle, rgba(47, 193, 240, 1) 0%, rgba(49, 104, 191, 0.25268817204301075) 100%);
+    background: radial-gradient(circle, rgba(47, 193, 240, 1) 0%, rgba(49, 104, 191, 0.25268817204301075) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2fc1f0", endColorstr="#3168bf", GradientType=1);
+}
+
+.ca-cd-discipline {
+    background: rgb(236, 69, 47);
+    background: -moz-radial-gradient(circle, rgba(236, 69, 47, 1) 0%, rgba(236, 96, 47, 0.3306451612903226) 100%);
+    background: -webkit-radial-gradient(circle, rgba(236, 69, 47, 1) 0%, rgba(236, 96, 47, 0.3306451612903226) 100%);
+    background: radial-gradient(circle, rgba(236, 69, 47, 1) 0%, rgba(236, 96, 47, 0.3306451612903226) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ec452f", endColorstr="#ec602f", GradientType=1);
+}
+
+.agd-discipline {
+    background: rgb(128, 47, 159);
+    background: -moz-radial-gradient(circle, rgba(128, 47, 159, 1) 0%, rgba(209, 11, 180, 0.3306451612903226) 100%);
+    background: -webkit-radial-gradient(circle, rgba(128, 47, 159, 1) 0%, rgba(209, 11, 180, 0.3306451612903226) 100%);
+    background: radial-gradient(circle, rgba(128, 47, 159, 1) 0%, rgba(209, 11, 180, 0.3306451612903226) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#802f9f", endColorstr="#d10bb4", GradientType=1);
+}
+
+// Responsiveness ----------------------------------------------------------- /
 
 @media screen and (max-width: 1024px) {
 
-    .home-map {
-        .map-column {
-            .img-placeholder {
-                width: 100%;
-                height: 250px;
-            }
-        }
-    }
+
 }
 @media screen and (max-width: 770px) {
 
 
-
-    .home-map {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-
-        .text-column {
-            margin-top: 25px;
-            font-size: 5rem;
-
-        }
-        .map-column {
-            .img-placeholder {
-                width: 80vw;
-                height: 400px;
-                padding: 0px 50px;
-            }
-        }
-    }
-
-    .quick-filter-container {
-        justify-content: space-around;
-        margin: 0 10px;
-        .column {
-            margin: 0;
-        }
-    }
-
-    .award-img-container {
-        flex-direction: column;
-
-        .awards-img-wrapper {
-            height: 250px;
-        }
-    }
-
-    .home-about {
-        padding: 15vh 0;
-
-        .heading-column {
-
-            h2 {
-                text-align: center;
-                font-size: 5rem;
-            }
-        }
-
-        p {
-            text-align: center;
-            margin: 0;
-            padding: 0 15px !important;
-        }
-    }
 }
