@@ -20,33 +20,11 @@ class StudentListing {
     
         this.onMajor = major;
         this.studentListInstance = studentList;
-    }
 
-    // Create the MAJORS filter bar
-    createMajors(profileContainer = this.profileContainer) {
-        const majorListing = document.querySelector(".major-container");
-        let pageTitle = document.querySelector(".major-title");
-
-        // Create an anchor tag for each major
-        this.majors.forEach(major => {
-            let majorEntry = document.createElement('a');
-            // set majorEntry name to major name and id to major name
-            majorEntry.innerText = major.name;
-            majorEntry.setAttribute("id", major.name);
-
-            // on click, page header to major name, reload profiles
-            majorEntry.addEventListener("click", () => {
-                let bannerImg = document.querySelector(".banner-img");
-                this.onMajor = major.name;
-                pageTitle.innerText = major.name;
-                bannerImg.style.background = major.color;
-            })
-
-            // Append anchor tags to their container
-            majorListing.appendChild(majorEntry);
-
-        })
-
+        const pageTitle = document.querySelector(".major-title");
+        const bannerImg = document.querySelector(".banner-img"); 
+        bannerImg.style.background = this.majors.find(major => major.name === this.onMajor)?.color
+        pageTitle.innerText = this.onMajor;
     }
 
     search(e) {
