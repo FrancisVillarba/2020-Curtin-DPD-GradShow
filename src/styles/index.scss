@@ -15,7 +15,7 @@
 }
 
 // Set your brand colors
-$b-black: #292929;
+$b-black: #1a1a1a;
 $b-white: #ffffff;
 $b-darker-gray: #515151;
 $b-dark-gray: #979797;
@@ -31,7 +31,10 @@ $family-primary: 'DIN Regular', 'Helvetica Neue', -apple-system,
 $grey-dark: $b-black;
 $grey-light: $b-lighter-gray;
 $primary: $b-light-gray;
-$link: $b-black;
+$link: $b-white;
+$link-hover: $b-white;
+$link-focus: $b-light-gray;
+$link-active: $b-light-gray;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 $text: $b-white;
@@ -68,15 +71,35 @@ $input-shadow: none;
   background-color: $b-black;
 }
 
+.button.is-medium {
+  font-size: inherit;
+  padding: 1.5rem 2rem;
+}
+
+.header-offset {
+  margin-top: 52px;
+}
+
 .transition-slide-in {
   transition: 0.3s;
   opacity: 1;
   transform: translateX(0);
 }
 
+.items-center {
+  align-items: center;
+}
+.spaced > * + * {
+  margin-left: 20px;
+}
+
 html.is-animating .transition-slide-in {
-  transform: translateX(-20px);
+  transform: translateY(-20px);
   opacity: 0;
+}
+
+body {
+  background-color: $b-black;
 }
 
 .layout {
@@ -88,8 +111,8 @@ html.is-animating .transition-slide-in {
   flex-grow: 1;
 }
 
-.min-h-600 {
-  min-height: 600px;
+.min-h-900 {
+  min-height: 900px;
 }
 
 .max-w-600 {
@@ -113,12 +136,10 @@ html.is-animating .transition-slide-in {
   width: 100%;
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (min-width: 769px) {
   .stacked-max-h-600 {
     max-height: 600px;
   }
-}
-@media only screen and (min-width: 769px) {
   .wide-min-h-600 {
     min-height: 600px;
   }
@@ -129,8 +150,10 @@ html.is-animating .transition-slide-in {
 
 $tooltip-radius: 0px;
 $tooltip-background-color: $b-black;
-$tooltip-arrow-size: 12px;
 $tooltip-padding: 0.7rem 1.5rem;
+$tooltip-background-opacity: 1;
+$tooltip-font-size: 1rem;
+$tooltip-radius: 0;
 @import '@creativebulma/bulma-tooltip';
 
 // Page Styling Imports
