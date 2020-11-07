@@ -1,7 +1,7 @@
 <nav class="navbar px-4" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+      <img src="/imgs/logos/primary-logo.svg" width="170" height="40">
     </a>
 
     <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
@@ -20,26 +20,37 @@
         About
       </a>
 
-      <div class="navbar-item has-dropdown is-hoverable dynamic-gradient navbar-students">
-        <a class="navbar-link">
-          Students
-        </a>
-        <div class="navbar-dropdown">
-          <a class="navbar-item" href="/major/animation-and-game-design">
-            Animation and Game Design
-          </a>
-          <a class="navbar-item" href="/major/graphic-design">
-            Creative Advertising and Graphic Design
-          </a>
-          <a class="navbar-item" href="/major/digital-design">
-            Digital Design
-          </a>
-          <a class="navbar-item" href="/major/illustration">
-            Illustration
-          </a>
+      <div class="is-flex items-center">
+        <div class="dropdown is-hoverable is-right">
+          <div class="dropdown-trigger">
+              <button class="button dynamic-gradient" aria-haspopup="true" aria-controls="dropdown-menu">
+                <span>Students</span>
+                <span class="icon is-small">
+                  <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+              </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <a href="/major/all-students" class="dropdown-item">
+                All Students
+              </a>
+              <a href="/major/animation-and-game-design" class="dropdown-item">
+                Animation and Game Design
+              </a>
+              <a href="/major/graphic-design" class="dropdown-item">
+                Creative Advertising and Graphic Design
+              </a>
+              <a href="/major/digital-design" class="dropdown-item">
+                Digital Design
+              </a>
+              <a href="/major/illustration" class="dropdown-item">
+                Illustration
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-
 
     </div>
   </div>

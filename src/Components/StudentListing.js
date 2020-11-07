@@ -7,29 +7,13 @@ let majors = [
 ]
 
 class StudentListing {
-    constructor(major) {
-        this.majors = [
-            {name: 'Digital Design', color: '/imgs/orbs/dd.png'},
-            {name: 'Animation & Game Design', color: '/imgs/orbs/agd.png'},
-            {name: 'Illustration', color: '/imgs/orbs/ill.png'},
-            {name: 'Graphic Design', color: '/imgs/orbs/gd.png'},
-            {name: 'Creative Advertising', color: '/imgs/orbs/ca.png'}
-        ];
+    constructor(majorid) {
         this.profileContainer = document.querySelector(".student-profile-container");
         this.searchBar = document.querySelector(".search-bar");
     
-        this.onMajor = major.toLowerCase();
+        this.majorid = majorid
+        
         this.studentDataInstance = studentData;
-
-        const majorSrc = this.majors.find(major => major.name.toLowerCase() === this.onMajor)?.color
-        if (majorSrc) {
-            const bannerImg = document.createElement('img')
-            bannerImg.classList = 'banner-img'
-            bannerImg.setAttribute("src", majorSrc)    
-            document.querySelector('.banner').appendChild(bannerImg)
-        }
-        const pageTitle = document.querySelector(".major-title");
-        pageTitle.innerText = this.onMajor;
     }
 
     search(e) {
@@ -50,8 +34,10 @@ class StudentListing {
     generateStudentListing() {
         this.profileContainer.innerHTML = ''
         this.studentDataInstance.forEach(student => {
-            if (!student.majors.find(major => major.title.toLowerCase() === this.onMajor)) {
-                return
+            if (this.majorid !== '0') {
+                if (!student.majors.find(major => major.id === this.majorid)) {
+                    return
+                }    
             }
                 
             let profileEntry = document.createElement("a");

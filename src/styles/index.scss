@@ -15,12 +15,17 @@
 }
 
 // Set your brand colors
-$b-black: #1a1a1a;
+$b-actuallyblack: #000; // use this color for the footer
+$b-black: #141414;
 $b-white: #ffffff;
 $b-darker-gray: #515151;
 $b-dark-gray: #979797;
 $b-light-gray: #bdbdbd;
 $b-lighter-gray: #ebebeb;
+
+$dropdown-item-color: $b-black;
+$navbar-item-color: $b-black;
+$navbar-item-hover-color: $b-darker-gray;
 
 // Update Bulma's global variables
 $family-secondary: 'Helvetica Neue', -apple-system, BlinkMacSystemFont,
@@ -58,6 +63,10 @@ h5 {
   font-family: $family-secondary;
 }
 
+* {
+  outline: none !important;
+}
+
 // Update some of Bulma's component variables
 $body-background-color: $b-lighter-gray;
 $control-border-width: 2px;
@@ -77,7 +86,7 @@ $input-shadow: none;
 }
 
 .header-offset {
-  margin-top: 52px;
+  margin-top: 65px;
 }
 
 .transition-slide-in {
