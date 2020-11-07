@@ -2,7 +2,7 @@
 layout: default.njk
 title: Major Page
 pagination:
-    data: majors
+    data: majorsComputed
     size: 1
     alias: major
 permalink: "major/{{ major.title | slug }}/"
@@ -11,9 +11,16 @@ permalink: "major/{{ major.title | slug }}/"
 
 <section class="banner">
   <div class="banner-text">
-    <h3 class="major-intro">Students From The Major Of</h3>
-    <h1 class="title major-title">{{ major.title }}</h1>
+    {% if major.id === '0' %}
+      <h3 class="major-intro">Design & Architecture Graduates</h3>
+    {% else %}
+      <h3 class="major-intro">Students From The Major Of</h3>
+    {% endif %}
+    <h1 class="title major-title" data-major-id="{{ major.id }}" >{{ major.title }}</h1>
   </div>
+  {% if major.color %}
+    <img src="{{ major.color }}" class="banner-img" alt="">
+  {% endif %}
 </section>
 <section class="profile-listing-showreel-container">
 </section>

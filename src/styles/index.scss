@@ -62,6 +62,10 @@ h5 {
   font-family: $family-secondary;
 }
 
+* {
+  outline: none !important;
+}
+
 // Update some of Bulma's component variables
 $body-background-color: $b-lighter-gray;
 $control-border-width: 2px;

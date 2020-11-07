@@ -10,8 +10,8 @@ console.log("Hello World")
 // check if profile container exists before running Student component
 function init() {
     if (document.querySelector(".student-profile-container")) {
-        const majorName = document.querySelector('.major-title').innerText
-        const DDListing = new StudentListing(majorName)
+        const majorid = document.querySelector('.major-title').dataset.majorId
+        const DDListing = new StudentListing(majorid)
         DDListing.generateStudentListing();
         
         let searchBar = document.querySelector(".search-bar");
