@@ -85,6 +85,10 @@ $input-shadow: none;
   padding: 1.5rem 2rem;
 }
 
+.min-h-full {
+  min-height: 100vh;
+}
+
 .header-offset {
   margin-top: 65px;
 }

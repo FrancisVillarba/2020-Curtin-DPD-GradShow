@@ -7,16 +7,16 @@
     background-color: $b-black;
     display: flex;
     flex-direction: row;
-    height: 20vh;
+    height: 250px;
     align-items: center;
-    padding-left: 5%;
+    overflow: hidden;
 
     .banner-img {
-        height: 80vh;
-        width: 80vh;
+        height: 800px;
+        width: 800px;
         margin-left: auto;
-        transform: translateX(10vw);
-        clip-path: inset(30vh 0);
+        transform: translateX(200px);
+        max-width: unset;
     }
 
     .banner-text {
@@ -143,6 +143,6 @@
 
 @media screen and(max-width: 690px) {
     .banner-img {
-        transform: translateX(70vw) !important; 
+        transform: translateX(50vw) !important; 
     }
 }

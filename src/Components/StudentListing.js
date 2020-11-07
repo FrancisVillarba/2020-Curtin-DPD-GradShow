@@ -41,7 +41,7 @@ class StudentListing {
             }
                 
             let profileEntry = document.createElement("a");
-            profileEntry.href = `/student/${student.name.first.toLowerCase()}${student.name.last.toLowerCase()}`;
+            profileEntry.href = `/student/${student.id}`;
             profileEntry.className = "profile-link"
             let profileWrapper = document.createElement("div");
             profileWrapper.className = "profile-container";
