@@ -3,79 +3,56 @@
     width: 100%;
 }
 
-.navbar-burger {
-    color: $b-black;
-}
-.navbar-item {
-    color: $b-black;
-}
-.navbar-link {
-    color: $b-black;
-}
 .navbar-students {
     margin: auto 2em;
     padding: 0 1em !important;
     a {
         font-weight: bold;
-        color: $b-white;
         transition: all ease 0.3s;
-    }
-    a::after {
-        border-color: $b-white !important;
-    }
-    .navbar-link:hover {
-        background-color: transparent !important;
-        color: $b-white !important;
-    }
-}
-.navbar-students:hover {
-    .navbar-link {
-        background-color: transparent !important;
-    }
-    a:not(.navbar-link) {
-        color: $b-black;
     }
 }
 
-.navbar-dropdown {
-    right: 0 !important;
-    left: unset !important;
+.navbar-end {
+    align-items: stretch;
+
+    & > * + * {
+        margin-left: 2em;
+    }
+}
+
+.navbar-dropdown a.navbar-item {
+    display: block;
 }
 
 .dynamic-gradient{
     background: linear-gradient(45deg, #f5b01b, #f15528, #d82690, #40c3d4, #39ac5b);
     background-size: 200% 200%;
     animation: gradient 5s infinite;
+    color: white !important;
+    font-weight: bold;
+}
 
-  }
-  
-  @keyframes gradient {
+@keyframes gradient {
     0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-  }
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
 
-  @media screen and (max-width: 1023px) {
-      .dynamic-gradient {
-          background: unset;
-      }
-      .navbar-students {
-          margin: 0;
-          padding: unset !important;
-          a {
-            color: $b-black;
-          }
-          .navbar-link:hover {
-            color: unset !important;
-          }
-      }
-      .navbar-item .navbar-link {
-          padding: unset unset unset 1em !important;
-      }
-  }
+@media screen and (max-width: 1023px) {
+    .dynamic-gradient {
+        background: unset;
+    }
+    .navbar-students {
+        margin: 0;
+        padding: unset !important;
+    }
+    .navbar-item .navbar-link {
+        padding: unset unset unset 1em !important;
+    }
+}
