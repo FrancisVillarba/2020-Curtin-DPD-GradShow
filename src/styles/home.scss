@@ -1,7 +1,6 @@
-.greyscale-header {
-  filter: grayscale(1);
-  height: 100vh;
+.home-banner video {
   object-fit: cover;
+  min-height: 100vh;
 }
 
 .home-left {
