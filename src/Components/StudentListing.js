@@ -42,7 +42,7 @@ class StudentListing {
                 
             let profileEntry = document.createElement("a");
             profileEntry.href = `/student/${student.id}`;
-            profileEntry.className = "profile-link"
+            profileEntry.className = "profile-link scale"
             let profileWrapper = document.createElement("div");
             profileWrapper.className = "profile-container";
             profileEntry.appendChild(profileWrapper)

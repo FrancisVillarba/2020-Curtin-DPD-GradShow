@@ -85,6 +85,18 @@ $input-shadow: none;
   padding: 1.5rem 2rem;
 }
 
+.scale {
+  transition: 0.1s ease-in-out
+}
+.scale:hover {
+  z-index: 999;
+  transform: scale(1.03);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 10px;
+}
+.scale:focus, .scale:active {
+  transform: scale(1) !important;
+}
+
 .min-h-full {
   min-height: 100vh;
 }
