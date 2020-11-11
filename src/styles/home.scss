@@ -16,6 +16,23 @@
 .disciplines-container {
   max-width: 800px;
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  img {
+    width: 60px;
+  }
+  a + a {
+    margin-top: 1rem;
+  }
+
+  .discipline {
+    display: flex;
+    align-items: center;
+    img {
+      margin-left: 1em;
+    }
+  }
 }
 
 .disciplines-container > * + * {
@@ -24,9 +41,16 @@
 
 @media only screen and (max-width: 500px) {
   .disciplines-container {
-    display: grid;
-    gap: 20px;
     grid-template-columns: 1fr 1fr;
+    align-items: flex-start;
+
+    .discipline {
+      flex-direction: row-reverse;
+      img {
+        margin-left: 0;
+        margin-right: 1em;
+      }  
+    }
   }
   .disciplines-container > * + * {
     margin-left: 0;
