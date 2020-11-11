@@ -10,9 +10,6 @@ permalink: "student/{{ student.id }}/"
 
 <div>
     <div class="columns dark min-h-900 mb-0 mt-0">
-        <div class="column is-one-third pb-0 pt-0">
-            <img src="{{ student.headshots.pro }}" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student">
-        </div>
         <div class="column is-flex flex-column py-6 px-6">
             <div class="layout-main">
                 <h4 class="is-size-5 mb-3 max-w-600">{{ student.majors | join(", ", "title") }}</h4>
@@ -34,6 +31,9 @@ permalink: "student/{{ student.id }}/"
                 </div>
                 <div></div>
             </div>
+        </div>
+        <div class="column is-one-third pb-0 pt-0">
+            <img src="{{ student.headshots.pro }}" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student">
         </div>
     </div>
     <div class="student-image-grid px-6 py-6 has-background-white">
