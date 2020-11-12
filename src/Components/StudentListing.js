@@ -54,6 +54,10 @@ class StudentListing {
 
             let studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';
+
+            let majorCont = document.createElement('div');
+            majorCont.className = 'is-flex spaced';
+
             student.majors.forEach(major => {
                 let majorBall = document.createElement("img");
                 majorBall.className = "student-major";
@@ -76,8 +80,10 @@ class StudentListing {
                 } else {
                     return
                 }
-                studentSpec.appendChild(majorBall);
+                majorCont.appendChild(majorBall);
             })
+
+            studentSpec.appendChild(majorCont);
 
 
             // Create an image tag for each student

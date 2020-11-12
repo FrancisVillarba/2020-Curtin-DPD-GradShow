@@ -27,9 +27,10 @@
     z-index: 1;
 }
 
-.student-profile {
+.profile-col-left {
     position: relative;
     overflow: hidden;
+    padding: $page-padding !important;
 }
 
 .major-orbs {

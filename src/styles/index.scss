@@ -64,6 +64,24 @@ h5 {
   color: $b-white;
 }
 
+.columns {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+$page-padding: 3rem;
+.page-padding {
+  padding-left: $page-padding !important;
+  padding-right: $page-padding !important;
+}
+.page-padding-all {
+  padding: $page-padding !important;
+}
+
+.text-color {
+  color: $text !important;
+}
+
 * {
   outline: none !important;
 }
