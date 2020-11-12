@@ -92,3 +92,29 @@
         }
     }
 }
+
+.footer-content {
+    display: flex;
+    .nav {
+        display: flex;
+        & > * + * {
+            margin-left: 20px;
+        }
+    }
+      
+}
+
+@media only screen and (max-width: 769px) {
+    .footer-content {
+        display: block;
+        .nav {
+            display: block;
+            & > * {
+                margin-top: 10px;
+            }
+            & > * + * {
+                margin-left: 0;
+            }    
+        }
+    }
+}

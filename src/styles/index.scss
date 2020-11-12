@@ -70,12 +70,28 @@ h5 {
 }
 
 $page-padding: 3rem;
+$page-padding-mobile: 1.5rem;
 .page-padding {
   padding-left: $page-padding !important;
   padding-right: $page-padding !important;
 }
 .page-padding-all {
   padding: $page-padding !important;
+}
+.page-padding-left {
+  padding: $page-padding !important;
+}
+@media only screen and (max-width: 800px) {
+  .page-padding {
+    padding-left: $page-padding-mobile !important;
+    padding-right: $page-padding-mobile !important;
+  }
+  .page-padding-all {
+    padding: $page-padding-mobile !important;
+  }
+  .page-padding-left {
+    padding: $page-padding-mobile !important;
+  }  
 }
 
 .text-color {
