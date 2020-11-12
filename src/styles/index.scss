@@ -16,11 +16,11 @@
 
 // Set your brand colors
 $b-actuallyblack: #000; // use this color for the footer
-$b-black: $b-actuallyblack;
+$b-black: #0f0f0f;
 $b-white: #ffffff;
-$b-darker-gray: #515151;
-$b-dark-gray: #979797;
-$b-light-gray: #bdbdbd;
+$b-darker-gray: #292929;
+$b-dark-gray: #747474;
+$b-light-gray: #9c9c9c;
 $b-lighter-gray: #ebebeb;
 
 $dropdown-item-color: $b-black;
@@ -42,7 +42,7 @@ $link-focus: $b-light-gray;
 $link-active: $b-light-gray;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
-$text: $b-white;
+$text: $b-light-gray;
 
 $button-color: $b-black;
 $button-background-color: $b-white;
@@ -61,6 +61,41 @@ h3,
 h4,
 h5 {
   font-family: $family-secondary;
+  color: $b-white;
+}
+
+.columns {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+$page-padding: 3rem;
+$page-padding-mobile: 1.5rem;
+.page-padding {
+  padding-left: $page-padding !important;
+  padding-right: $page-padding !important;
+}
+.page-padding-all {
+  padding: $page-padding !important;
+}
+.page-padding-left {
+  padding: $page-padding !important;
+}
+@media only screen and (max-width: 800px) {
+  .page-padding {
+    padding-left: $page-padding-mobile !important;
+    padding-right: $page-padding-mobile !important;
+  }
+  .page-padding-all {
+    padding: $page-padding-mobile !important;
+  }
+  .page-padding-left {
+    padding: $page-padding-mobile !important;
+  }  
+}
+
+.text-color {
+  color: $text !important;
 }
 
 * {

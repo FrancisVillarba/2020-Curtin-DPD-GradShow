@@ -7,10 +7,16 @@
         max-height: unset;
     }
     .navbar-brand {
+        .navbar-item {
+            padding: 0 !important;
+        }
         height: 100% !important;
     }
     .navbar-burger {   
         height: 100% !important;
+    }
+    .navbar-burger:hover {
+        color: $b-darker-gray;
     }
 }
 
@@ -86,6 +92,32 @@
         .dropdown-menu {
             display: flex;
             position: relative;
+        }
+    }
+}
+
+.footer-content {
+    display: flex;
+    .nav {
+        display: flex;
+        & > * + * {
+            margin-left: 20px;
+        }
+    }
+      
+}
+
+@media only screen and (max-width: 769px) {
+    .footer-content {
+        display: block;
+        .nav {
+            display: block;
+            & > * {
+                margin-top: 10px;
+            }
+            & > * + * {
+                margin-left: 0;
+            }    
         }
     }
 }

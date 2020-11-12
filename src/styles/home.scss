@@ -14,12 +14,17 @@
 }
 
 .disciplines-container {
+  a {
+    text-decoration: none !important;
+    color: $text !important;
+  }
   max-width: 800px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
 
   img {
+    min-width: 60px;
     width: 60px;
   }
   a + a {
