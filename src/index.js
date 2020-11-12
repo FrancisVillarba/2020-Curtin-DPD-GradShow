@@ -2,13 +2,28 @@ import Swup from 'swup';
 const swup = new Swup();
 
 import { StudentListing } from './Components/StudentListing';
-import { handleStudentImages } from './student'
+import { handleStudentPage } from './student'
 
 // Entry Point for JS
 console.log("Hello World")
 
 // check if profile container exists before running Student component
 function init() {
+    const homeBtn = document.getElementById('home-btn')
+    if (window.location.pathname === '/') {
+        homeBtn.style.opacity = 0
+        setTimeout(() => {
+          homeBtn.classList.remove('dynamic-gradient')          
+          homeBtn.style.opacity = 1
+        }, 200);
+    } else if (!homeBtn.classList.contains('dynamic-gradient')) {
+        homeBtn.style.opacity = 0
+        setTimeout(() => {
+          homeBtn.classList.add('dynamic-gradient')
+          homeBtn.style.opacity = 1
+        }, 200);
+    }
+    
     if (document.querySelector(".student-profile-container")) {
         const majorid = document.querySelector('.major-title').dataset.majorId
         const DDListing = new StudentListing(majorid)
@@ -19,7 +34,7 @@ function init() {
             DDListing.search(e);
         })
     }
-    handleStudentImages()
+    handleStudentPage()
 }
 
 // run check on page load

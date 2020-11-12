@@ -8,12 +8,6 @@
     grid-column: span 2;
 }
 
-
-.img-socials {
-    width: 40px;
-    height: 40px;
-}
-
 .student-large-title {
     font-size: 5em;
 }
@@ -57,6 +51,15 @@
     }
 }
 
+.social-icons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+    gap: 20px;
+    i {
+        font-size: 1.5rem;
+    }
+}
+
 @media only screen and (max-width: 750px) {
     .student-image-grid {
         gap: 0;
@@ -69,21 +72,28 @@
 
 @media only screen and (max-width: 1500px) {
     .major-orbs {
+        display: block;
         position: relative;
-        flex-direction: row;
         right: unset;
         top: unset;
+        bottom: unset;
+        transform: translateY(90px) !important;
         img {
+            display: inline-block;
+            width: 40%;
             transform: translateY(0) !important;
         }
         img + img {
             transform: translateX(-50%) !important;
         }
     }
-    .major-orbs.single-orb {
-        width: 200px;
-    }     
     .portfolio-image img {
         margin-bottom: -10px;
     }   
+}
+
+@media only screen and (max-width: 769px) {
+    .major-orbs {
+        transform: translateY(70px) !important;
+    }
 }

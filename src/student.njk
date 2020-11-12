@@ -21,12 +21,18 @@ permalink: "student/{{ student.id }}/"
                     {{ student.bio }}
                 </p>
                 
-                <div class="is-flex w-full mt-6">
+                <div class="is-flex items-center w-full mt-6 max-w-600">
                     <button class="button is-white is-medium">Portfolio</button>
-                    <div class="is-flex items-center ml-5 spaced layout-main">
-                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
-                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
-                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
+                    <div class="social-icons items-center ml-5 layout-main">
+                        {% for social in student.social %}
+                            <a href="{{ social.link }}">
+                            {% if socialIcons[social.name] %}    
+                                <i class="fab {{ socialIcons[social.name] }}"></i>
+                            {% else %}
+                                <span>{{ social.name.substring(0, 2) }}<span>
+                            {% endif %}
+                            </a>        
+                        {% endfor %}
                     </div>
                 </div>
             </div>
