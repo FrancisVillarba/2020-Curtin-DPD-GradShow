@@ -152,8 +152,6 @@ async function pushStudentData(studentDataObj, majorDataObj) {
   // console.log(studentDataObj);
   // console.log(majorDataObj);
 
-  // TODO REMINDER - Don't forget to make a document reference for the student's majors
-
   // Iterate through the student data object and push to the database
   for (let i = 0; i < studentDataObj.length; i++) {
     // For debugging
