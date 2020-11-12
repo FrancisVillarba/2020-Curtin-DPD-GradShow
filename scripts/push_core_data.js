@@ -199,8 +199,8 @@ async function pushStudentData(studentDataObj, majorDataObj) {
     let dedupedStudentMajorsTemp = new Set(studentMajorsTemp);
 
     // For debugging
-    console.log(studentMajorsTemp);
-    console.log(dedupedStudentMajorsTemp);
+    // console.log(studentMajorsTemp);
+    // console.log(dedupedStudentMajorsTemp);
 
     // The final majors and the document references goes here
     let referencesTemp = [];
