@@ -76,6 +76,11 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
 }
+@media only screen and (max-width: 400px) {
+    .student-profiles {
+        grid-template-columns: 1fr;
+    }
+}
 
 .profile-container {
     background-color: white;
