@@ -45,12 +45,14 @@
     display: block;
 }
 
+#home-btn {
+    font-weight: bold;
+    transition: $transition;
+}
 .dynamic-gradient{
     background: linear-gradient(45deg, #f5b01b, #f15528, #d82690, #40c3d4, #39ac5b);
     background-size: 200% 200%;
     animation: gradient 5s infinite;
-    color: white !important;
-    font-weight: bold;
 }
 
 @keyframes gradient {

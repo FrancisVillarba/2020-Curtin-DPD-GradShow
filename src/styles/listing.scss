@@ -12,10 +12,10 @@
     overflow: hidden;
 
     .banner-img {
-        height: 800px;
-        width: 800px;
+        height: 600px;
+        width: 600px;
         margin-left: auto;
-        transform: translateX(200px);
+        transform: translateX(100px);
         max-width: unset;
         right: 0;
     }
@@ -25,7 +25,8 @@
         margin: 0 !important;
         color: white;
         z-index: 2;
-        h3 {
+        .major-intro {
+            color: $text;
             margin-bottom: 0.5rem;
         }
 

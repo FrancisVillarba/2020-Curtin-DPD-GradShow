@@ -1,4 +1,3 @@
-import anime from 'animejs';
 import studentData from '../../_data/studentData.json';
 
 // Array for each major for demonstration purposes
@@ -44,7 +43,7 @@ class StudentListing {
             profileEntry.href = `/student/${student.id}`;
             profileEntry.className = "profile-link scale"
             let profileWrapper = document.createElement("div");
-            profileWrapper.className = "profile-container fade-in";
+            profileWrapper.className = "profile-container fadein-quick";
             profileEntry.appendChild(profileWrapper)
 
             // Create a name h3 tag for each student
