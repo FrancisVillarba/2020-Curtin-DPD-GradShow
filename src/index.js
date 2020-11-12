@@ -3,6 +3,7 @@ const swup = new Swup();
 
 import { StudentListing } from './Components/StudentListing';
 import { handleStudentPage } from './student'
+import { setupEntries } from './observer'
 
 // Entry Point for JS
 console.log("Hello World")
@@ -35,6 +36,7 @@ function init() {
         })
     }
     handleStudentPage()
+    setupEntries()
 }
 
 // run check on page load

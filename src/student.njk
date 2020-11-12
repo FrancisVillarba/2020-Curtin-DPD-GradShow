@@ -11,7 +11,7 @@ permalink: "student/{{ student.id }}/"
 <div>
     <div class="columns dark min-h-900 mb-0 mt-0">
         <div class="profile-col-left page-padding-left column is-flex flex-column">
-            <div class="layout-main z-1">
+            <div class="layout-main z-1 fadein">
                 <h4 class="is-size-5 mb-3 max-w-600">{{ student.majors | join(", ", "title") }}</h4>
                 <h1 class="title student-large-title is-uppercase mb-2">{{ student.name.first }} {{ student.name.last }}</h1>
                 <p class="max-w-600">{{ student.statement }}</p>
