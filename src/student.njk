@@ -10,13 +10,13 @@ permalink: "student/{{ student.id }}/"
 
 <div>
     <div class="columns dark min-h-900 mb-0 mt-0">
-        <div class="column is-flex flex-column py-6 px-6">
-            <div class="layout-main">
+        <div class="student-profile column is-flex flex-column py-6 px-6">
+            <div class="layout-main z-1">
                 <h4 class="is-size-5 mb-3 max-w-600">{{ student.majors | join(", ", "title") }}</h4>
                 <h1 class="title student-large-title is-uppercase mb-2">{{ student.name.first }} {{ student.name.last }}</h1>
                 <p class="max-w-600">{{ student.statement }}</p>
             </div>
-            <div class="mb-2 is-relative">
+            <div class="mb-2 is-relative z-1">
                 <p class="max-w-600 mb-2">
                     {{ student.bio }}
                 </p>
@@ -29,11 +29,18 @@ permalink: "student/{{ student.id }}/"
                         <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
                     </div>
                 </div>
-                <div></div>
+            </div>
+            <div class="major-orbs">
+            {% for major in student.majors %}
+                {% if majorImages[major.id] %}
+                    <img src="{{ majorImages[major.id] }}">                    
+                {% endif %}
+            {% endfor %}
             </div>
         </div>
-        <div class="column is-one-third pb-0 pt-0">
-            <img src="{{ student.headshots.pro }}" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student">
+        <div class="column is-one-third px-0 py-0 portfolio-image">
+            <img src="https://via.placeholder.com/1920x2560" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student">
+            {# <img src="{{ student.headshots.pro }}" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student"> #}
         </div>
     </div>
     <div class="student-image-grid px-6 py-6 has-background-white">

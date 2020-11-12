@@ -22,3 +22,63 @@
         font-size: 3em;
     }
 }
+
+.z-1 {
+    z-index: 1;
+}
+
+.student-profile {
+    position: relative;
+    overflow: hidden;
+}
+
+.major-orbs {
+    position: absolute;
+    z-index: 0;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    bottom: -100px;
+    right: -100px;
+    top: 0;
+    img {
+        transform: translateY(50%);
+    }
+    img + img {
+        transform: translateY(0);
+    }
+}
+
+.major-orbs.single-orb {
+    img {
+        transform: translateY(0);
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .student-image-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    .major-orbs {
+        position: relative;
+        flex-direction: row;
+        right: unset;
+        top: unset;
+        img {
+            transform: translateY(0) !important;
+        }
+        img + img {
+            transform: translateX(-50%) !important;
+        }
+    }
+    .major-orbs.single-orb {
+        width: 200px;
+    }     
+    .portfolio-image img {
+        margin-bottom: -10px;
+    }   
+}
