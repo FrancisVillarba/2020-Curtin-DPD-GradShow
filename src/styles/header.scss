@@ -7,10 +7,16 @@
         max-height: unset;
     }
     .navbar-brand {
+        .navbar-item {
+            padding: 0 !important;
+        }
         height: 100% !important;
     }
     .navbar-burger {   
         height: 100% !important;
+    }
+    .navbar-burger:hover {
+        color: $b-darker-gray;
     }
 }
 
@@ -39,12 +45,14 @@
     display: block;
 }
 
+#home-btn {
+    font-weight: bold;
+    transition: $transition;
+}
 .dynamic-gradient{
     background: linear-gradient(45deg, #f5b01b, #f15528, #d82690, #40c3d4, #39ac5b);
     background-size: 200% 200%;
     animation: gradient 5s infinite;
-    color: white !important;
-    font-weight: bold;
 }
 
 @keyframes gradient {
@@ -86,6 +94,32 @@
         .dropdown-menu {
             display: flex;
             position: relative;
+        }
+    }
+}
+
+.footer-content {
+    display: flex;
+    .nav {
+        display: flex;
+        & > * + * {
+            margin-left: 20px;
+        }
+    }
+      
+}
+
+@media only screen and (max-width: 769px) {
+    .footer-content {
+        display: block;
+        .nav {
+            display: block;
+            & > * {
+                margin-top: 10px;
+            }
+            & > * + * {
+                margin-left: 0;
+            }    
         }
     }
 }

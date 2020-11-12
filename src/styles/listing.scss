@@ -12,20 +12,21 @@
     overflow: hidden;
 
     .banner-img {
-        height: 800px;
-        width: 800px;
+        height: 600px;
+        width: 600px;
         margin-left: auto;
-        transform: translateX(200px);
+        transform: translateX(100px);
         max-width: unset;
+        right: 0;
     }
 
     .banner-text {
         text-align: left;
         margin: 0 !important;
         color: white;
-        position: absolute;
         z-index: 2;
-        h3 {
+        .major-intro {
+            color: $text;
             margin-bottom: 0.5rem;
         }
 
@@ -76,6 +77,11 @@
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
 }
+@media only screen and (max-width: 400px) {
+    .student-profiles {
+        grid-template-columns: 1fr;
+    }
+}
 
 .profile-container {
     background-color: white;
@@ -88,7 +94,7 @@
         margin-top: 7px;
         font-size: 1.2em;
         font-weight: bold;
-        color: $b-darker-gray;
+        color: $b-black;
         text-align: left;
         margin-left: 10px;
         margin-bottom: 3px;
@@ -101,6 +107,7 @@
     .student-major-container {
         display: flex;
         flex-direction: row-reverse;
+        justify-content: space-between;
         align-items: center;
         padding: 5px 8px 8px 10px;
 
@@ -114,25 +121,48 @@
         transition: 0.2s;
     }
 
-    .profile-btn {
-        flex-grow: 1;
-        background-color: $b-black;
-        border: none;
-        outline: none;
-        font-size: 0.8rem;
-        color: white;
-        text-align: center;
+    // .profile-btn {
+    //     flex-grow: 1;
+    //     background-color: $b-black;
+    //     border: none;
+    //     outline: none;
+    //     font-size: 0.8rem;
+    //     color: white;
+    //     text-align: center;
+    //     display: flex;
+    //     align-items: center;
+    //     justify-content: center;
+    //     padding: 8px 18px;
+    // }
+    .profile-btn-cont {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 8px 18px;
+        justify-content: flex-start;
+        & > * + * {
+            margin-left: 0.5rem;
+        }
     }
 }
 
 // MEDIA QUERY
 
-@media screen and(max-width: 690px) {
-    .banner-img {
-        transform: translateX(50vw) !important; 
+@media screen and(max-width: 1300px) {
+    .banner {
+        height: unset;
+        min-height: 250px;
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+        height: unset;
+        .banner-img {
+            position: absolute;
+            bottom: -200px;
+            margin-top: 1em;
+            height: 400px;
+            width: 400px;
+            margin-left: auto;
+            transform: translateX(100px);
+            max-width: unset;
+        }
+    
     }
 }

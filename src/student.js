@@ -1,4 +1,4 @@
-export const handleStudentImages = () => {
+export const handleStudentPage = () => {
   // Handle Student Grid
   const images = document.querySelectorAll('.student-image-grid')
   if (images.length > 0) {

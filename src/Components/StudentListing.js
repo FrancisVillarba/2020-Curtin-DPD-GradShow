@@ -1,4 +1,3 @@
-import anime from 'animejs';
 import studentData from '../../_data/studentData.json';
 
 // Array for each major for demonstration purposes
@@ -44,7 +43,7 @@ class StudentListing {
             profileEntry.href = `/student/${student.id}`;
             profileEntry.className = "profile-link scale"
             let profileWrapper = document.createElement("div");
-            profileWrapper.className = "profile-container fade-in";
+            profileWrapper.className = "profile-container fadein-quick";
             profileEntry.appendChild(profileWrapper)
 
             // Create a name h3 tag for each student
@@ -54,6 +53,10 @@ class StudentListing {
 
             let studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';
+
+            let majorCont = document.createElement('div');
+            majorCont.className = 'is-flex spaced';
+
             student.majors.forEach(major => {
                 let majorBall = document.createElement("img");
                 majorBall.className = "student-major";
@@ -76,8 +79,10 @@ class StudentListing {
                 } else {
                     return
                 }
-                studentSpec.appendChild(majorBall);
+                majorCont.appendChild(majorBall);
             })
+
+            studentSpec.appendChild(majorCont);
 
 
             // Create an image tag for each student
@@ -85,13 +90,22 @@ class StudentListing {
             studentImg.className = "student-img";
             studentImg.setAttribute("src", student.img);
 
+            // Creates Container for both buttons
+            const btnCont = document.createElement('div')      
+            btnCont.className = "profile-btn-cont";
+
+            // Create a button that links to their portfolio
+            let portBtn = document.createElement('button');
+            portBtn.className = "button is-black is-small";
+            portBtn.innerText = ">"
+            btnCont.appendChild(portBtn);
+
             // Create a button that links to the student's individual profile
             let profileBtn = document.createElement('button');
-            profileBtn.className = "profile-btn";
+            profileBtn.className = "button is-black is-light is-small";
             profileBtn.innerText = "Portfolio"
-            let btnCont = document.createElement('div');
-            btnCont.className = "layout-main";
             btnCont.appendChild(profileBtn);
+
             studentSpec.appendChild(btnCont);
 
             // Append name tag and spec to student's container

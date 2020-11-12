@@ -10,8 +10,8 @@ permalink: "student/{{ student.id }}/"
 
 <div>
     <div class="columns dark min-h-900 mb-0 mt-0">
-        <div class="student-profile column is-flex flex-column py-6 px-6">
-            <div class="layout-main z-1">
+        <div class="profile-col-left page-padding-left column is-flex flex-column">
+            <div class="layout-main z-1 fadein">
                 <h4 class="is-size-5 mb-3 max-w-600">{{ student.majors | join(", ", "title") }}</h4>
                 <h1 class="title student-large-title is-uppercase mb-2">{{ student.name.first }} {{ student.name.last }}</h1>
                 <p class="max-w-600">{{ student.statement }}</p>
@@ -21,12 +21,18 @@ permalink: "student/{{ student.id }}/"
                     {{ student.bio }}
                 </p>
                 
-                <div class="is-flex w-full mt-6">
+                <div class="is-flex items-center w-full mt-6 max-w-600">
                     <button class="button is-white is-medium">Portfolio</button>
-                    <div class="is-flex items-center ml-5 spaced layout-main">
-                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
-                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
-                        <img src="https://via.placeholder.com/40x40" class="img-socials" alt="">
+                    <div class="social-icons items-center ml-5 layout-main">
+                        {% for social in student.social %}
+                            <a href="{{ social.link }}">
+                            {% if socialIcons[social.name] %}    
+                                <i class="fab {{ socialIcons[social.name] }}"></i>
+                            {% else %}
+                                <span>{{ social.name.substring(0, 2) }}<span>
+                            {% endif %}
+                            </a>        
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -43,7 +49,7 @@ permalink: "student/{{ student.id }}/"
             {# <img src="{{ student.headshots.pro }}" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student"> #}
         </div>
     </div>
-    <div class="student-image-grid px-6 py-6 has-background-white">
+    <div class="student-image-grid page-padding-all has-background-white">
         <img src="https://via.placeholder.com/2560x1920" alt="Alt Tag">
         <img src="https://via.placeholder.com/2560x1920" alt="Alt Tag">
         <img src="https://via.placeholder.com/2560x1920" alt="Alt Tag">
