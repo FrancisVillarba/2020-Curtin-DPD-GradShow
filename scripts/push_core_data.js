@@ -186,6 +186,10 @@ async function pushStudentData(studentDataObj, majorDataObj) {
         studentMajorsTemp[n] = 'Creative Advertising & Graphic Design';
       }
 
+      if (studentMajorsTemp[n] == 'Creative advertising and Graphic design') {
+          studentMajorsTemp[n] = 'Creative Advertising & Graphic Design';
+      }
+
       if( studentMajorsTemp[n] == 'Photography') {
         studentMajorsTemp[n] = 'Illustration';
       }
