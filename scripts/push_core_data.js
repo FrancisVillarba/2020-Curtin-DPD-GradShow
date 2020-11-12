@@ -341,13 +341,22 @@ async function pushStudentData(studentDataObj, majorDataObj) {
     // console.log(referencesTemp);
 
     let studentTemp = studentDataObj[i]
+    let studentPreferredNameTemp = "";
     // Create the data that we will be using to push to to the database
+
+    // For Daniel Westbrook, have null for the student preferred name instead of "" to make it easier for eleventy
+    if( studentTemp['Preferred Name'] != "" ) {
+      studentPreferredNameTemp = studentTemp['Preferred Name'];
+    } else {
+      studentPreferredNameTemp = null;
+    }
+
     let studentDataTemp = {
       id: studentTemp['Student Number'],
       name: {
         first: studentTemp['First Name'],
         last: studentTemp['Last Name'],
-        preferred: studentTemp['Preferred Name'],
+        preferred: studentPreferredNameTemp,
       },
       majors: referencesTemp,
       email: studentTemp['Email Address'],
