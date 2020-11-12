@@ -1,58 +1,60 @@
 ---
-layout: default
+layout: noOffset
 ---
 <!-- Hero Banner Section  -->
 <section>
     <div class="hero has-background-primary home-banner">
-        <div class="banner-container">
-            <!-- TODO: Replace the home-banner class with the disruption here -->
-        </div>
+        <video autoplay="" class="video" loop="" muted="">
+            <source src="/video/disrupt.mp4" type="video/mp4" /> 
+            Your browser does not support video.
+        </video>
     </div>
 </section>
 
 <div class="section-divider"></div>
 
 <!-- Main Content Section -->
-<section class="main-content">
+<section class="main-home-padding px-6">
     <!-- Left Side Content -->
-    <article class="left mt-3 mb-5">
+    <div class="home-left">
         <h1 class="title is-size-1 is-size-3-mobile">The Showcase of Curtin University Design & Architecture Graduates</h1>
-        <p>
+        <p class="max-w-600">
             We're fluid. We're flexible. We bend and push until a design is resolved. 
             When they zig. We Zag. We're accustomsed to disruption and successful in the
-            face of upheaval. our portfolios are almost ready to go live and send waves
+            face of upheaval. Our portfolios are almost ready to go live and send waves
             through the Australian design industry. Come meet us and see what our warped
             minds are capable of.
         </p>
-    </article>
+    </div>
 
     <!-- Right Side Content -->
-    <article class="right mt-3">
-        <h1 class="title is-size-1 is-size-3-mobile has-text-left-mobile">Graduate Navigation</h1>
+    <div class="home-right mb-4 mt-6">
+        <h2 class="title is-size-1 is-size-3-mobile">Graduate Navigation</h2>
         <div class="disciplines-container">
-            <div class="discipline has-tooltip-arrow has-tooltip-bottom" data-tooltip="Illustration">
-                <img src="imgs/orbs/ill.png">
-                <p>Ill</p>
-            </div>
-            <div class="discipline has-tooltip-arrow has-tooltip-bottom" data-tooltip="Digital Design">
-                <img src="imgs/orbs/dd.png">
-                <p>DD</p>
-            </div>
-            <div class="discipline has-tooltip-arrow has-tooltip-bottom" data-tooltip="Creative Advertising & Graphic Design">
-                <img src="imgs/orbs/ca.png">
-                <p>CA & GD</p>
-            </div>
-            <div class="discipline has-tooltip-arrow has-tooltip-bottom" data-tooltip="Animation & Game Design">
-                <img src="imgs/orbs/agd.png">
-                <p>AGD</p>
-            </div>
+            <a href="/major/illustration">
+                <div class="discipline scale" >
+                    <p>Illustration</p>
+                    <img src="imgs/orbs/ill.png">
+                </div>
+            </a>
+            <a href="/major/digital-design">
+                <div class="discipline scale">
+                    <p>Digital Design</p>
+                    <img src="imgs/orbs/dd.png">
+                </div>
+            </a>
+            <a href="/major/graphic-design">
+                <div class="discipline scale">
+                    <p>Creative Advertising & Graphic Design</p>
+                    <img src="imgs/orbs/ca.png">
+                </div>
+            </a>
+            <a href="/major/animation-and-game-design">
+                <div class="discipline scale">
+                    <p>Animation & Game Design</p>
+                    <img src="imgs/orbs/agd.png">
+                </div>
+            </a>
         </div>
-    </article>
-</section>
-
-<!-- Showreel / Large Media Content Section -->
-<section class="secondary-content media-content">
-    <div class="shape-square">
-        <!-- TODO: Replace with proper media content -->
     </div>
 </section>

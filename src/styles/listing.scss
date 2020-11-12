@@ -1,26 +1,22 @@
-.layout-main {
-    background-color: #191919;
-}
-
 .profile-listing-showreel-container {
     height: 80vh;
-    background-color: #303030;
+    background-color: $b-darker-gray;
 }
 
 .banner {
-    background-color: #191919;
+    background-color: $b-black;
     display: flex;
     flex-direction: row;
-    height: 20vh;
+    height: 250px;
     align-items: center;
-    padding-left: 5%;
+    overflow: hidden;
 
     .banner-img {
-        height: 80vh;
-        width: 80vh;
+        height: 800px;
+        width: 800px;
         margin-left: auto;
-        transform: translateX(10vw);
-        clip-path: inset(30vh 0);
+        transform: translateX(200px);
+        max-width: unset;
     }
 
     .banner-text {
@@ -29,9 +25,8 @@
         color: white;
         position: absolute;
         z-index: 2;
-        
-        .major-intro {
-            
+        h3 {
+            margin-bottom: 0.5rem;
         }
 
         h1 {
@@ -42,91 +37,61 @@
     }
 }
 
-.filter {
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0vw 5vw 0vw;
-    font-weight: bold;
-
-    a {
-        text-transform: uppercase;
-        color: #505050;
-        text-align: center;
-
-    }
-    a:hover {
-        color: #191919;
-        border-bottom: 1px solid #191919;
-    }
+.search-bar-wrapper {
+    width: 100%;
+    max-width: 500px;  
 }
 
 .search-bar-section {
     display: flex;
 
-    .search-bar-wrapper {
-        margin: 25px;
-    }
-
     .search-bar {
         width: 100%;
+        font-size: 0.8em;
         height: 2rem;
         background: #fff;
-        color: #191919;
+        color: $b-black;
         border-style: none;
         padding-top: 20px;
         padding-bottom: 20px;
         padding-left: 40px;
-        font-size: 1.5rem;
         box-shadow: 0 0 0.5rem rgba(0,0,0,0.2);
-        font-size: 0.8rem;
     }
 
     .search-bar:focus {
         outline: none;
-
     }
 
     .search-icon {
-
         i {
-            color: #191919;
+            color: $b-black;
 
         }
-        font-size: 1rem;
-        
     }
-
 }
 
 // INDIVIDUAL STUDENT LISTINGS
 .student-profiles {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
 }
 
-
 .profile-container {
-    width: 250px;
     background-color: white;
     text-align: center;
     display: flex;
     flex-direction: column;
-    margin: 10px;
     transition: 0.5s;
     
     .student-name {
-        margin-top: 5px;
-        font-size: 1.1rem;
+        margin-top: 7px;
+        font-size: 1.2em;
         font-weight: bold;
-        color: #433737;
+        color: $b-darker-gray;
         text-align: left;
         margin-left: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 3px;
         margin-top: 10px;
     }
     .student-major {
@@ -136,8 +101,7 @@
     .student-major-container {
         display: flex;
         flex-direction: row-reverse;
-        justify-content: space-between;
-        width: 250px;
+        align-items: center;
         padding: 5px 8px 8px 10px;
 
         .student-major {
@@ -149,95 +113,26 @@
         height: 250px;
         transition: 0.2s;
     }
-    .major-ball-container {
-        
-    }
+
     .profile-btn {
-        background-color: #191919;
+        flex-grow: 1;
+        background-color: $b-black;
         border: none;
         outline: none;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         color: white;
         text-align: center;
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 80px;
-        height: 30px;
+        padding: 8px 18px;
     }
 }
 
 // MEDIA QUERY
 
 @media screen and(max-width: 690px) {
-    .filter {
-        a {
-            font-size: 0.7rem;
-            margin: 2px;
-        }
-    }
     .banner-img {
-        transform: translateX(70vw) !important; 
-    }
-}
-
-@media screen and (max-width: 960px) {
-
-    .banner-img {
-        transform: translateX(40vw);
-        width: 50vw;
-        height: 50vw;
-    }
-
-    .filter {
-        padding: 0 10px 0;
-        a {
-            font-size: 0.8rem;
-        }
-    }
-
-    .profile-container {
-        width: 200px;
-        height: 350px;
-
-        .student-major-container {
-            width: 200px;
-            margin-top: auto;
-        }
-
-        .student-name {
-            margin-top: 5px;
-            font-size: 1.2rem;
-            
-        }
-        .student-spec {
-            
-        }
-        .student-img {
-            width: 200px;
-            height: 200px;
-        }
-        .profile-btn {
-        }
-    }
-}
-
-@media screen and (max-width: 490px) {
-    .profile-container {
-
-        .student-name {
-            margin-top: 5px;
-            font-size: 1.2rem;
-            
-        }
-        .student-spec {
-            
-        }
-        .student-img {
-            width: 200px;
-            height: 200px;
-        }
-        .profile-btn {
-        }
+        transform: translateX(50vw) !important; 
     }
 }

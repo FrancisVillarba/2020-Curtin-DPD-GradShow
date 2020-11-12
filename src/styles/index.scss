@@ -15,12 +15,17 @@
 }
 
 // Set your brand colors
-$b-black: #292929;
+$b-actuallyblack: #000; // use this color for the footer
+$b-black: $b-actuallyblack;
 $b-white: #ffffff;
 $b-darker-gray: #515151;
 $b-dark-gray: #979797;
 $b-light-gray: #bdbdbd;
 $b-lighter-gray: #ebebeb;
+
+$dropdown-item-color: $b-black;
+$navbar-item-color: $b-black;
+$navbar-item-hover-color: $b-darker-gray;
 
 // Update Bulma's global variables
 $family-secondary: 'Helvetica Neue', -apple-system, BlinkMacSystemFont,
@@ -31,7 +36,10 @@ $family-primary: 'DIN Regular', 'Helvetica Neue', -apple-system,
 $grey-dark: $b-black;
 $grey-light: $b-lighter-gray;
 $primary: $b-light-gray;
-$link: $b-black;
+$link: $b-white;
+$link-hover: $b-white;
+$link-focus: $b-light-gray;
+$link-active: $b-light-gray;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 $text: $b-white;
@@ -55,6 +63,10 @@ h5 {
   font-family: $family-secondary;
 }
 
+* {
+  outline: none !important;
+}
+
 // Update some of Bulma's component variables
 $body-background-color: $b-lighter-gray;
 $control-border-width: 2px;
@@ -68,15 +80,51 @@ $input-shadow: none;
   background-color: $b-black;
 }
 
+.button.is-medium {
+  font-size: inherit;
+  padding: 1.5rem 2rem;
+}
+
+.scale {
+  transition: 0.1s ease-in-out
+}
+.scale:hover {
+  z-index: 999;
+  transform: scale(1.03);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 10px;
+}
+.scale:focus, .scale:active {
+  transform: scale(1) !important;
+}
+
+.min-h-full {
+  min-height: 100vh;
+}
+
+.header-offset {
+  margin-top: 65px;
+}
+
 .transition-slide-in {
   transition: 0.3s;
   opacity: 1;
   transform: translateX(0);
 }
 
+.items-center {
+  align-items: center;
+}
+.spaced > * + * {
+  margin-left: 20px;
+}
+
 html.is-animating .transition-slide-in {
-  transform: translateX(-20px);
+  transform: translateY(-20px);
   opacity: 0;
+}
+
+body {
+  background-color: $b-black;
 }
 
 .layout {
@@ -88,8 +136,8 @@ html.is-animating .transition-slide-in {
   flex-grow: 1;
 }
 
-.min-h-600 {
-  min-height: 600px;
+.min-h-900 {
+  min-height: 900px;
 }
 
 .max-w-600 {
@@ -113,12 +161,10 @@ html.is-animating .transition-slide-in {
   width: 100%;
 }
 
-@media only screen and (max-width: 769px) {
+@media only screen and (min-width: 769px) {
   .stacked-max-h-600 {
     max-height: 600px;
   }
-}
-@media only screen and (min-width: 769px) {
   .wide-min-h-600 {
     min-height: 600px;
   }
@@ -127,10 +173,20 @@ html.is-animating .transition-slide-in {
   }
 }
 
+@keyframes fadein {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+.fade-in {
+  animation: fadein 0.2s forwards ease-in-out;
+}
+
 $tooltip-radius: 0px;
 $tooltip-background-color: $b-black;
-$tooltip-arrow-size: 12px;
 $tooltip-padding: 0.7rem 1.5rem;
+$tooltip-background-opacity: 1;
+$tooltip-font-size: 1rem;
+$tooltip-radius: 0;
 @import '@creativebulma/bulma-tooltip';
 
 // Page Styling Imports

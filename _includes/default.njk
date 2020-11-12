@@ -5,7 +5,7 @@
   </head>
   <body class="layout {{ bodyClass }}">
     {% include "layout/header.njk" %}
-    <main id="swup" class="layout-main transition-slide-in">
+    <main id="swup" class="layout-main transition-slide-in header-offset">
       {{ content | safe }}
     </main>
     {% include "layout/footer.njk" %}

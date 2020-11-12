@@ -9,9 +9,9 @@ console.log("Hello World")
 
 // check if profile container exists before running Student component
 function init() {
-    const studentGridContainer = document.querySelector(".student-profile-container")
-    if (studentGridContainer) {
-        const DDListing = new StudentListing('Digital Design')
+    if (document.querySelector(".student-profile-container")) {
+        const majorid = document.querySelector('.major-title').dataset.majorId
+        const DDListing = new StudentListing(majorid)
         DDListing.generateStudentListing();
         
         let searchBar = document.querySelector(".search-bar");
@@ -27,6 +27,7 @@ init();
 
 // run check on swup page transition
 swup.on('contentReplaced', function() {
+    window.scrollTo(0, 0)
     init();
 })  
 

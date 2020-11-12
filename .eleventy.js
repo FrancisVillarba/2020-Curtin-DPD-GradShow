@@ -1,7 +1,8 @@
 const yaml = require('js-yaml')
 const htmlmin = require('html-minifier')
 
-module.exports = config => {
+module.exports = (config) => {
+
   // Needed to prevent eleventy from ignoring changes to `webpack.njk`
   // since it is in our `.gitignore`
   config.setUseGitIgnore(false)
