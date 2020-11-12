@@ -25,6 +25,8 @@ const INPUT_DATA_PATH = './input/'
 
 const MAJORS_COLLECTION = 'majors/'
 
+const BASE_HEADSHOTS_URL = "https://storage.googleapis.com/curtin-dpd-gradshow-2020.appspot.com/headshots/";
+
 // Setup and Inits --------------------------------------------------------- //
 
 // Init the Firebase Admin SDK
@@ -258,6 +260,10 @@ async function pushStudentData(studentDataObj, majorDataObj) {
         first: studentTemp['First Name'],
         last: studentTemp['Last Name'],
         preferred: studentPreferredNameTemp,
+      },
+      headshots: {
+        "pro": `${BASE_HEADSHOTS_URL}${studentTemp['Student Number']}_2.jpg`,
+        "fun": `${BASE_HEADSHOTS_URL}${studentTemp['Student Number']}_1.jpg`
       },
       majors: referencesTemp,
       email: studentTemp['Email Address'],
