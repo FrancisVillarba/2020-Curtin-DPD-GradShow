@@ -2,7 +2,7 @@ import Swup from 'swup';
 const swup = new Swup();
 
 import { StudentListing } from './Components/StudentListing';
-import { handleStudentImageGrid } from './student'
+import { handleStudentImages } from './student'
 
 // Entry Point for JS
 console.log("Hello World")
@@ -19,7 +19,7 @@ function init() {
             DDListing.search(e);
         })
     }
-    handleStudentImageGrid()
+    handleStudentImages()
 }
 
 // run check on page load
