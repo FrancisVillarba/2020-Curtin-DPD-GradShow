@@ -14,6 +14,10 @@
 }
 
 .disciplines-container {
+  a {
+    text-decoration: none !important;
+    color: $text !important;
+  }
   max-width: 800px;
   display: flex;
   flex-direction: column;
