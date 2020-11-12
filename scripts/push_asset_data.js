@@ -294,7 +294,7 @@ async function pushStudentAssetData(studentAssetData) {
         };
 
         // For debugging
-        console.log(studentDataUpdateTemp);
+        // console.log(studentDataUpdateTemp);
         
         // Get the reference for this student's data in the database
         let databaseDocumentReference;
@@ -315,7 +315,7 @@ async function pushStudentAssetData(studentAssetData) {
             merge: true
         })
         .then( () => {
-            console.log('\x1b[32m', 'Successfully updated assets for', studentAssetData[i]['First Name']);
+            console.log('\x1b[32m', 'Successfully updated assets for', studentAssetData[i]['First Name'], studentAssetData[i]['Last Name'], '!');
         });
     }
 };
