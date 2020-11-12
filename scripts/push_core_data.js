@@ -25,6 +25,8 @@ const INPUT_DATA_PATH = './input/'
 
 const MAJORS_COLLECTION = 'majors/'
 
+const BASE_HEADSHOTS_URL = "https://storage.googleapis.com/curtin-dpd-gradshow-2020.appspot.com/headshots/";
+
 // Setup and Inits --------------------------------------------------------- //
 
 // Init the Firebase Admin SDK
@@ -152,8 +154,6 @@ async function pushStudentData(studentDataObj, majorDataObj) {
   // console.log(studentDataObj);
   // console.log(majorDataObj);
 
-  // TODO REMINDER - Don't forget to make a document reference for the student's majors
-
   // Iterate through the student data object and push to the database
   for (let i = 0; i < studentDataObj.length; i++) {
     // For debugging
@@ -166,18 +166,50 @@ async function pushStudentData(studentDataObj, majorDataObj) {
     )
 
     // Turn the majors into document references for the database
-    let referencesTemp = []
-    let studentMajorsTemp = studentDataObj[i]['Major'].split(', ')
+    let studentMajorsTemp = studentDataObj[i]['Major'].split(', ');
 
-    // Iterate through the majors list and compare to our majorDataObj
-    for (let j = 0; j < studentMajorsTemp.length; j++) {
-      // For debugging
-      // console.log(studentMajorsTemp[j]);
+    // Check the majors array and transform them as required before proceeding 
+    for( let n = 0; n < studentMajorsTemp.length; n++ ) {
+      if( studentMajorsTemp[n] == 'Advertising' ) {
+        studentMajorsTemp[n] = 'Creative Advertising & Graphic Design';
+      }
 
-      let matchedData =
-        majorDataObj[
-          majorDataObj.findIndex(major => major.title == studentMajorsTemp[j])
-        ]
+      if( studentMajorsTemp[n] == 'Creative Advertising' ) {
+        studentMajorsTemp[n] = 'Creative Advertising & Graphic Design';
+      }
+
+      if( studentMajorsTemp[n] == 'Graphic Design') {
+        studentMajorsTemp[n] = 'Creative Advertising & Graphic Design';
+      }
+
+      if (studentMajorsTemp[n] == 'Advertising & Graphic Design') {
+        studentMajorsTemp[n] = 'Creative Advertising & Graphic Design';
+      }
+
+      if (studentMajorsTemp[n] == 'Creative advertising and Graphic design') {
+          studentMajorsTemp[n] = 'Creative Advertising & Graphic Design';
+      }
+
+      if( studentMajorsTemp[n] == 'Photography') {
+        studentMajorsTemp[n] = 'Illustration';
+      }
+    }
+
+    // De-dupe the javascript array
+    let dedupedStudentMajorsTemp = new Set(studentMajorsTemp);
+
+    // For debugging
+    // console.log(studentMajorsTemp);
+    // console.log(dedupedStudentMajorsTemp);
+
+    // The final majors and the document references goes here
+    let referencesTemp = [];
+
+    // Iterate through the student's de-duped majors list and compare with majorsDataObject (for consistency)
+    dedupedStudentMajorsTemp.forEach( (value) => {
+      let matchedData = majorDataObj[
+        majorDataObj.findIndex( major => major.title == value)
+      ];
 
       if (!(matchedData === undefined)) {
         // Create document references and push to the collection
@@ -195,167 +227,48 @@ async function pushStudentData(studentDataObj, majorDataObj) {
         )
         console.log(
           'Could not find document with title',
-          `"${studentMajorsTemp[j]}"`,
+          `"${value}"`,
           'to reference towards in the database! \n\n'
         )
         process.exit(5)
       }
-    }
+    });
 
-    // Declare the student's projects and convert them for our schema (with auto generated ALT tags)
-    let projectImagesTemp = []
-    let projectImagesData = studentDataObj[i]['Upload Images Here'].split(', ')
-    for (let k = 0; k < projectImagesData.length; k++) {
-      let tempProject = {
-        src: projectImagesData[k],
-        alt: studentDataObj[i]['First Name'] + `'s Project Preview Image ${k}`,
-      }
-      projectImagesTemp.push(tempProject)
-    }
-
-    // Some logic for us to create the array of objects for the social links
-    let socialLinksTemp = [];
-
-    if (studentDataObj[i]['Your Artstation link'] != '') {
-      let artstationData = {
-        name: "Artstation",
-        link: studentDataObj[i]['Your Artstation link']
-      };
-      socialLinksTemp.push(artstationData);
-    }
-
-    if (studentDataObj[i]['Your Behance link'] != '') {
-      let behanceData = {
-        name: "Behance",
-        link: studentDataObj[i]['Your Behance link']
-      }
-      socialLinksTemp.push(behanceData);
-    }
-
-    if (studentDataObj[i]['Your CGSociety link'] != '') {
-      let cgsocietyData = {
-        name: "CGSociety",
-        link: studentDataObj[i]['Your CGSociety link']
-      }
-      socialLinksTemp.push(cgsocietyData);
-    }
-
-    // Bugfix for the input data having the wrong label
-    if (studentDataObj[i]['Your Dribble link'] != '' || studentDataObj[i]['Your Dribbble link'] != '') {
-      let dribbbleData = {
-        name: "Dribbble",
-        link: studentDataObj[i]['Your Dribble link']
-      }
-      socialLinksTemp.push(dribbbleData);
-    }
-
-    if (studentDataObj[i]['Your Facebook business page link'] != '') {
-      let facebookData = {
-        name: "Facebook",
-        link: studentDataObj[i]['Your Facebook business page link']
-      }
-      socialLinksTemp.push(facebookData);
-    }
-
-    if (studentDataObj[i]['Your Github link'] != '') {
-      let githubData = {
-        name: "GitHub",
-        link: studentDataObj[i]['Your Github link']
-      }
-      socialLinksTemp.push(githubData);
-    }
-
-    if (studentDataObj[i]['Your Instagram link'] != '') {
-      let instagramData = {
-        name: "Instagram",
-        link: studentDataObj[i]['Your Instagram link']
-      }
-      socialLinksTemp.push(instagramData);
-    }
-
-    if (studentDataObj[i]['Your LinkedIn link'] != '') {
-      let linkedInData = {
-        name: "LinkedIn",
-        link: studentDataObj[i]['Your LinkedIn link']
-      }
-      socialLinksTemp.push(linkedInData);
-    }
-
-    if (studentDataObj[i]['Your Twitter link'] != '') {
-      let twitterData = {
-        name: "Twitter",
-        link: studentDataObj[i]['Your Twitter link']
-      }
-      socialLinksTemp.push(twitterData);
-    }
-
-    if (studentDataObj[i]['Your Vimeo link'] != '') {
-      let vimeoData = {
-        name: "Vimeo",
-        link: studentDataObj[i]['Your Vimeo link']
-      }
-      socialLinksTemp.push(vimeoData);
-    }
-
-    if (studentDataObj[i]['Your Youtube link'] != '') {
-      let youtubeData = {
-        name: "YouTube",
-        link: studentDataObj[i]['Your Youtube link']
-      }
-      socialLinksTemp.push(youtubeData)
-    }
-
-    if (studentDataObj[i]['Your Bitbucket link'] != '') {
-      let bitbucketData = {
-        name: "Bitbucket",
-        link: studentDataObj[i]['Your Bitbucket link']
-      }
-      socialLinksTemp.push(bitbucketData);
-    }
-
-    if (studentDataObj[i]['Your CodePen link'] != '') {
-      let codepenData = {
-        name: "CodePen",
-        link: studentDataObj[i]['Your CodePen link']
-      }
-      socialLinksTemp.push(codepenData);
-    }
-
-    if (studentDataObj[i]['Your Polycount link'] != '') {
-      let polycountData = {
-        name: "PolyCount",
-        link: studentDataObj[i]['Your Polycount link']
-      }
-      socialLinksTemp.push(polycountData);
-    }
-
-    if (studentDataObj[i]['Your Tumblr link'] != '') {
-      let tumblrData = {
-        name: "Tumblr",
-        link: studentDataObj[i]['Your Tumblr link']
-      }
-      socialLinksTemp.push(tumblrData);
-    }
-
-    // For debugging the student's references
-    // console.log(referencesTemp);
-
-    let studentTemp = studentDataObj[i]
     // Create the data that we will be using to push to to the database
+    let studentTemp = studentDataObj[i]
+
+    // For Daniel Westbrook, convert empty fields to nulls to support nunjucks + eleventy stuff
+    let studentPreferredNameTemp = null;
+    if( studentTemp['Preferred Name'] != "" ) {
+      studentPreferredNameTemp = studentTemp['Preferred Name'];
+    }
+
+    let studentBioTemp = null;
+    if( studentTemp['Bio'] != "" ) {
+      studentBioTemp = studentTemp['Bio'];
+    }
+
+    let studentStatementTemp = null;
+    if( studentTemp['Short Creative Statement'] != "" ) {
+      studentStatementTemp = studentTemp['Short Creative Statement'];
+    }
+
+    // Here, we make the final student data object to push to the database
     let studentDataTemp = {
       id: studentTemp['Student Number'],
       name: {
         first: studentTemp['First Name'],
         last: studentTemp['Last Name'],
-        preferred: studentTemp['Preferred Name'],
+        preferred: studentPreferredNameTemp,
+      },
+      headshots: {
+        "pro": `${BASE_HEADSHOTS_URL}${studentTemp['Student Number']}_2.jpg`,
+        "fun": `${BASE_HEADSHOTS_URL}${studentTemp['Student Number']}_1.jpg`
       },
       majors: referencesTemp,
       email: studentTemp['Email Address'],
-      bio: studentTemp['Bio'],
-      statement: studentTemp['Short Creative Statement'],
-      profile: studentTemp['Your portfolio link'],
-      projects: projectImagesTemp,
-      social: socialLinksTemp,
+      bio: studentBioTemp,
+      statement: studentStatementTemp,
     }
 
     // For debugging the student's final data
