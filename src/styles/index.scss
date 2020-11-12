@@ -44,16 +44,6 @@ $widescreen-enabled: false;
 $fullhd-enabled: false;
 $text: $b-light-gray;
 
-a {
-  text-decoration: underline;
-  &:hover {
-    text-decoration: none;
-  }
-  &:active, &:focus {
-    text-decoration: underline;
-  }
-}
-
 $button-color: $b-black;
 $button-background-color: $b-white;
 $button-border-width: 0;
