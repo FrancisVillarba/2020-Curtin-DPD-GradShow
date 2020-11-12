@@ -47,6 +47,7 @@
 
     .search-bar {
         width: 100%;
+        font-size: 0.8em;
         height: 2rem;
         background: #fff;
         color: $b-black;
@@ -84,12 +85,13 @@
     transition: 0.5s;
     
     .student-name {
-        margin-top: 5px;
+        margin-top: 7px;
+        font-size: 1.2em;
         font-weight: bold;
         color: $b-darker-gray;
         text-align: left;
         margin-left: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 3px;
         margin-top: 10px;
     }
     .student-major {
@@ -117,7 +119,7 @@
         background-color: $b-black;
         border: none;
         outline: none;
-        font-size: 0.7rem;
+        font-size: 0.8rem;
         color: white;
         text-align: center;
         display: flex;
