@@ -59,7 +59,7 @@ $title-color: $b-white;
 $black: #0f0f0f;
 
 .fadein, .fadein-quick {
-  transition: 0.5s all ease-in-out;
+  transition: $transition;
 }
 
 h1,

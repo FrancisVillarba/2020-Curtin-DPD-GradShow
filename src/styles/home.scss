@@ -1,6 +1,6 @@
 .home-banner video {
   object-fit: cover;
-  min-height: 100vh;
+  height: 40vh;
 }
 
 .home-left {
@@ -9,6 +9,7 @@
 
 .home-right {
   display: flex;
+  text-align: right;
   flex-direction: column;
   align-items: flex-end;
 }
@@ -48,7 +49,6 @@
   .disciplines-container {
     grid-template-columns: 1fr 1fr;
     align-items: flex-start;
-
     .discipline {
       flex-direction: row-reverse;
       img {
@@ -65,7 +65,20 @@
   }
 }
 
-.main-home-padding {
-  padding-top: 8em;
-  padding-bottom: 8em;
+.main-home {
+  padding-top: $page-padding;
+  padding-bottom: 6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+@media only screen and (max-width: 1500px) {
+  .main-home {
+    display: block;
+  }
+  .home-right {
+    text-align: left;
+    margin-top: $page-padding;
+  }
 }

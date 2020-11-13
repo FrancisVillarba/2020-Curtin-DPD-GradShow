@@ -1,7 +1,7 @@
 const data = require('./majorsComputed.js')
 
 const rawData = [...data]
-majorImages = {}
+const majorImages = {}
 rawData.forEach(major => {
   if (major.color) {
     majorImages[major.id] = major.color
