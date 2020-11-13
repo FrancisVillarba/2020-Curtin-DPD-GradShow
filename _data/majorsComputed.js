@@ -1,7 +1,7 @@
 const data = require('./majors.json')
 
 const computed = [...data]
-computed.push({ id: '0', title: 'All Graduates' })
+computed.push({ id: '0', title: 'All Graduates', color: '/imgs/orbs/all.png' })
 
 computed.forEach(major => {
   switch (major.id) {

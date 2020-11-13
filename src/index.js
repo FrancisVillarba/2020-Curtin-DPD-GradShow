@@ -1,5 +1,21 @@
 import Swup from 'swup';
-const swup = new Swup();
+import SwupPreloadPlugin from '@swup/preload-plugin';
+import SwupScrollPlugin from '@swup/scroll-plugin';
+import SwupA11yPlugin from '@swup/a11y-plugin';
+
+const swup = new Swup({
+    animateHistoryBrowsing: true,
+    plugins: [
+      new SwupPreloadPlugin(),
+      new SwupA11yPlugin(),
+      new SwupScrollPlugin({
+        doScrollingRightAway: false,
+        animateScroll: true,
+        scrollFriction: 0.5,
+        scrollAcceleration: 0.1,
+    }),
+  ]
+});
 
 import { StudentListing } from './Components/StudentListing';
 import { handleStudentPage } from './student'
@@ -41,12 +57,12 @@ function init() {
     setupEntries()
 }
 
-// run check on page load
+// run on page load
 init();
 
 // run check on swup page transition
 swup.on('contentReplaced', function() {
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
     init();
 })  
 
