@@ -22,10 +22,12 @@ permalink: "student/{{ student.id }}/"
                 </p>
                 
                 <div class="is-flex items-center w-full mt-6 max-w-600">
-                    <button class="button is-white is-medium">Portfolio</button>
+                    <a href="{{ student.portfolio }}" target="_blank" rel="noopener noreferrer">
+                        <button class="button is-white is-medium">Portfolio</button>
+                    </a>
                     <div class="social-icons items-center ml-5 layout-main">
                         {% for social in student.social %}
-                            <a href="{{ social.link }}">
+                            <a href="{{ social.link }}" target="_blank" rel="noopener noreferrer">
                             {% if socialIcons[social.name] %}    
                                 <i class="fab {{ socialIcons[social.name] }}"></i>
                             {% else %}
@@ -44,9 +46,13 @@ permalink: "student/{{ student.id }}/"
             {% endfor %}
             </div>
         </div>
-        <div class="column is-one-third px-0 py-0 portfolio-image">
-            <img src="https://via.placeholder.com/1920x2560" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student">
-            {# <img src="{{ student.headshots.pro }}" class="fit-cover wide-min-h-full stacked-max-h-600 w-full" alt="sample student"> #}
+        <div class="column is-one-third px-0 py-0 portfolio-image profile-headshot headshot-hover">
+            {% if student.headshots.fun %}
+                <img src="{{ student.headshots.fun }}" class="student-headshot wide-min-h-full stacked-max-h-600" alt="sample student">            
+                <img src="{{ student.headshots.pro }}" class="student-headshot headshot-pro wide-min-h-full stacked-max-h-600" alt="sample student">
+            {% else %}
+                <img src="{{ student.headshots.pro }}" class="student-headshot wide-min-h-full stacked-max-h-600" alt="sample student">
+            {% endif %}
         </div>
     </div>
     <div class="student-image-grid page-padding-all has-background-white">

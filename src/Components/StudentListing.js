@@ -41,7 +41,7 @@ class StudentListing {
                 
             let profileEntry = document.createElement("a");
             profileEntry.href = `/student/${student.id}`;
-            profileEntry.className = "profile-link scale"
+            profileEntry.className = "profile-link scale headshot-hover"
             let profileWrapper = document.createElement("div");
             profileWrapper.className = "profile-container fadein-quick";
             profileEntry.appendChild(profileWrapper)
@@ -67,11 +67,24 @@ class StudentListing {
 
             studentSpec.appendChild(majorCont);
 
-
             // Create an image tag for each student
-            let studentImg = document.createElement("img");
-            studentImg.className = "student-img";
-            studentImg.setAttribute("src", student.img);
+            const studentImgPro = document.createElement("img");
+            studentImgPro.dataset.studentId = student.id
+            studentImgPro.className = "student-headshot headshot-pro";
+            studentImgPro.setAttribute("src", student.headshots.pro);
+
+            const studentImgFun = document.createElement("img");
+            studentImgFun.dataset.studentId = student.id
+            studentImgFun.className = "student-headshot";
+            studentImgFun.setAttribute("src", student.headshots.fun);
+
+            const studentImgCont = document.createElement('div')
+            studentImgCont.className = 'portfolio-image listing-headshot'
+
+
+            studentImgCont.appendChild(studentImgPro);
+            studentImgCont.appendChild(studentImgFun);
+            profileWrapper.appendChild(studentImgCont);
 
             // Creates Container for both buttons
             const btnCont = document.createElement('div')      
@@ -92,7 +105,6 @@ class StudentListing {
             studentSpec.appendChild(btnCont);
 
             // Append name tag and spec to student's container
-            profileWrapper.appendChild(studentImg);
             profileWrapper.appendChild(studentName);
             profileWrapper.appendChild(studentSpec);
 

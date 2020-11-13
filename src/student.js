@@ -1,3 +1,5 @@
+import studentData from '../_data/studentData.json'
+
 export const handleStudentPage = () => {
   // Handle Student Grid
   const images = document.querySelectorAll('.student-image-grid')
