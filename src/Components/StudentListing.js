@@ -1,4 +1,4 @@
-import studentData from '../../_data/studentData.json';
+import studentData from '../../_data/studentDataComputed.js';
 import majorImages from '../../_data/majorImages'
 // Array for each major for demonstration purposes
 let majors = [

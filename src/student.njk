@@ -2,7 +2,7 @@
 layout: default
 title: Student Page
 pagination:
-    data: studentData
+    data: studentDataComputed
     size: 1
     alias: student
 permalink: "student/{{ student.id }}/"
@@ -19,6 +19,7 @@ permalink: "student/{{ student.id }}/"
             <div class="mb-2 is-relative z-1">
                 <p class="max-w-600 mb-2">
                     {{ student.bio }}
+                    <pre>{{ student.headshots | dump }}</pre>
                 </p>
                 
                 <div class="is-flex items-center w-full mt-6 max-w-600">
@@ -48,10 +49,10 @@ permalink: "student/{{ student.id }}/"
         </div>
         <div class="column is-one-third px-0 py-0 portfolio-image profile-headshot headshot-hover">
             {% if student.headshots.fun %}
-                <img src="{{ student.headshots.fun }}" class="student-headshot wide-min-h-full stacked-max-h-600" alt="sample student">            
-                <img src="{{ student.headshots.pro }}" class="student-headshot headshot-pro wide-min-h-full stacked-max-h-600" alt="sample student">
+                <img src="{{ student.headshots.fun }}" class="student-headshot wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">            
+                <img src="{{ student.headshots.pro }}" class="student-headshot headshot-pro wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">
             {% else %}
-                <img src="{{ student.headshots.pro }}" class="student-headshot wide-min-h-full stacked-max-h-600" alt="sample student">
+                <img src="{{ student.headshots.pro }}" class="student-headshot wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">
             {% endif %}
         </div>
     </div>
