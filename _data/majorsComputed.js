@@ -22,4 +22,4 @@ computed.forEach(major => {
   }
 })
 
-module.exports = computed
+export default computed

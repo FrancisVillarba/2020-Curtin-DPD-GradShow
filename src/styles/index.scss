@@ -141,6 +141,16 @@ $input-shadow: none;
   transform: scale(1) !important;
 }
 
+.slidein {
+  transition: 0.1s ease-in-out
+}
+.slidein:hover {
+  transform: translateX(-10px);
+}
+.slidein:focus, .slidein:active {
+  transform: translateX(-5px) !important;
+}
+
 .min-h-full {
   min-height: 100vh;
 }
