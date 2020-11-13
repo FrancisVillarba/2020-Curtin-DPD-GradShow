@@ -61,6 +61,9 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "@swup/a11y-plugin": "^1.0.0",
+    "@swup/preload-plugin": "^1.0.3",
+    "@swup/scroll-plugin": "^1.0.6",
     "animejs": "^3.2.0",
     "bulma": "^0.9.0",
     "swup": "^2.0.11"
