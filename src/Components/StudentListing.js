@@ -32,6 +32,9 @@ class StudentListing {
 
     generateStudentListing() {
         this.profileContainer.innerHTML = ''
+
+        const studentArray = []
+
         this.studentDataInstance.forEach(student => {
             if (this.majorid !== '0') {
                 if (!student.majors.find(major => major.id === this.majorid)) {
@@ -108,12 +111,21 @@ class StudentListing {
             profileWrapper.appendChild(studentName);
             profileWrapper.appendChild(studentSpec);
 
-            // Append to profile container
-            this.profileContainer.appendChild(profileEntry);
+            studentArray.push(profileEntry)
         })
-
-        let profileEntry = document.querySelectorAll(".profile-container");
+        
+        this.generateListFromStudents(studentArray)
     }
     
+    generateListFromStudents(studentArray) {
+        const randomised = studentArray.sort(randomiser);  
+        function randomiser(a, b) {  
+            return 0.5 - Math.random();
+        }  
+
+        randomised.forEach(student => {
+            this.profileContainer.appendChild(student);
+        })
+    }
 }
 export { StudentListing }
