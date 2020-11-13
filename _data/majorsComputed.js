@@ -15,7 +15,7 @@ computed.forEach(major => {
       major.color = '/imgs/orbs/ill.png'
       break
     case 'wv8b6Q5MsnqrMmtEmXPE':
-      major.color = '/imgs/orbs/gd.png'
+      major.color = '/imgs/orbs/cagd.png'
       break
     default:
       break
