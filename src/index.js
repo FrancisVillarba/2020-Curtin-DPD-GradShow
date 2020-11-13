@@ -23,6 +23,8 @@ function init() {
           homeBtn.classList.add('dynamic-gradient')
           homeBtn.style.opacity = 1
         }, 200);
+    } else {
+      homeBtn.style.opacity = 1
     }
     
     if (document.querySelector(".student-profile-container")) {
