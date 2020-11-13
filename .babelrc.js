@@ -1,6 +1,7 @@
 module.exports = api =>
   api.env('production')
     ? {
+        sourceType: 'unambiguous',
         presets: [
           [
             // Only add polyfill in production since
@@ -17,6 +18,7 @@ module.exports = api =>
         ],
       }
     : {
+        sourceType: 'unambiguous',
         // Allow to debug without `__WEBPACK_IMPORTED...` weird names
         plugins: [
           ['transform-es2015-modules-commonjs-simple', { noMangle: true }],
