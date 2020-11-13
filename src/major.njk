@@ -16,7 +16,7 @@ permalink: "major/{{ major.title | slug }}/"
     {% else %}
       <p class="major-intro transition-fadeout">Students From The Major Of</p>
     {% endif %}
-    <h1 class="title major-title" data-major-id="{{ major.id }}" >{{ major.title }}</h1>
+    <h1 class="title major-title is-size-1 is-size-4-mobile" data-major-id="{{ major.id }}" >{{ major.title }}</h1>
   </div>
   {% if major.color %}
     <img src="{{ major.color }}" class="banner-img" alt="">

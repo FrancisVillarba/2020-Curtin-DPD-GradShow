@@ -8,16 +8,6 @@
     grid-column: span 2;
 }
 
-.student-large-title {
-    font-size: 5em;
-}
-
-@media only screen and (max-width: 1200px) {
-    .student-large-title {
-        font-size: 3em;
-    }
-}
-
 .z-1 {
     z-index: 1;
 }
@@ -77,7 +67,8 @@
         right: unset;
         top: unset;
         bottom: unset;
-        transform: translateY(90px) !important;
+        transform: translateY(90px) translateX(-70px) !important;
+        margin-top: -40px;
         img {
             display: inline-block;
             width: 40%;
@@ -94,6 +85,6 @@
 
 @media only screen and (max-width: 769px) {
     .major-orbs {
-        transform: translateY(70px) !important;
+        transform: translateY(70px) translateX(-50px) !important;
     }
 }
