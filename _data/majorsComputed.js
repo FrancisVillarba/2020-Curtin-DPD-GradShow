@@ -11,14 +11,11 @@ computed.forEach(major => {
     case 'HMc6Bn6bu79CwRPUaeI6':
       major.color = '/imgs/orbs/agd.png'
       break
-    case 'K77VrZratwDXnVAaeF4c':
+    case 'nvjZfYRytFwceJz66qBf':
       major.color = '/imgs/orbs/ill.png'
       break
-    case 'Q2JKhMh3LUxZjZRXpTvf':
-      major.color = '/imgs/orbs/gd.png'
-      break
-    case 'SY1ApOdJzRd0TmSzkIz5':
-      major.color = '/imgs/orbs/ca.png'
+    case 'wv8b6Q5MsnqrMmtEmXPE':
+      major.color = '/imgs/orbs/cagd.png'
       break
     default:
       break
