@@ -98,6 +98,8 @@ async function pullStudentData(majorsList) {
     tempDoc.majors = []
     // Add the document id
     tempDoc.id = doc.id
+    // Add the student id
+    tempDoc.studentId = doc.data().id
 
     // For debugging
     // console.log('Temp Doc', tempDoc);
@@ -176,10 +178,13 @@ async function parseStudentList(studentData) {
     let majors = student.majors
     // Get their headshot photos
     let headshots = student.headshots
+    // Get their student id
+    let id = student.id
 
     // Create the object
     let studentListObject = {
       id: key,
+      studentId: id,
       name: name,
       majors: majors,
       headshots: headshots,
