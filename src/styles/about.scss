@@ -1,0 +1,23 @@
+.about-banner{
+        position: relative;
+}
+
+.about-orb{
+        height: 600px;
+        width: 600px;
+        margin-left: auto;
+        transform: translate(150px, -200px);
+}
+
+.min-height{
+        height:min-content;
+}
+
+.is-flex-1{
+        flex: 1;
+
+}
+    
+.small-text{
+        font-size:0.8em;
+}
