@@ -7,4 +7,4 @@ const computed = data.map(student => {
     return temp
 });
 
-export default computed
+module.exports = computed
