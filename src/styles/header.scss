@@ -46,6 +46,7 @@
 }
 
 #home-btn {
+    opacity: 0;
     font-weight: bold;
     transition: $transition;
 }
@@ -94,7 +95,32 @@
         .dropdown-menu {
             display: flex;
             position: relative;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
         }
+        .dropdown-content {
+            box-shadow: unset;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .dropdown-item {
+            white-space: normal;
+            font-size: 1em;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+    }
+    .drop-item {
+        padding-left: 1.4rem !important;
+        padding-right: 1.4rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }
 

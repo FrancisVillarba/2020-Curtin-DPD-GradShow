@@ -12,11 +12,11 @@ permalink: "major/{{ major.title | slug }}/"
 <section class="banner page-padding py-6">
   <div class="banner-text">
     {% if major.id === '0' %}
-      <p class="major-intro">Design & Architecture Graduates</p>
+      <p class="major-intro transition-fadeout">Design & Architecture Graduates</p>
     {% else %}
-      <p class="major-intro">Students From The Major Of</p>
+      <p class="major-intro transition-fadeout">Students From The Major Of</p>
     {% endif %}
-    <h1 class="title major-title" data-major-id="{{ major.id }}" >{{ major.title }}</h1>
+    <h1 class="title major-title is-size-1 is-size-4-mobile" data-major-id="{{ major.id }}" >{{ major.title }}</h1>
   </div>
   {% if major.color %}
     <img src="{{ major.color }}" class="banner-img" alt="">
@@ -24,6 +24,13 @@ permalink: "major/{{ major.title | slug }}/"
 </section>
 {% if major.id !== '0' %}
   <section class="profile-listing-showreel-container">
+      <iframe 
+        width="1200" 
+        height="700" 
+        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&color=white&loop=1&playsinline=1" 
+        frameborder="0" 
+        allowfullscreen
+      ></iframe>
   </section>
 {% endif %}
 <section class="py-6 page-padding mx-auto min-h-full">

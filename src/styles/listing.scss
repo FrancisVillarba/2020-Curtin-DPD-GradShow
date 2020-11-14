@@ -1,13 +1,19 @@
 .profile-listing-showreel-container {
-    height: 80vh;
-    background-color: $b-darker-gray;
+    // height: 80vh;
+    // background-color: $b-darker-gray;
+    z-index: 2;
+    position: relative;
+    iframe {
+        width: 100%;
+        height: 80vh;
+    }
 }
 
 .banner {
     background-color: $b-black;
     display: flex;
     flex-direction: row;
-    height: 250px;
+    height: 200px;
     align-items: center;
     overflow: hidden;
 
@@ -17,14 +23,14 @@
         margin-left: auto;
         transform: translateX(100px);
         max-width: unset;
-        right: 0;
+        z-index: 0;
     }
 
     .banner-text {
         text-align: left;
         margin: 0 !important;
         color: white;
-        z-index: 2;
+        z-index: 3;
         .major-intro {
             color: $text;
             margin-bottom: 0.5rem;
@@ -32,7 +38,6 @@
 
         h1 {
             color: white;
-            font-size: 3rem;
             text-transform: uppercase;
         }
     }
@@ -83,6 +88,35 @@
     }
 }
 
+.student-headshot {
+    object-fit: cover;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    transition: $transition;
+    &.headshot-pro {
+        z-index: 2;
+        opacity: 1;
+    }
+}
+.headshot-hover:hover .headshot-pro {
+    opacity: 0;
+}
+.portfolio-image {
+    width: 100%;
+    position: relative;
+}
+.listing-headshot {
+    height: 300px;
+}
+.profile-headshot {
+    min-height: 500px;
+}
+
 .profile-container {
     background-color: white;
     text-align: center;
@@ -115,25 +149,7 @@
             margin: 0 5px;
         }
     }
-    .student-img {
-        width: 100%;
-        height: 250px;
-        transition: 0.2s;
-    }
 
-    // .profile-btn {
-    //     flex-grow: 1;
-    //     background-color: $b-black;
-    //     border: none;
-    //     outline: none;
-    //     font-size: 0.8rem;
-    //     color: white;
-    //     text-align: center;
-    //     display: flex;
-    //     align-items: center;
-    //     justify-content: center;
-    //     padding: 8px 18px;
-    // }
     .profile-btn-cont {
         display: flex;
         justify-content: flex-start;
@@ -142,7 +158,9 @@
         }
     }
 }
-
+.profile-link {
+    z-index: 2;
+}
 // MEDIA QUERY
 
 @media screen and(max-width: 1300px) {
@@ -155,12 +173,12 @@
         height: unset;
         .banner-img {
             position: absolute;
-            bottom: -200px;
+            bottom: -100px;
             margin-top: 1em;
-            height: 400px;
-            width: 400px;
+            height: 200px;
+            width: 200px;
             margin-left: auto;
-            transform: translateX(100px);
+            transform: translateX(-100px);
             max-width: unset;
         }
     
