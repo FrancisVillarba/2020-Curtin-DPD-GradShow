@@ -31,7 +31,7 @@ burger.addEventListener('click', () => {
   });
 })
 
-function setPageTitle() {
+function setPageData() {
   const titleData = document.querySelector('[data-title]')
   if (titleData && titleData.dataset.title) {
     document.title = titleData.dataset.title
@@ -40,7 +40,7 @@ function setPageTitle() {
 
 // check if profile container exists before running Student component
 function init() {
-    setPageTitle()
+    setPageData()
     const homeBtn = document.getElementById('home-btn')
     if (window.location.pathname === '/') {
         homeBtn.style.opacity = 0

@@ -47,19 +47,21 @@
 
 .credits-cont {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem 20px;
 
   * + h4 {
     margin-top: 2rem;
   }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1500px) {
   .credits-cont {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
   }
+}
+
+@media only screen and (max-width: 1200px) {
   .about-hero {
     flex-direction: column-reverse;
     .about-space-top {
@@ -86,6 +88,12 @@
 
 @media only screen and (max-width: 500px) {
   .value-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .credits-cont {
     grid-template-columns: 1fr;
   }
 }
