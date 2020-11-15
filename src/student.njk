@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Student Page
+title: Disruption 2020 // Curtin Grad Show
 pagination:
     data: studentDataComputed
     size: 1
@@ -8,12 +8,14 @@ pagination:
 permalink: "student/{{ student.id }}/"
 ---
 
-<div>
+<div data-title="{% if student.name.preferred %}{{ student.name.preferred }}{% else %}{{ student.name.first }}{% endif %} {{ student.name.last }} // Disruption 2020 // Curtin Grad Show">
     <div class="columns dark min-h-900 mb-0 mt-0">
         <div class="profile-col-left page-padding-left column is-flex flex-column">
             <div class="layout-main z-1 fadein mb-6">
                 <h4 class="is-size-5 is-size-6-mobile mb-3 max-w-600 transition-fadeout">{{ student.majors | join(", ", "title") }}</h4>
-                <h1 class="title is-size-1 is-size-4-mobile is-uppercase mb-2">{{ student.name.first }} {{ student.name.last }}</h1>
+                <h1 class="title is-size-1 is-size-4-mobile is-uppercase mb-2">
+                    {% if student.name.preferred %}{{ student.name.preferred }}{% else %}{{ student.name.first }}{% endif %} {{ student.name.last }}
+                </h1>
                 <p class="max-w-600 transition-fadeout">{{ student.statement }}</p>
             </div>
             <div class="mb-2 is-relative z-1">
@@ -22,9 +24,11 @@ permalink: "student/{{ student.id }}/"
                 </p>
                 
                 <div class="is-flex items-center w-full mt-6 max-w-600">
-                    <a href="{{ student.portfolio }}" target="_blank" rel="noopener noreferrer">
-                        <button class="button is-white is-medium">Portfolio</button>
-                    </a>
+                    {% if student.portfolio %}
+                        <a href="{{ student.portfolio }}" target="_blank" rel="noopener noreferrer">
+                            <button class="button is-white is-medium">Portfolio</button>
+                        </a>
+                    {% endif %}
                     <div class="social-icons items-center ml-5 layout-main">
                         {% for social in student.social %}
                             <a href="{{ social.link }}" target="_blank" rel="noopener noreferrer">
@@ -38,7 +42,7 @@ permalink: "student/{{ student.id }}/"
                     </div>
                 </div>
             </div>
-            <div class="major-orbs">
+            <div class="major-orbs entry-slidein">
             {% for major in student.majors %}
                 {% if majorImages[major.id] %}
                     <img src="{{ majorImages[major.id] }}">                    
@@ -55,11 +59,11 @@ permalink: "student/{{ student.id }}/"
             {% endif %}
         </div>
     </div>
-    <div class="student-image-grid page-padding-all has-background-white">
-        <img src="https://via.placeholder.com/2560x1920" alt="Alt Tag">
-        <img src="https://via.placeholder.com/2560x1920" alt="Alt Tag">
-        <img src="https://via.placeholder.com/2560x1920" alt="Alt Tag">
-        <img src="https://via.placeholder.com/2560x1920" alt="Alt Tag">
-        <img src="https://via.placeholder.com/2560x1920" alt="Alt Tag">
-    </div>
+    {% if projects %} 
+        <div class="student-image-grid page-padding-all has-background-white">
+            {% for project in projects %}
+                <img src="{{ project.src }}" alt="{{ project.alt }}">
+            {% endfor %}
+        </div>
+    {% endif %}
 </div>

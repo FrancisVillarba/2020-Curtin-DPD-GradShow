@@ -36,11 +36,11 @@ module.exports = {
       hash: true,
       inject: false,
     }),
-    new FaviconsWebpackPlugin({
-      logo: './logo.png',
-      cache: true,
-      outputPath: 'favicons',
-    }),
+    // new FaviconsWebpackPlugin({
+    //   logo: './logo.png',
+    //   cache: false,
+    //   outputPath: 'favicons',
+    // }),
   ],
   module: {
     rules: [
