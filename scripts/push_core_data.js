@@ -25,14 +25,14 @@ const INPUT_DATA_PATH = './input/'
 
 const MAJORS_COLLECTION = 'majors/'
 
-const BASE_HEADSHOTS_URL = "https://storage.googleapis.com/curtin-dpd-gradshow-2020.appspot.com/headshots/";
+const BASE_HEADSHOTS_URL = "/public/imgs/headshots/";
 
 // Setup and Inits --------------------------------------------------------- //
 
 // Init the Firebase Admin SDK
 FIREBASE_ADMIN.initializeApp({
   credential: FIREBASE_ADMIN.credential.cert(FIREBASE_SERVICE_ACCOUNT),
-  databaseURL: '/public/imgs/headshots/',
+  databaseURL: 'https://curtin-dpd-gradshow-2020.firebaseio.com',
 })
 
 // Declare the database object
