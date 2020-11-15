@@ -37,13 +37,14 @@ $family-primary: 'DIN Regular', 'Helvetica Neue', -apple-system,
 $grey-dark: $b-black;
 $grey-light: $b-lighter-gray;
 $primary: $b-light-gray;
-$link: $b-white;
-$link-hover: $b-white;
-$link-focus: $b-light-gray;
-$link-active: $b-light-gray;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 $text: $b-light-gray;
+
+$link: $b-white;
+$link-hover: $text;
+$link-focus: $b-white;
+$link-active: $b-white;
 
 $button-color: $b-black;
 $button-background-color: $b-white;
@@ -151,6 +152,15 @@ $input-shadow: none;
   transform: translateX(-5px) !important;
 }
 
+@media only screen and (max-width: 500px) {
+  .slidein:hover {
+    transform: translateX(10px);
+  }
+  .slidein:focus, .slidein:active {
+    transform: translateX(5px) !important;
+  }
+}
+
 .min-h-full {
   min-height: 100vh;
 }
@@ -238,6 +248,82 @@ $tooltip-padding: 0.7rem 1.5rem;
 $tooltip-background-opacity: 1;
 $tooltip-font-size: 1rem;
 $tooltip-radius: 0;
+
+@keyframes entryslidein {
+  from {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes entryslideinleft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes entryfadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .entry-slidein, .entry-fadein-delay-2, .entry-slideinleft, .entry-slidein-delay-1, .entry-slidein-delay-2, .entry-slidein-delay-3, .entry-slidein-delay-4 {
+    opacity: 0;
+  }
+  .entry-slideinleft {
+    animation: entryslideinleft 1s ease-in-out forwards;
+  }
+  .entry-slidein {
+    animation: entryslidein 1s ease-in-out forwards;
+  }
+  .entry-fadein-delay-2 {
+    animation: entryfadein 1s 0.4s ease-in-out forwards;
+  }
+  .entry-slidein-delay-1 {
+    animation: entryslidein 1s 0.2s ease-in-out forwards;
+  }
+  .entry-slidein-delay-2 {
+    animation: entryslidein 1s 0.4s ease-in-out forwards;
+  }
+  .entry-slidein-delay-3 {
+    animation: entryslidein 1s 0.6s ease-in-out forwards;
+  }
+  .entry-slidein-delay-4 {
+    animation: entryslidein 1s 0.8s ease-in-out forwards;
+  }
+}
+
+.error-page {
+  display: grid;
+  place-items: center;
+  flex-grow: 1;
+  text-align: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .error-page {
+    text-align: left;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
 
 // Page Styling Imports
 @import './home.scss';

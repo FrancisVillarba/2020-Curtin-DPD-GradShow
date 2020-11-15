@@ -1,25 +1,28 @@
 ---
 layout: default.njk
-title: Major Page
+title: Disruption 2020 // Curtin Grad Show
 pagination:
     data: majorsComputed
     size: 1
     alias: major
 permalink: "major/{{ major.title | slug }}/"
+description: Disruption 2020 is the final year showcase of Curtin University Design & Architecture graduates. We're fluid, we're flexible, we bend and push until a design is resolved. When they zig, we zag. We're accustomed to disruption, and successful in the face of upheaval. Come meet us, and see what our warped minds are capable of.
 
 --- 
 
-<section class="banner page-padding py-6">
+<section data-title="{{ major.title }} // Disruption 2020 // Curtin Grad Show" class="banner page-padding py-6">
   <div class="banner-text">
     {% if major.id === '0' %}
       <p class="major-intro transition-fadeout">Design & Architecture Graduates</p>
     {% else %}
-      <p class="major-intro transition-fadeout">Students From The Major Of</p>
+      <p class="major-intro transition-fadeout">Graduates From The Major Of</p>
     {% endif %}
     <h1 class="title major-title is-size-1 is-size-4-mobile" data-major-id="{{ major.id }}" >{{ major.title }}</h1>
   </div>
   {% if major.color %}
-    <img src="{{ major.color }}" class="banner-img" alt="">
+    <div class="entry-fadein-delay-2">
+      <img src="{{ major.color }}" class="banner-img" alt="">
+    </div>
   {% endif %}
 </section>
 {% if major.id !== '0' %}

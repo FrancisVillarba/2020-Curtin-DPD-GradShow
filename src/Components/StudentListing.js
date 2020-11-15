@@ -19,12 +19,17 @@ class StudentListing {
         const searchValue = e.target.value.toLowerCase()
         const newStudentData = [...studentData]
         this.studentDataInstance = newStudentData.filter(student => {
-            const fullName = student.name.first + ' ' + student.name.last
+            const pref = student.name.preferred ? student.name.preferred : student.name.first
+            const fullName = pref + ' ' + student.name.last
+            const actualName = student.name.first + ' ' + student.name.last
             if(fullName.toLowerCase().includes(searchValue)){
-                return student        
+                return student
+            } 
+            if(actualName.toLowerCase().includes(searchValue)){
+                return student
             } 
             if(student.major){
-                return student        
+                return student
             } 
         })
         this.generateStudentListing()
@@ -42,17 +47,14 @@ class StudentListing {
                 }    
             }
                 
-            let profileEntry = document.createElement("a");
-            profileEntry.href = `/student/${student.id}`;
-            profileEntry.className = "profile-link scale headshot-hover"
             let profileWrapper = document.createElement("div");
-            profileWrapper.className = "profile-container fadein-quick";
-            profileEntry.appendChild(profileWrapper)
+            profileWrapper.className = "profile-container fadein-quick scale headshot-hover";
 
             // Create a name h3 tag for each student
             let studentName = document.createElement("h3");
             studentName.className="student-name";
-            studentName.innerText = student.name.first + ' ' + student.name.last
+            const pref = student.name.preferred ? student.name.preferred : student.name.first
+            studentName.innerText = pref + ' ' + student.name.last
 
             let studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';
@@ -81,29 +83,44 @@ class StudentListing {
             studentImgFun.className = "student-headshot";
             studentImgFun.setAttribute("src", student.headshots.fun);
 
+            const studentImgLink = document.createElement('a')
+            studentImgLink.href = `/student/${student.id}`;
             const studentImgCont = document.createElement('div')
             studentImgCont.className = 'portfolio-image listing-headshot'
 
 
             studentImgCont.appendChild(studentImgPro);
             studentImgCont.appendChild(studentImgFun);
-            profileWrapper.appendChild(studentImgCont);
+            studentImgLink.appendChild(studentImgCont);
+            profileWrapper.appendChild(studentImgLink);
 
             // Creates Container for both buttons
             const btnCont = document.createElement('div')      
             btnCont.className = "profile-btn-cont";
 
             // Create a button that links to their portfolio
+            let arrLink = document.createElement('a')
+            arrLink.href = `/student/${student.id}`;
             let portBtn = document.createElement('button');
             portBtn.className = "button is-black is-small";
             portBtn.innerText = ">"
-            btnCont.appendChild(portBtn);
+            arrLink.appendChild(portBtn);
+            btnCont.appendChild(arrLink);
 
             // Create a button that links to the student's individual profile
-            let profileBtn = document.createElement('button');
-            profileBtn.className = "button is-black is-light is-small";
-            profileBtn.innerText = "Portfolio"
-            btnCont.appendChild(profileBtn);
+            if (student.portfolio) {
+                let profileLink = document.createElement('a')
+                profileLink.href = student.portfolio
+                profileLink.target = "_blank" 
+                profileLink.rel = "noopener noreferrer"
+                
+                profileLink.className = 'profile-link'
+                let profileBtn = document.createElement('button');
+                profileBtn.className = "button is-black is-light is-small";
+                profileBtn.innerText = "Portfolio"
+                profileLink.appendChild(profileBtn);
+                btnCont.appendChild(profileLink);
+            }
 
             studentSpec.appendChild(btnCont);
 
@@ -111,7 +128,7 @@ class StudentListing {
             profileWrapper.appendChild(studentName);
             profileWrapper.appendChild(studentSpec);
 
-            studentArray.push(profileEntry)
+            studentArray.push(profileWrapper)
         })
         
         this.generateListFromStudents(studentArray)
