@@ -21,11 +21,26 @@ import { StudentListing } from './Components/StudentListing';
 import { handleStudentPage } from './student'
 import { setupEntries } from './observer'
 
-// Entry Point for JS
-console.log("Hello World")
+// listen for nav being toggled
+const burger = document.querySelector(".navbar-burger");
+const menu = document.querySelector(".navbar-menu");
+const elements = [burger, menu];
+burger.addEventListener('click', () => {
+  elements.forEach(element => {
+    element.classList.toggle('is-active');
+  });
+})
+
+function setPageTitle() {
+  const titleData = document.querySelector('[data-title]')
+  if (titleData && titleData.dataset.title) {
+    document.title = titleData.dataset.title
+  }
+}
 
 // check if profile container exists before running Student component
 function init() {
+    setPageTitle()
     const homeBtn = document.getElementById('home-btn')
     if (window.location.pathname === '/') {
         homeBtn.style.opacity = 0
@@ -62,20 +77,12 @@ init();
 
 // run check on swup page transition
 swup.on('contentReplaced', function() {
-    // window.scrollTo(0, 0)
     init();
 })  
 
-// nav hamburger show/hide 
-function  toggleNav() {
-  const burger = document.querySelector(".navbar-burger");
-  const menu = document.querySelector(".navbar-menu");
-  const elements = [burger, menu];
-  burger.addEventListener('click', () => {
+swup.on('animationOutStart', function() {
+    // Close dropdown on page change
     elements.forEach(element => {
-      element.classList.toggle('is-active');
-    });
-  })
-}
-// listen for nav being toggled
-toggleNav();
+      element.classList.remove('is-active');
+    });  
+})

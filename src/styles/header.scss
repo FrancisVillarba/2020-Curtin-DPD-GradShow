@@ -117,19 +117,29 @@
         }
     }
     .drop-item {
-        padding-left: 1.4rem !important;
-        padding-right: 1.4rem !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+        .dropdown-item {
+            padding-left: 1.4rem !important;
+            padding-right: 1.4rem !important;    
+        }
     }
 }
 
 .footer-content {
     display: flex;
+    align-items: center;
+    .footer-left {
+        display: flex;
+        flex-grow: 1;
+        align-items: center;
+    }
     .nav {
         display: flex;
         & > * + * {
-            margin-left: 20px;
+            margin-left: 2rem;
         }
     }
       
@@ -141,7 +151,7 @@
         .nav {
             display: block;
             & > * {
-                margin-top: 10px;
+                margin-top: 2rem;
             }
             & > * + * {
                 margin-left: 0;

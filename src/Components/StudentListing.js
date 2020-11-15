@@ -19,12 +19,17 @@ class StudentListing {
         const searchValue = e.target.value.toLowerCase()
         const newStudentData = [...studentData]
         this.studentDataInstance = newStudentData.filter(student => {
-            const fullName = student.name.first + ' ' + student.name.last
+            const pref = student.name.preferred ? student.name.preferred : student.name.first
+            const fullName = pref + ' ' + student.name.last
+            const actualName = student.name.first + ' ' + student.name.last
             if(fullName.toLowerCase().includes(searchValue)){
-                return student        
+                return student
+            } 
+            if(actualName.toLowerCase().includes(searchValue)){
+                return student
             } 
             if(student.major){
-                return student        
+                return student
             } 
         })
         this.generateStudentListing()
@@ -52,7 +57,8 @@ class StudentListing {
             // Create a name h3 tag for each student
             let studentName = document.createElement("h3");
             studentName.className="student-name";
-            studentName.innerText = student.name.first + ' ' + student.name.last
+            const pref = student.name.preferred ? student.name.preferred : student.name.first
+            studentName.innerText = pref + ' ' + student.name.last
 
             let studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';

@@ -1,6 +1,6 @@
 ---
 layout: default.njk
-title: Major Page
+title: Disruption 2020 // Curtin Grad Show
 pagination:
     data: majorsComputed
     size: 1
@@ -9,7 +9,7 @@ permalink: "major/{{ major.title | slug }}/"
 
 --- 
 
-<section class="banner page-padding py-6">
+<section data-title="{{ major.title }} // Disruption 2020 // Curtin Grad Show" class="banner page-padding py-6">
   <div class="banner-text">
     {% if major.id === '0' %}
       <p class="major-intro transition-fadeout">Design & Architecture Graduates</p>
@@ -19,7 +19,9 @@ permalink: "major/{{ major.title | slug }}/"
     <h1 class="title major-title is-size-1 is-size-4-mobile" data-major-id="{{ major.id }}" >{{ major.title }}</h1>
   </div>
   {% if major.color %}
-    <img src="{{ major.color }}" class="banner-img" alt="">
+    <div class="entry-fadein-delay-2">
+      <img src="{{ major.color }}" class="banner-img" alt="">
+    </div>
   {% endif %}
 </section>
 {% if major.id !== '0' %}
