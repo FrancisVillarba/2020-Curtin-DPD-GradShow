@@ -32,7 +32,7 @@ const BASE_HEADSHOTS_URL = "https://storage.googleapis.com/curtin-dpd-gradshow-2
 // Init the Firebase Admin SDK
 FIREBASE_ADMIN.initializeApp({
   credential: FIREBASE_ADMIN.credential.cert(FIREBASE_SERVICE_ACCOUNT),
-  databaseURL: 'https://curtin-dpd-gradshow-2020.firebaseio.com',
+  databaseURL: '/public/imgs/headshots/',
 })
 
 // Declare the database object
