@@ -123,10 +123,11 @@ async function verifyAssetData( studentAssetData ) {
     for( let i = 0; i < studentAssetData.length; i++ ) {
         // For debugging
         console.log(
-            'Checking assets for:',
+            'Verifying that: ',
             studentAssetData[i]['First Name'],
             studentAssetData[i]['Last Name'],
-            studentAssetData[i]['Student Number']
+            studentAssetData[i]['Student Number'],
+            ' exists in the students database...'
         );
 
         let studentID = studentAssetData[i]['Student Number'];
@@ -169,122 +170,122 @@ async function pushStudentAssetData(studentAssetData) {
 
         // Prepare the social media links array ------------------------------- /
         let studentSocialMediaLinksTemp = [];
-        if (studentAssetData[i]['Your Artstation link'] != "" ) {
+        if (studentAssetData[i]['Your Artstation link'] != "") {
             let artstation = {
                 name: "Artstation",
-                link: studentAssetData[i]['Your Artstation link']
+                link: `${studentAssetData[i]['Your Artstation link']}`
             };
             studentSocialMediaLinksTemp.push(artstation);
         }
 
-        if (studentAssetData[i]['Your Behance link'] != '') {
+        if (studentAssetData[i]['Your Behance link'] != "") {
             let behanceData = {
                 name: "Behance",
-                link: studentAssetData[i]['Your Behance link']
+                link: `${studentAssetData[i]['Your Behance link']}`
             }
             studentSocialMediaLinksTemp.push(behanceData);
         }
 
-        if (studentAssetData[i]['Your CGSociety link'] != '') {
+        if (studentAssetData[i]['Your CGSociety link'] != "") {
             let cgsocietyData = {
                 name: "CGSociety",
-                link: studentAssetData[i]['Your CGSociety link']
+                link: `${studentAssetData[i]['Your CGSociety link']}`
             }
             studentSocialMediaLinksTemp.push(cgsocietyData);
         }
 
-        if (studentAssetData[i]['Your Dribble link'] != '') {
+        if (studentAssetData[i]['Your Dribbble link'] != "") {
             let dribbbleData = {
                 name: "Dribbble",
-                link: studentAssetData[i]['Your Dribble link']
+                link: `${studentAssetData[i]['Your Dribbble link']}`
             }
             studentSocialMediaLinksTemp.push(dribbbleData);
         }
 
-        if (studentAssetData[i]['Your Facebook business page link'] != '') {
+        if (studentAssetData[i]['Your Facebook business page link'] != "") {
             let facebookData = {
                 name: "Facebook",
-                link: studentAssetData[i]['Your Facebook business page link']
+                link: `${studentAssetData[i]['Your Facebook business page link']}`
             }
             studentSocialMediaLinksTemp.push(facebookData);
         }
 
-        if (studentAssetData[i]['Your Github link'] != '') {
+        if (studentAssetData[i]['Your Github link'] != "") {
             let githubData = {
                 name: "GitHub",
-                link: studentAssetData[i]['Your Github link']
+                link: `${studentAssetData[i]['Your Github link']}`
             }
             studentSocialMediaLinksTemp.push(githubData);
         }
 
-        if (studentAssetData[i]['Your Instagram link'] != '') {
+        if (studentAssetData[i]['Your Instagram link'] != "") {
             let instagramData = {
                 name: "Instagram",
-                link: studentAssetData[i]['Your Instagram link']
+                link: `${studentAssetData[i]['Your Instagram link']}`
             }
             studentSocialMediaLinksTemp.push(instagramData);
         }
 
-        if (studentAssetData[i]['Your LinkedIn link'] != '') {
+        if (studentAssetData[i]['Your LinkedIn link'] != "") {
             let linkedInData = {
                 name: "LinkedIn",
-                link: studentAssetData[i]['Your LinkedIn link']
+                link: `${studentAssetData[i]['Your LinkedIn link']}`
             }
             studentSocialMediaLinksTemp.push(linkedInData);
         }
 
-        if (studentAssetData[i]['Your Twitter link'] != '') {
+        if (studentAssetData[i]['Your Twitter link'] != "") {
             let twitterData = {
                 name: "Twitter",
-                link: studentAssetData[i]['Your Twitter link']
+                link: `${studentAssetData[i]['Your Twitter link']}`
             }
             studentSocialMediaLinksTemp.push(twitterData);
         }
 
-        if (studentAssetData[i]['Your Vimeo link'] != '') {
+        if (studentAssetData[i]['Your Vimeo link'] != "") {
             let vimeoData = {
                 name: "Vimeo",
-                link: studentAssetData[i]['Your Vimeo link']
+                link: `${studentAssetData[i]['Your Vimeo link']}`
             }
             studentSocialMediaLinksTemp.push(vimeoData);
         }
 
-        if (studentAssetData[i]['Your Youtube link'] != '') {
+        if (studentAssetData[i]['Your Youtube link'] != "") {
             let youtubeData = {
                 name: "YouTube",
-                link: studentAssetData[i]['Your Youtube link']
+                link: `${studentAssetData[i]['Your Youtube link']}`
             }
             studentSocialMediaLinksTemp.push(youtubeData)
         }
 
-        if (studentAssetData[i]['Your Bitbucket link'] != '') {
+        if (studentAssetData[i]['Your Bitbucket link'] != "") {
             let bitbucketData = {
                 name: "Bitbucket",
-                link: studentAssetData[i]['Your Bitbucket link']
+                link: `${studentAssetData[i]['Your Bitbucket link']}`
             }
             studentSocialMediaLinksTemp.push(bitbucketData);
         }
 
-        if (studentAssetData[i]['Your CodePen link'] != '') {
+        if (studentAssetData[i]['Your CodePen link'] != "") {
             let codepenData = {
                 name: "CodePen",
-                link: studentAssetData[i]['Your CodePen link']
+                link: `${studentAssetData[i]['Your CodePen link']}`
             }
             studentSocialMediaLinksTemp.push(codepenData);
         }
 
-        if (studentAssetData[i]['Your Polycount link'] != '') {
+        if (studentAssetData[i]['Your Polycount link'] != "") {
             let polycountData = {
                 name: "PolyCount",
-                link: studentAssetData[i]['Your Polycount link']
+                link: `${studentAssetData[i]['Your Polycount link']}`
             }
             studentSocialMediaLinksTemp.push(polycountData);
         }
 
-        if (studentAssetData[i]['Your Tumblr link'] != '') {
+        if (studentAssetData[i]['Your Tumblr link'] != "") {
             let tumblrData = {
                 name: "Tumblr",
-                link: studentAssetData[i]['Your Tumblr link']
+                link: `${studentAssetData[i]['Your Tumblr link']}`
             }
             studentSocialMediaLinksTemp.push(tumblrData);
         }
