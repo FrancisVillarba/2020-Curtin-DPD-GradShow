@@ -19,6 +19,8 @@ const { parse } = require('url')
 
 const INPUT_DATA_PATH = './input/'
 
+const BASE_PROJECTS_URL = '/public/imgs/projects/';
+
 // Setup and Inits --------------------------------------------------------- //
 
 // Init the Firebase Admin SDK
@@ -287,10 +289,28 @@ async function pushStudentAssetData(studentAssetData) {
             studentSocialMediaLinksTemp.push(tumblrData);
         }
 
+        // Parse the student's projects data -------------------------- /
+        // -- And also generate the relative path for the project images based on the project data -- /
+        let studentProjectsTemp = [];
+        let studentProjectURLsTemp = studentAssetData[i]['Upload Images Here'].split(',');
+
+        // Iterate through the project URLs and setup our objects
+        for( let j = 0; j < studentProjectURLsTemp.length; j++ ) {
+            // Create the project object
+            // "/public/imgs/projecrs/FirstName_LastName_StudentNumber_ImageNumber"
+            let projectTemp = {
+                alt: `${studentAssetData[i]['First Name']} ${studentAssetData[i]['Last Name']}'s Project ${j+1}`,
+                src: `${BASE_PROJECTS_URL}${studentAssetData[i]['First Name']}_${studentAssetData[i]['Last Name']}_${studentAssetData[i]['Student Number']}_${j+1}.jpg`
+            };
+            // Append to the array
+            studentProjectsTemp.push(projectTemp);
+        }
+
         // Prepare data for for update ------------------------------- /
         let studentDataUpdateTemp = {
             portfolio: studentAssetData[i]['Your portfolio link'],
             social: studentSocialMediaLinksTemp,
+            projects: studentProjectsTemp
         };
 
         // For debugging
