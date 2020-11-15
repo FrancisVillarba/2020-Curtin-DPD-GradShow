@@ -7,13 +7,18 @@
         max-height: unset;
     }
     .navbar-brand {
+        margin-left: $page-padding;
         .navbar-item {
             padding: 0 !important;
         }
         height: 100% !important;
     }
     .navbar-burger {   
+        margin-right: $page-padding;
         height: 100% !important;
+    }
+    .navbar-end {
+        margin-right: $page-padding;
     }
     .navbar-burger:hover {
         color: $b-darker-gray;
@@ -83,16 +88,25 @@
          margin-left: 0em;
          padding: 0.5rem 0.75rem;
     }
+    .navbar-end {
+        margin-right: 0 !important;
+    }
+    .navbar-end .navbar-item, .navbar-end .dropdown-item {
+        padding-left: $page-padding !important;
+        padding-right: $page-padding !important;
+    }
     
     .navbar-item .navbar-link {
         padding: unset unset unset 1em !important;
     }
 
     .dropdown {
+        flex-grow: 1;;
         .dropdown-trigger {
             display: none;
         }
         .dropdown-menu {
+            flex-grow: 1;
             display: flex;
             position: relative;
             margin-left: 0 !important;
@@ -112,8 +126,6 @@
             font-size: 1em;
             margin-left: 0 !important;
             margin-right: 0 !important;
-            padding-left: 0 !important;
-            padding-right: 0 !important;
         }
     }
     .drop-item {
@@ -121,10 +133,6 @@
         padding-right: 0 !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
-        .dropdown-item {
-            padding-left: 1.4rem !important;
-            padding-right: 1.4rem !important;    
-        }
     }
 }
 
@@ -138,6 +146,7 @@
     }
     .nav {
         display: flex;
+
         & > * + * {
             margin-left: 2rem;
         }
@@ -149,9 +158,11 @@
     .footer-content {
         display: block;
         .nav {
+            margin-top: 1rem;
             display: block;
             & > * {
-                margin-top: 2rem;
+                display: block;
+                margin-top: 1rem;
             }
             & > * + * {
                 margin-left: 0;

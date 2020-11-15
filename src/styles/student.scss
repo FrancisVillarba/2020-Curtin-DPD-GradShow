@@ -17,6 +17,11 @@
     overflow: hidden;
 }
 
+.student-columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
 .major-orbs {
     position: absolute;
     z-index: 0;
@@ -83,8 +88,36 @@
     }   
 }
 
+.port-info {
+    display: flex;
+    align-items: center;
+    & > * + * {
+        margin-left: 2rem;
+    }
+}
+
 @media only screen and (max-width: 769px) {
     .major-orbs {
         transform: translateY(70px) translateX(-50px) !important;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .port-info {
+        flex-direction: column;
+        align-items: stretch; 
+        & > * + * {
+            margin-left: 0;
+            margin-top: 2rem;
+        }    
+    }
+    .portfolio-image {
+        min-height: 300px;
+    }
+    .student-columns {
+        grid-template-columns: 1fr;
+        & :first-child {
+            grid-row: 2;
+        }
     }
 }
