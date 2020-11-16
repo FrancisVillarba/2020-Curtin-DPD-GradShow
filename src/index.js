@@ -70,6 +70,20 @@ function init() {
     }
     handleStudentPage()
     setupEntries()
+
+    //  Handle Placeholder Headshots
+    const proSrc = '/imgs/placeholderPro.jpg'
+    const funSrc = '/imgs/placeholderFun.jpg'
+    document.addEventListener('error', (e) => {
+      if (e.target.tagName.toLowerCase() === 'img') {
+        if (e.target.src === (proSrc | funSrc)) return
+        if (e.target.dataset.headshotPro) {
+          e.target.src = proSrc;
+        } else if (e.target.dataset.headshotFun) {
+          e.target.src = funSrc;
+        }
+      }
+    }, true);
 }
 
 // run on page load

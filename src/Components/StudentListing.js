@@ -1,4 +1,4 @@
-import studentData from '../../_data/studentDataComputed.js';
+import studentData from '../../_data/studentData';
 import majorImages from '../../_data/majorImages'
 // Array for each major for demonstration purposes
 let majors = [
@@ -76,11 +76,13 @@ class StudentListing {
             const studentImgPro = document.createElement("img");
             studentImgPro.dataset.studentId = student.id
             studentImgPro.className = "student-headshot headshot-pro";
+            studentImgPro.dataset.headshotPro = true
             studentImgPro.setAttribute("src", student.headshots.pro);
 
             const studentImgFun = document.createElement("img");
             studentImgFun.dataset.studentId = student.id
             studentImgFun.className = "student-headshot";
+            studentImgFun.dataset.headshotFun = true
             studentImgFun.setAttribute("src", student.headshots.fun);
 
             const studentImgLink = document.createElement('a')
