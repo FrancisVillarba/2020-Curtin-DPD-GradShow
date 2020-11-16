@@ -61,7 +61,7 @@ function init() {
     if (document.querySelector(".student-profile-container")) {
         const majorid = document.querySelector('.major-title').dataset.majorId
         const DDListing = new StudentListing(majorid)
-        DDListing.generateStudentListing();
+        DDListing.generate();
         
         let searchBar = document.querySelector(".search-bar");
         searchBar.addEventListener("input", (e) => {

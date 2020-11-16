@@ -1,15 +1,48 @@
 // source: any[] | null,
-// prop: string,
+// propArr: string[],
 // reversed?: Boolean
 
-export const reorder = (source, prop, reversed = false) => {
+export const reorder = (source, propArr, reversed = false) => {
   if (!source) return
   const tempOrder = [...source]
-  const newOrder = sortBy(tempOrder, el => el[prop])
+  const newOrder = sortBy(tempOrder, el => {
+    let x = el
+    propArr.forEach(prop => {
+      x = x[prop]
+    })
+    return x
+  })
   if (reversed) {
     newOrder.reverse()
   }
   return newOrder
+}
+
+export const reorderAlpha = (source, propArr, reversed = false) => {
+  if (!source) return
+  const tempOrder = []
+  source.forEach(el => {
+    const x = getProp(el, propArr)
+    tempOrder.push(x)
+  })
+  const newOrder = tempOrder.sort()
+  let out = []
+  newOrder.forEach(el => {
+    const x = source.find(x => getProp(x, propArr) === el)
+    if (x) out.push(x)
+  })
+  if (reversed) {
+    out.reverse()
+  }
+  return out
+}
+
+const getProp = (el, propArr) => {
+  let x = el
+  propArr.forEach(prop => {
+    x = x[prop]
+  })
+  return x
 }
 
 export const sortBy = (oldArray, matchFunc) => {
