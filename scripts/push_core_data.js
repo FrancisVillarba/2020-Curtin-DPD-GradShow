@@ -25,7 +25,7 @@ const INPUT_DATA_PATH = './input/'
 
 const MAJORS_COLLECTION = 'majors/'
 
-const BASE_HEADSHOTS_URL = "/public/imgs/headshots/";
+const BASE_HEADSHOTS_URL = "/imgs/headshots/";
 
 // Setup and Inits --------------------------------------------------------- //
 
