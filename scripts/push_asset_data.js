@@ -19,7 +19,7 @@ const { parse } = require('url')
 
 const INPUT_DATA_PATH = './input/'
 
-const BASE_PROJECTS_URL = '/public/imgs/projects/';
+const BASE_PROJECTS_URL = '/imgs/projects/';
 
 // Setup and Inits --------------------------------------------------------- //
 
