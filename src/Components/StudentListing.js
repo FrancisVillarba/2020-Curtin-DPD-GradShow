@@ -48,7 +48,7 @@ class StudentListing {
             }
                 
             let profileWrapper = document.createElement("div");
-            profileWrapper.className = "profile-container fadein-quick scale headshot-hover";
+            profileWrapper.className = "profile-container fadein-quick headshot-hover";
 
             // Create a name h3 tag for each student
             let studentName = document.createElement("h3");
