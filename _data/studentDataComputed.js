@@ -1,6 +1,23 @@
 const data = require('./studentData.json')
 
 const computed = data.map(student => {
+  switch (student.id) {
+    case 'MaQP23RnGTzjr2N4h57k':
+    case 'NwsrMz9k5nyTwbcOPnBk':
+    case 'FSgnOhWR9ugd0B2dqi0P':
+    case 'ic762noIXphwxq6GEcGx':
+    case 'qGu72EDEGkT9cBxLBpdh':
+    case '4TToM4u7tXuHcTyyCLhH':
+    case '8sP6QljOT0ffNVdRxq77':
+    case 'RQeZT0M5ZaRHNr0FQcHh':
+    case 'RfyPNvoK86OJ1ydRi7I0':
+      student.headshots.pro = '/imgs/placeholderPro.jpg'
+      student.headshots.fun = '/imgs/placeholderFun.jpg'
+      break
+    default:
+      break
+  }
+
   if (student.id === 'vFmshvNEbAER84eZ5nJu') {
     student.projects = student.projects.map(project => {
       project.src = project.src.replace('Anjie', 'Anjela')
@@ -34,7 +51,10 @@ const computed = data.map(student => {
   }
   if (student.id === 'HOANYbz6YhqN8stCAruS') {
     student.projects = student.projects.map(project => {
-      project.src = project.src.replace('Dwayne Alexander_Koo Chim Fong', 'Dwayne_Koo')
+      project.src = project.src.replace(
+        'Dwayne Alexander_Koo Chim Fong',
+        'Dwayne_Koo'
+      )
       return project
     })
   }

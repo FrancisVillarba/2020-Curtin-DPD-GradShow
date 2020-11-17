@@ -52,12 +52,8 @@ description: Disruption 2020 features graduates across the majors of Animation &
             </div>
         </div>
         <div class="px-0 py-0 portfolio-image profile-headshot headshot-hover">
-            {% if student.headshots.fun %}
-                <img src="{{ student.headshots.fun }}" class="student-headshot wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">            
-                <img src="{{ student.headshots.pro }}" class="student-headshot headshot-pro wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">
-            {% else %}
-                <img src="{{ student.headshots.pro }}" class="student-headshot wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">
-            {% endif %}
+            <img src="{{ student.headshots.fun }}" data-headshot-fun="true" class="student-headshot wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">            
+            <img src="{{ student.headshots.pro }}" data-headshot-pro="true" class="student-headshot headshot-pro wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">
         </div>
     </div>
     <div class="student-image-grid page-padding-all has-background-white">
