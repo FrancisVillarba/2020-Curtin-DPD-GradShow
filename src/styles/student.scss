@@ -1,10 +1,17 @@
 .student-image-grid {
     display: grid;
+    flex-grow: 1;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     img {
         width: 100%;
     }
+}
+
+.student-page-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .student-grid-large-last.student-image-grid :last-child {
