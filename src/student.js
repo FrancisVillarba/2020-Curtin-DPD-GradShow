@@ -1,13 +1,13 @@
 export const handleStudentPage = () => {
-  // Handle Student Grid
-  const images = document.querySelectorAll('.student-image-grid')
-  if (images.length > 0) {
-    images.forEach(image => {
-      if (image.childElementCount % 2) {
-        image.classList.add('student-grid-large-last')
-      }
-    })
-  }
+  // // Handle Student Grid
+  // const images = document.querySelectorAll('.student-image-grid')
+  // if (images.length > 0) {
+  //   images.forEach(image => {
+  //     if (image.childElementCount % 2) {
+  //       image.classList.add('student-grid-large-last')
+  //     }
+  //   })
+  // }
   
   // Handle Major Orbs
   const orbs = document.querySelectorAll('.major-orbs')
