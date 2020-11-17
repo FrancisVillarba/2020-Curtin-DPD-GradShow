@@ -20,16 +20,16 @@ export const reorder = (source, propArr, reversed = false) => {
 
 export const reorderAlpha = (source, propArr, reversed = false) => {
   if (!source) return
-  const tempOrder = []
-  source.forEach(el => {
-    const x = getProp(el, propArr)
-    tempOrder.push(x)
+  const temp = source.map((el, i) => {
+    return { i, value: getProp(el, propArr) }
   })
-  const newOrder = tempOrder.sort()
-  let out = []
-  newOrder.forEach(el => {
-    const x = source.find(x => getProp(x, propArr) === el)
-    if (x) out.push(x)
+  temp.sort((a, b) => {
+    if (a.value > b.value) return 1
+    if (a.value < b.value) return -1
+    return 0
+  })
+  const out = temp.map(el => {
+    return source[el.i]
   })
   if (reversed) {
     out.reverse()
