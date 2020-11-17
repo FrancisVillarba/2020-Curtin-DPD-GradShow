@@ -1,4 +1,4 @@
-import studentData from '../../_data/studentData';
+import studentData from '../../_data/studentDataComputed';
 import majorImages from '../../_data/majorImages'
 import { reorderAlpha } from './sortyBy';
 // Array for each major for demonstration purposes
