@@ -15,6 +15,11 @@ class StudentListing {
         this.majorid = majorid
 
         this.computedStudentData = studentData.map(student => {
+            student.thumb = {
+                pro: student.headshots.pro.replace('headshots', 'thumbHeadshots'),
+                fun: student.headshots.fun.replace('headshots', 'thumbHeadshots'),
+            }
+
             if (!student.name.preferred) {
                 student.name.preferred = student.name.first
             }
@@ -135,13 +140,13 @@ class StudentListing {
             studentImgPro.dataset.studentId = student.id
             studentImgPro.className = "student-headshot headshot-pro";
             studentImgPro.dataset.headshotPro = true
-            studentImgPro.setAttribute("src", student.headshots.pro);
+            studentImgPro.setAttribute("src", student.thumb.pro);
 
             const studentImgFun = document.createElement("img");
             studentImgFun.dataset.studentId = student.id
             studentImgFun.className = "student-headshot";
             studentImgFun.dataset.headshotFun = true
-            studentImgFun.setAttribute("src", student.headshots.fun);
+            studentImgFun.setAttribute("src", student.thumb.fun);
 
             const studentImgLink = document.createElement('a')
             studentImgLink.href = `/student/${student.id}`;
