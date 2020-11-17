@@ -2,7 +2,7 @@
 layout: default
 title: Disruption 2020 // Curtin Grad Show
 pagination:
-    data: studentDataComputed
+    data: studentData
     size: 1
     alias: student
 permalink: "student/{{ student.id }}/"
@@ -60,9 +60,9 @@ description: Disruption 2020 features graduates across the majors of Animation &
             {% endif %}
         </div>
     </div>
-    {% if projects %} 
+    {% if student.projects %} 
         <div class="student-image-grid page-padding-all has-background-white">
-            {% for project in projects %}
+            {% for project in student.projects %}
                 <img src="{{ project.src }}" alt="{{ project.alt }}">
             {% endfor %}
         </div>

@@ -1,5 +1,6 @@
-import studentData from '../../_data/studentDataComputed.js';
+import studentData from '../../_data/studentData';
 import majorImages from '../../_data/majorImages'
+import { reorderAlpha } from './sortyBy';
 // Array for each major for demonstration purposes
 let majors = [
     'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
@@ -9,18 +10,40 @@ class StudentListing {
     constructor(majorid) {
         this.profileContainer = document.querySelector(".student-profile-container");
         this.searchBar = document.querySelector(".search-bar");
-    
-        this.majorid = majorid
         
-        this.studentDataInstance = studentData;
+        this.sortedBy = null
+        this.majorid = majorid
+
+        this.computedStudentData = studentData.map(student => {
+            if (!student.name.preferred) {
+                student.name.preferred = student.name.first
+            }
+            return student
+        })
+        this.studentDataInstance = this.computedStudentData;
+        this.sortedInstance;
+
+        this.studentArray = [];
+        this.usingPref = true
+
+        const sortByEl = document.getElementById('sortby')
+        sortByEl.addEventListener('change', (e) => {
+            this.sortedBy = e.target.value
+            this.sortList()
+        })
+
+        const isPrefEl = document.getElementById('ispref')
+        isPrefEl.addEventListener('change', (e) => {
+            this.usingPref = e.target.checked
+            this.sortList()
+        })
     }
 
     search(e) {
         const searchValue = e.target.value.toLowerCase()
-        const newStudentData = [...studentData]
+        const newStudentData = [...this.computedStudentData]
         this.studentDataInstance = newStudentData.filter(student => {
-            const pref = student.name.preferred ? student.name.preferred : student.name.first
-            const fullName = pref + ' ' + student.name.last
+            const fullName = student.name.preferred + ' ' + student.name.last
             const actualName = student.name.first + ' ' + student.name.last
             if(fullName.toLowerCase().includes(searchValue)){
                 return student
@@ -32,15 +55,51 @@ class StudentListing {
                 return student
             } 
         })
+        this.sortList()
+    }
+
+    generate() {
+        this.sortList()
+    }
+
+    sortList() {
+        const randomised = this.studentDataInstance.sort(randomiser);  
+        function randomiser(a, b) {  
+            return 0.5 - Math.random();
+        }
+
+        const nameType = this.usingPref ? 'preferred' : 'first'
+        let sorted
+        switch (this.sortedBy) {
+            case 'firstaz':
+                sorted = reorderAlpha(randomised, ['name', nameType])
+                break;
+            case 'firstza':
+                sorted = reorderAlpha(randomised, ['name', nameType], true)
+                break;
+            case 'lastaz':
+                sorted = reorderAlpha(randomised, ['name', 'last'])
+                break;
+            case 'lastza':
+                sorted = reorderAlpha(randomised, ['name', 'last'], true)
+                break;
+            case null:            
+            default:
+                sorted = randomised
+                break;
+        }
+        
+        this.sortedInstance = sorted
+
         this.generateStudentListing()
     }
 
     generateStudentListing() {
         this.profileContainer.innerHTML = ''
 
-        const studentArray = []
+        this.studentArray = []
 
-        this.studentDataInstance.forEach(student => {
+        this.sortedInstance.forEach(student => {
             if (this.majorid !== '0') {
                 if (!student.majors.find(major => major.id === this.majorid)) {
                     return
@@ -48,13 +107,12 @@ class StudentListing {
             }
                 
             let profileWrapper = document.createElement("div");
-            profileWrapper.className = "profile-container fadein-quick scale headshot-hover";
+            profileWrapper.className = "profile-container fadein-quick headshot-hover";
 
             // Create a name h3 tag for each student
             let studentName = document.createElement("h3");
             studentName.className="student-name";
-            const pref = student.name.preferred ? student.name.preferred : student.name.first
-            studentName.innerText = pref + ' ' + student.name.last
+            studentName.innerText = (this.usingPref ? student.name.preferred : student.name.first) + ' ' + student.name.last
 
             let studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';
@@ -76,11 +134,13 @@ class StudentListing {
             const studentImgPro = document.createElement("img");
             studentImgPro.dataset.studentId = student.id
             studentImgPro.className = "student-headshot headshot-pro";
+            studentImgPro.dataset.headshotPro = true
             studentImgPro.setAttribute("src", student.headshots.pro);
 
             const studentImgFun = document.createElement("img");
             studentImgFun.dataset.studentId = student.id
             studentImgFun.className = "student-headshot";
+            studentImgFun.dataset.headshotFun = true
             studentImgFun.setAttribute("src", student.headshots.fun);
 
             const studentImgLink = document.createElement('a')
@@ -128,19 +188,14 @@ class StudentListing {
             profileWrapper.appendChild(studentName);
             profileWrapper.appendChild(studentSpec);
 
-            studentArray.push(profileWrapper)
+            this.studentArray.push(profileWrapper)
         })
-        
-        this.generateListFromStudents(studentArray)
+
+        this.render()
     }
     
-    generateListFromStudents(studentArray) {
-        const randomised = studentArray.sort(randomiser);  
-        function randomiser(a, b) {  
-            return 0.5 - Math.random();
-        }  
-
-        randomised.forEach(student => {
+    render() {
+        this.studentArray.forEach(student => {
             this.profileContainer.appendChild(student);
         })
     }
