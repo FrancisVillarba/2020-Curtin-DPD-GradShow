@@ -46,14 +46,14 @@ description: Disruption 2020 features graduates across the majors of Animation &
             <div class="major-orbs entry-slidein">
             {% for major in student.majors %}
                 {% if majorImages[major.id] %}
-                    <img src="{{ majorImages[major.id] }}">                    
+                    <img alt="{{ major.title }}" src="{{ majorImages[major.id] }}">                    
                 {% endif %}
             {% endfor %}
             </div>
         </div>
         <div class="px-0 py-0 portfolio-image profile-headshot headshot-hover">
-            <img src="{{ student.headshots.fun }}" data-headshot-fun="true" class="student-headshot wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">            
-            <img src="{{ student.headshots.pro }}" data-headshot-pro="true" class="student-headshot headshot-pro wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">
+            <img alt="{{ student.name.first }} Fun Headshot" src="{{ student.headshots.fun }}" data-headshot-fun="true" class="student-headshot wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">            
+            <img alt="{{ student.name.first }} Pro Headshot" src="{{ student.headshots.pro }}" data-headshot-pro="true" class="student-headshot headshot-pro wide-min-h-full stacked-max-h-600" alt="{{ student.name.first }} {{ student.name.last }} Headshot">
         </div>
     </div>
     <div class="student-image-grid page-padding-all has-background-white">

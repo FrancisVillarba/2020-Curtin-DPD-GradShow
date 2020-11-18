@@ -131,6 +131,7 @@ class StudentListing {
                 let majorBall = document.createElement("img");
                 majorBall.className = "student-major";
                 majorBall.setAttribute("src", majorImages[major.id]);
+                majorBall.setAttribute("alt", major.title);
                 majorCont.appendChild(majorBall);
             })
 
@@ -142,12 +143,14 @@ class StudentListing {
             studentImgPro.className = "student-headshot headshot-pro";
             studentImgPro.dataset.headshotPro = true
             studentImgPro.setAttribute("src", student.thumb.pro);
+            studentImgPro.setAttribute("alt", `${student.name.first} Pro Headshot`);
 
             const studentImgFun = document.createElement("img");
             studentImgFun.dataset.studentId = student.id
             studentImgFun.className = "student-headshot";
             studentImgFun.dataset.headshotFun = true
             studentImgFun.setAttribute("src", student.thumb.fun);
+            studentImgPro.setAttribute("alt", `${student.name.first} Fun Headshot`);
 
             const studentImgLink = document.createElement('a')
             studentImgLink.href = `/student/${student.id}`;
