@@ -1,3 +1,6 @@
+import '@fortawesome/fontawesome-free/css/brands.css'
+import '@fortawesome/fontawesome-free/css/fontawesome.css'
+
 import Swup from 'swup';
 import SwupPreloadPlugin from '@swup/preload-plugin';
 import SwupScrollPlugin from '@swup/scroll-plugin';

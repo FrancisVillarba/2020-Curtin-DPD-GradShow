@@ -1,6 +1,7 @@
 import studentData from '../../_data/studentDataComputed';
 import majorImages from '../../_data/majorImages'
 import { reorderAlpha } from './sortyBy';
+import { path } from 'animejs';
 // Array for each major for demonstration purposes
 let majors = [
     'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
@@ -169,6 +170,7 @@ class StudentListing {
             let portBtn = document.createElement('button');
             portBtn.className = "button is-black is-small";
             portBtn.innerText = ">"
+
             arrLink.appendChild(portBtn);
             btnCont.appendChild(arrLink);
 
