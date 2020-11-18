@@ -6,14 +6,14 @@ pagination:
     size: 1
     alias: major
 permalink: "major/{{ major.title | slug }}/"
-description: Disruption 2020 is the final year showcase of Curtin University Design & Architecture graduates. We're fluid, we're flexible, we bend and push until a design is resolved. When they zig, we zag. We're accustomed to disruption, and successful in the face of upheaval. Come meet us, and see what our warped minds are capable of.
+description: Disruption 2020 is the final year showcase of Curtin University Design graduates. We're fluid, we're flexible, we bend and push until a design is resolved. When they zig, we zag. We're accustomed to disruption, and successful in the face of upheaval. Come meet us, and see what our warped minds are capable of.
 
 --- 
 
 <section data-title="{{ major.title }} // Disruption 2020 // Curtin Grad Show" class="banner page-padding py-6">
   <div class="banner-text">
     {% if major.id === '0' %}
-      <p class="major-intro transition-fadeout">Design & Architecture Graduates</p>
+      <p class="major-intro transition-fadeout">Design Graduates</p>
     {% else %}
       <p class="major-intro transition-fadeout">Graduates From The Major Of</p>
     {% endif %}
