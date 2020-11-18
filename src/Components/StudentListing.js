@@ -174,7 +174,10 @@ class StudentListing {
             arrLink.href = `/student/${student.id}`;
             let portBtn = document.createElement('button');
             portBtn.className = "button is-black is-small";
-            portBtn.innerText = ">"
+            const arrSpan = document.createElement('span')
+            arrSpan.className = "align-arrow"
+            arrSpan.innerText = ">"
+            portBtn.appendChild(arrSpan)
 
             arrLink.appendChild(portBtn);
             btnCont.appendChild(arrLink);

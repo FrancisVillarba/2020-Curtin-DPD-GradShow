@@ -72,6 +72,14 @@ function init() {
         })
     }
     handleStudentPage()
+
+    const backbtn = document.getElementById('backbtn')
+    if (backbtn) {
+      backbtn.addEventListener('click', () => {
+        window.history.back()
+      })
+    }
+
     setupEntries()
 
     //  Handle Placeholder Headshots
