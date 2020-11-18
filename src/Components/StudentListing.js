@@ -16,9 +16,11 @@ class StudentListing {
         this.majorid = majorid
 
         this.computedStudentData = studentData.map(student => {
-            student.thumb = {
-                pro: student.headshots.pro.replace('headshots', 'thumbHeadshots'),
-                fun: student.headshots.fun.replace('headshots', 'thumbHeadshots'),
+            if (!student.thumb) {
+                student.thumb = {
+                    pro: student.headshots.pro.replace('headshots', 'thumbHeadshots'),
+                    fun: student.headshots.fun.replace('headshots', 'thumbHeadshots'),
+                }
             }
 
             if (!student.name.preferred) {
