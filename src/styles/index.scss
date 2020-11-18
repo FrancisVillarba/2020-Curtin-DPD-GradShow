@@ -24,6 +24,11 @@ $b-light-gray: #9c9c9c;
 $b-lighter-gray: #ebebeb;
 $transition: 0.2s all ease-in-out;
 
+::selection {
+  color: inherit;
+  background: $b-darker-gray;
+}
+
 $dropdown-item-color: $b-black;
 $navbar-item-color: $b-black;
 $navbar-item-hover-color: $b-darker-gray;

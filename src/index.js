@@ -1,3 +1,6 @@
+import '@fortawesome/fontawesome-free/css/brands.css'
+import '@fortawesome/fontawesome-free/css/fontawesome.css'
+
 import Swup from 'swup';
 import SwupPreloadPlugin from '@swup/preload-plugin';
 import SwupScrollPlugin from '@swup/scroll-plugin';
@@ -69,6 +72,18 @@ function init() {
         })
     }
     handleStudentPage()
+
+    const backbtn = document.getElementById('backbtn')
+    if (backbtn) {
+      backbtn.addEventListener('click', () => {
+        window.history.back()
+      })
+    }
+    const arrows = document.querySelectorAll('.insert-arrow')
+    arrows.forEach(arrow => {
+      arrow.innerText = '<'
+    })
+
     setupEntries()
 
     //  Handle Placeholder Headshots

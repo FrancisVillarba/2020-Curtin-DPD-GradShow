@@ -1,6 +1,7 @@
 import studentData from '../../_data/studentDataComputed';
 import majorImages from '../../_data/majorImages'
 import { reorderAlpha } from './sortyBy';
+import { path } from 'animejs';
 // Array for each major for demonstration purposes
 let majors = [
     'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
@@ -15,9 +16,11 @@ class StudentListing {
         this.majorid = majorid
 
         this.computedStudentData = studentData.map(student => {
-            student.thumb = {
-                pro: student.headshots.pro.replace('headshots', 'thumbHeadshots'),
-                fun: student.headshots.fun.replace('headshots', 'thumbHeadshots'),
+            if (!student.thumb) {
+                student.thumb = {
+                    pro: student.headshots.pro.replace('headshots', 'thumbHeadshots'),
+                    fun: student.headshots.fun.replace('headshots', 'thumbHeadshots'),
+                }
             }
 
             if (!student.name.preferred) {
@@ -130,6 +133,7 @@ class StudentListing {
                 let majorBall = document.createElement("img");
                 majorBall.className = "student-major";
                 majorBall.setAttribute("src", majorImages[major.id]);
+                majorBall.setAttribute("alt", major.title);
                 majorCont.appendChild(majorBall);
             })
 
@@ -141,12 +145,14 @@ class StudentListing {
             studentImgPro.className = "student-headshot headshot-pro";
             studentImgPro.dataset.headshotPro = true
             studentImgPro.setAttribute("src", student.thumb.pro);
+            studentImgPro.setAttribute("alt", `${student.name.first} Pro Headshot`);
 
             const studentImgFun = document.createElement("img");
             studentImgFun.dataset.studentId = student.id
             studentImgFun.className = "student-headshot";
             studentImgFun.dataset.headshotFun = true
             studentImgFun.setAttribute("src", student.thumb.fun);
+            studentImgPro.setAttribute("alt", `${student.name.first} Fun Headshot`);
 
             const studentImgLink = document.createElement('a')
             studentImgLink.href = `/student/${student.id}`;
@@ -168,7 +174,11 @@ class StudentListing {
             arrLink.href = `/student/${student.id}`;
             let portBtn = document.createElement('button');
             portBtn.className = "button is-black is-small";
-            portBtn.innerText = ">"
+            const arrSpan = document.createElement('span')
+            arrSpan.className = "align-arrow"
+            arrSpan.innerText = ">"
+            portBtn.appendChild(arrSpan)
+
             arrLink.appendChild(portBtn);
             btnCont.appendChild(arrLink);
 

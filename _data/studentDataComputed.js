@@ -13,6 +13,10 @@ const computed = data.map(student => {
     case 'RfyPNvoK86OJ1ydRi7I0':
       student.headshots.pro = '/imgs/placeholderPro.jpg'
       student.headshots.fun = '/imgs/placeholderFun.jpg'
+      student.thumb = {
+        pro: '/imgs/placeholderProThumb.jpg',
+        fun: '/imgs/placeholderFunThumb.jpg',
+      }
       break
     default:
       break

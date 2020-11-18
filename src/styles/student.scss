@@ -5,7 +5,13 @@
     gap: 10px;
     img {
         width: 100%;
+        background: $b-lighter-gray;
+        color: $b-lighter-gray;    
     }
+}
+
+.align-arrow {
+    margin-bottom: 3px;
 }
 
 .student-page-container {
@@ -129,5 +135,8 @@
         & :first-child {
             grid-row: 2;
         }
+    }
+    .student-grid-large-last.student-image-grid :last-child {
+        grid-column: inherit;
     }
 }
