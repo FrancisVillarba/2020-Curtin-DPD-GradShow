@@ -79,6 +79,10 @@ function init() {
         window.history.back()
       })
     }
+    const arrows = document.querySelectorAll('.insert-arrow')
+    arrows.forEach(arrow => {
+      arrow.innerText = '<'
+    })
 
     setupEntries()
 
