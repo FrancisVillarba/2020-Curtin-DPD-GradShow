@@ -37,12 +37,12 @@ const computed = data.map(student => {
       return project
     })
   }
-  if (student.id === 'JbCgTRQvqbDFI0oIi53C') {
-    const i = student.majors.indexOf(student.majors.find(major => major.id === 'wv8b6Q5MsnqrMmtEmXPE'))
-    if (i >= 0) {
-      student.majors.splice(i, 1)
-    }
-  }
+  // if (student.id === 'JbCgTRQvqbDFI0oIi53C') {
+  //   const i = student.majors.indexOf(student.majors.find(major => major.id === 'wv8b6Q5MsnqrMmtEmXPE'))
+  //   if (i >= 0) {
+  //     student.majors.splice(i, 1)
+  //   }
+  // }
   if (student.id === 'MQueaRWHQaAcKqu6wxJg') {
     student.projects = student.projects.map((project, i) => {
       if (i < 4) {
