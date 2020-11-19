@@ -22,6 +22,15 @@ const computed = data.map(student => {
       break
   }
 
+  if (student.id === 'sYlGZHSLgdkLEYjZ2BuN') {
+    student.headshots.pro = student.headshots.pro.replace('19140102', '19146168')
+    student.headshots.fun = student.headshots.fun.replace('19140102', '19146168')
+  }
+  if (student.id === 'iBnQDcFeTp3oxx2Herzv') {
+    student.headshots.pro = student.headshots.pro.replace('19146168', '19140102')
+    student.headshots.fun = student.headshots.fun.replace('19146168', '19140102')
+  }
+
   if (student.id === 'vFmshvNEbAER84eZ5nJu') {
     student.projects = student.projects.map(project => {
       project.src = project.src.replace('Anjie', 'Anjela')
