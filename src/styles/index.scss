@@ -21,6 +21,7 @@ $b-white: #ffffff;
 $b-darker-gray: #292929;
 $b-dark-gray: #747474;
 $b-light-gray: #9c9c9c;
+$b-mid-gray: #c2c2c2;
 $b-lighter-gray: #ebebeb;
 $transition: 0.2s all ease-in-out;
 
@@ -52,7 +53,7 @@ $link-focus: $b-white;
 $link-active: $b-white;
 
 $button-color: $b-black;
-$button-background-color: $b-white;
+$button-hover-background-color: $b-dark-gray;
 $button-border-width: 0;
 $button-hover-color: $b-darker-gray;
 $button-focus-color: $b-dark-gray;
@@ -61,6 +62,16 @@ $radius-small: 0;
 $radius: 0;
 $radius-large: 0;
 $title-color: $b-white;
+
+.button.is-white:hover {
+  background-color: $b-mid-gray !important;
+}
+.button.is-dark:hover {
+  background-color: $b-darker-gray !important;
+}
+.button.is-black:hover {
+  background-color: $b-darker-gray !important;
+}
 
 $black: #0f0f0f;
 

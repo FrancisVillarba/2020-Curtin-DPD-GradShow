@@ -191,7 +191,7 @@ class StudentListing {
                 
                 profileLink.className = 'profile-link'
                 let profileBtn = document.createElement('button');
-                profileBtn.className = "button is-black is-light is-small";
+                profileBtn.className = "button is-light is-small";
                 profileBtn.innerText = "Portfolio"
                 profileLink.appendChild(profileBtn);
                 btnCont.appendChild(profileLink);
