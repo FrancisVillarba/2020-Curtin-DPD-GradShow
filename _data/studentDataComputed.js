@@ -8,9 +8,7 @@ const computed = data.map(student => {
     case 'ic762noIXphwxq6GEcGx':
     case 'qGu72EDEGkT9cBxLBpdh':
     case '4TToM4u7tXuHcTyyCLhH':
-    case '8sP6QljOT0ffNVdRxq77':
     case 'RQeZT0M5ZaRHNr0FQcHh':
-    case 'RfyPNvoK86OJ1ydRi7I0':
       student.headshots.pro = '/imgs/placeholderPro.jpg'
       student.headshots.fun = '/imgs/placeholderFun.jpg'
       student.thumb = {
