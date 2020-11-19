@@ -285,6 +285,10 @@ $tooltip-radius: 0;
   }
 }
 
+input {
+  border-radius: unset;
+}
+
 @media only screen and (min-width: 1500px) {
   .entry-slidein, .entry-fadein-delay-2, .entry-slideinleft, .entry-slidein-delay-1, .entry-slidein-delay-2, .entry-slidein-delay-3, .entry-slidein-delay-4 {
     opacity: 0;
