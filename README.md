@@ -32,6 +32,3 @@ Then you can:
 | **`npm run format`**  | Run prettier on all filles except `/dist`    |
 | **`npm run analyze`** | Output info on your bundle size              |
 
-## Current Website Design
-
-https://www.dropbox.com/s/89p010ijm60crok/Gradshow%20Production%20Design.pdf?dl=0

@@ -173,12 +173,20 @@ $input-shadow: none;
   transform: translateX(-5px) !important;
 }
 
+
+.mobile-break {
+  display: none;
+}
+
 @media only screen and (max-width: 500px) {
   .slidein:hover {
     transform: translateX(10px);
   }
   .slidein:focus, .slidein:active {
     transform: translateX(5px) !important;
+  }
+  .mobile-break {
+    display: block;
   }
 }
 

@@ -20,6 +20,16 @@ const computed = data.map(student => {
       break
   }
 
+  if (student.id === 'D2hXmjpzdjIqGHZIec4Q') {
+    student.bio = student.bio.replace('w3schools.com', 'codepen')
+  }
+  if (student.id === 'GmqbcZWKHTWtNxypDGqA') {
+    student.portfolio = 'https://thatsminht.com'
+  }
+  if (student.id === 'xtpndBzYODDxBEHW9yV1') {
+    student.bio = student.bio.replace('I am freelance', 'I am a freelance')
+  }
+
   if (student.id === 'sYlGZHSLgdkLEYjZ2BuN') {
     student.headshots.pro = student.headshots.pro.replace('19140102', '19146168')
     student.headshots.fun = student.headshots.fun.replace('19140102', '19146168')
