@@ -24,6 +24,8 @@ import { StudentListing } from './Components/StudentListing';
 import { handleStudentPage } from './student'
 import { setupEntries } from './observer'
 
+console.log("%cWant some Nice Music? Check out https://poolside.fm/ (no affiliation)", "color:#a55ba7; font-family: sans-serif; font-size: 12px; line-height: 30px");
+
 // listen for nav being toggled
 const burger = document.querySelector(".navbar-burger");
 const menu = document.querySelector(".navbar-menu");

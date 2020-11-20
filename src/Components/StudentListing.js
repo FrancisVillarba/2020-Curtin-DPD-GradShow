@@ -3,7 +3,7 @@ import majorImages from '../../_data/majorImages'
 import { reorderAlpha } from './sortyBy';
 import { path } from 'animejs';
 // Array for each major for demonstration purposes
-let majors = [
+const majors = [
     'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
 ]
 
@@ -114,23 +114,23 @@ class StudentListing {
                 }    
             }
                 
-            let profileWrapper = document.createElement("div");
+            const profileWrapper = document.createElement("div");
             profileWrapper.className = "profile-container fadein-quick headshot-hover";
 
             // Create a name h3 tag for each student
-            let studentName = document.createElement("h3");
+            const studentName = document.createElement("h3");
             studentName.className="student-name";
             studentName.innerText = (this.usingPref ? student.name.preferred : student.name.first) + ' ' + student.name.last
 
-            let studentSpec = document.createElement('div');
+            const studentSpec = document.createElement('div');
             studentSpec.className = 'student-major-container';
 
-            let majorCont = document.createElement('div');
+            const majorCont = document.createElement('div');
             majorCont.className = 'is-flex spaced';
 
             student.majors.forEach(major => {
                 if (!majorImages[major.id]) return
-                let majorBall = document.createElement("img");
+                const majorBall = document.createElement("img");
                 majorBall.className = "student-major";
                 majorBall.setAttribute("src", majorImages[major.id]);
                 majorBall.setAttribute("alt", major.title);
@@ -170,9 +170,9 @@ class StudentListing {
             btnCont.className = "profile-btn-cont";
 
             // Create a button that links to their portfolio
-            let arrLink = document.createElement('a')
+            const arrLink = document.createElement('a')
             arrLink.href = `/student/${student.id}`;
-            let portBtn = document.createElement('button');
+            const portBtn = document.createElement('button');
             portBtn.className = "button is-black is-small";
             const arrSpan = document.createElement('span')
             arrSpan.className = "align-arrow"
@@ -184,13 +184,13 @@ class StudentListing {
 
             // Create a button that links to the student's individual profile
             if (student.portfolio) {
-                let profileLink = document.createElement('a')
+                const profileLink = document.createElement('a')
                 profileLink.href = student.portfolio
                 profileLink.target = "_blank" 
                 profileLink.rel = "noopener noreferrer"
                 
                 profileLink.className = 'profile-link'
-                let profileBtn = document.createElement('button');
+                const profileBtn = document.createElement('button');
                 profileBtn.className = "button is-light is-small";
                 profileBtn.innerText = "Portfolio"
                 profileLink.appendChild(profileBtn);
