@@ -29,6 +29,17 @@ const computed = data.map(student => {
   if (student.id === 'xtpndBzYODDxBEHW9yV1') {
     student.bio = student.bio.replace('I am freelance', 'I am a freelance')
   }
+  if (student.id === '2C2u6dIpSXhSvXIdANaa') {
+    student.name.preferred = 'Marcelo'
+    student.name.first = 'Marcelo Jopia'
+    student.name.last = 'Vilches'
+  }
+  if (student.id === 'MaQP23RnGTzjr2N4h57k') {
+    student.name.preferred = 'Brayden'
+  }
+  if (student.id === '7bouzycpeETium5sT5fN') {
+    student.name.preferred = 'Garreth '
+  }
 
   if (student.id === 'sYlGZHSLgdkLEYjZ2BuN') {
     student.headshots.pro = student.headshots.pro.replace('19140102', '19146168')
