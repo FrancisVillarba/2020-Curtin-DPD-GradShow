@@ -38,7 +38,31 @@ const computed = data.map(student => {
     student.name.preferred = 'Brayden'
   }
   if (student.id === '7bouzycpeETium5sT5fN') {
-    student.name.preferred = 'Garreth '
+    student.name.preferred = 'Garreth'
+  }
+  if (student.id === '4TToM4u7tXuHcTyyCLhH') {
+    student.portfolio = 'https://aquagraphics.co'
+    student.social = [
+      {
+        name: 'Behance',
+        link: 'https://www.behance.net/oakiediggins/appreciated',
+      },
+      {
+        name: 'Instagram',
+        link: 'https://www.instagram.com/aquagraphics.co/',
+      },
+      {
+        name: 'LinkedIn',
+        link: 'https://www.linkedin.com/in/oakie-diggins/',
+      }
+    ]
+    student.projects = []
+    for (let i = 1; i < 7; i++) {
+      student.projects.push({
+        "src": `/imgs/projects/${student.name.first}_${student.name.last}_${student.studentId}_${i}.jpg`,
+        "alt": `${student.name.first} ${student.name.last}'s Project ${i}`
+      })      
+    }
   }
 
   if (student.id === 'sYlGZHSLgdkLEYjZ2BuN') {
