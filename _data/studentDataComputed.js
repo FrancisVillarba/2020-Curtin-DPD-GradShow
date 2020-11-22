@@ -20,6 +20,9 @@ const computed = data.map(student => {
       break
   }
 
+  if (student.id === 'h3OIhihYeV3BH4lGbKj8') {
+    student.bio = student.bio.replace('I am a highly dedicated an passionate branding geek', 'I am a highly dedicated and passionate branding geek')
+  }
   if (student.id === 'D2hXmjpzdjIqGHZIec4Q') {
     student.bio = student.bio.replace('w3schools.com', 'codepen')
   }
