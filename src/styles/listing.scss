@@ -3,9 +3,22 @@
     // background-color: $b-darker-gray;
     z-index: 2;
     position: relative;
+    // Hotfix inspired by Daniel
+    height: 56.25vw;
+    // This is for 16:9 video content (which our bumper videos are).
+    max-height: 70vh;
+
+    // For the iframe itself
     iframe {
+        // width: 100%;
+        // height: 80vh;
+
+        // Make responsive
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 80vh;
+        height: 100%;
     }
 }
 
