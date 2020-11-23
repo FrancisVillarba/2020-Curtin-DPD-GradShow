@@ -3,9 +3,10 @@
     // background-color: $b-darker-gray;
     z-index: 2;
     position: relative;
-    height: 0;
+    // Hotfix inspired by Daniel
+    height: 56.25vw;
     // This is for 16:9 video content (which our bumper videos are).
-    padding-bottom: 56.25%;
+    max-height: 70vh;
 
     // For the iframe itself
     iframe {
