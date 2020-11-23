@@ -3,9 +3,23 @@
     // background-color: $b-darker-gray;
     z-index: 2;
     position: relative;
+    height: 0;
+    // This is for 16:9 video content (which our bumper videos are).
+    padding-bottom: 56.25%;
+    // If the browser doesn't supoort this, it will fallback to above
+    padding-bottom: calc(var(--aspect-ratio, .5625) * 100%);
+
+    // For the iframe itself
     iframe {
+        // width: 100%;
+        // height: 80vh;
+
+        // Make responsive
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        height: 80vh;
+        height: 100%;
     }
 }
 
