@@ -25,17 +25,12 @@ description: Disruption 2020 is the final year showcase of Curtin University Des
     </div>
   {% endif %}
 </section>
-{# {% if major.id !== '0' %}
-  <section class="profile-listing-showreel-container">
-      <iframe 
-        width="1200" 
-        height="700" 
-        src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&color=white&loop=1&playsinline=1" 
-        frameborder="0" 
-        allowfullscreen
-      ></iframe>
-  </section>
-{% endif %} #}
+<section class="profile-listing-showreel-container">
+  <iframe
+    src="{{ major.showreel }}?=rel=0&color=white&loop=1&playsinline=1&controls=0&autoplay=1&mute=1&playlist={{ major.playlist }}"
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+  ></iframe>
+</section>
 <section class="py-6 page-padding mx-auto min-h-full">
   <div class="search-bar-section mb-6">
     <div class="search-bar-wrapper">
