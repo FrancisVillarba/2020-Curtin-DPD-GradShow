@@ -8,18 +8,22 @@ computed.forEach(major => {
     case 'Wvll0Lz78WqyUWpZ6qmD':
       major.color = '/imgs/orbs/dd.png'
       major.showreel = 'https://www.youtube-nocookie.com/embed/4h1y1kWmwNY'
+      major.playlist = '4h1y1kWmwNY'
       break
     case 'HMc6Bn6bu79CwRPUaeI6':
       major.color = '/imgs/orbs/agd.png'
       major.showreel = 'https://www.youtube-nocookie.com/embed/saikPZf9R-Q'
+      major.playlist = 'saikPZf9R-Q'
       break
     case 'nvjZfYRytFwceJz66qBf':
       major.color = '/imgs/orbs/ill.png'
       major.showreel = 'https://www.youtube-nocookie.com/embed/VJGbuDb7pbM'
+      major.playlist = 'VJGbuDb7pbM'
       break
     case 'wv8b6Q5MsnqrMmtEmXPE':
       major.color = '/imgs/orbs/cagd.png'
       major.showreel = 'https://www.youtube-nocookie.com/embed/AXHLKWwcyeI'
+      major.playlist = 'AXHLKWwcyeI'
       break
     default:
       break
