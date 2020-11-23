@@ -6,8 +6,6 @@
     height: 0;
     // This is for 16:9 video content (which our bumper videos are).
     padding-bottom: 56.25%;
-    // If the browser doesn't supoort this, it will fallback to above
-    padding-bottom: calc(var(--aspect-ratio, .5625) * 100%);
 
     // For the iframe itself
     iframe {
