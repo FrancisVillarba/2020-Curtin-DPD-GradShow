@@ -1,13 +1,59 @@
+import awardWinners from '../../_data/awardWinners';
 import studentData from '../../_data/studentDataComputed';
-import majorImages from '../../_data/majorImages'
 import { reorderAlpha } from './sortyBy';
-import { path } from 'animejs';
-// Array for each major for demonstration purposes
-const majors = [
-    'Digital Design', 'Animation & Game Design', 'Illustration', 'Graphic Design', 'Creative Advertising'
-]
+import createProfileCard from './createProfileCard';
+import createAwardCard from './createAwardCard';
 
-class StudentListing {
+const computeStudents = (students) => {
+    const out = students.map(student => {
+        if (!student.thumb) {
+            student.thumb = {
+                pro: student.headshots.pro.replace('headshots', 'thumbHeadshots'),
+                fun: student.headshots.fun.replace('headshots', 'thumbHeadshots'),
+            }
+        }
+
+        if (!student.name.preferred) {
+            student.name.preferred = student.name.first
+        }
+        return student
+    })
+    return out
+}
+
+const random = (list) => {
+    function randomiser(a, b) {  
+        return 0.5 - Math.random();
+    }
+    return list.sort(randomiser)
+}
+
+export class AwardListing {
+    constructor() {
+        this.profileContainer = document.querySelector(".award-container");
+        this.awardWinners = computeStudents(awardWinners.students)
+        this.companies = awardWinners.companies
+        this.studentArray = []
+        this.generate()
+    }
+    generate() {
+        this.profileContainer.innerHTML = ''
+        this.studentArray = []
+        this.awardWinners.forEach(student => {
+            const company = this.companies[student.awardCompany]
+            const studentCard = createAwardCard(student, company, this.usingPref)
+            this.studentArray.push(studentCard)
+        })
+        this.render()
+    }
+    render() {
+        this.studentArray.forEach(student => {
+            this.profileContainer.appendChild(student);
+        })
+    }
+}
+
+export class StudentListing {
     constructor(majorid) {
         this.profileContainer = document.querySelector(".student-profile-container");
         this.searchBar = document.querySelector(".search-bar");
@@ -15,19 +61,7 @@ class StudentListing {
         this.sortedBy = null
         this.majorid = majorid
 
-        this.computedStudentData = studentData.map(student => {
-            if (!student.thumb) {
-                student.thumb = {
-                    pro: student.headshots.pro.replace('headshots', 'thumbHeadshots'),
-                    fun: student.headshots.fun.replace('headshots', 'thumbHeadshots'),
-                }
-            }
-
-            if (!student.name.preferred) {
-                student.name.preferred = student.name.first
-            }
-            return student
-        })
+        this.computedStudentData = computeStudents(studentData)
         this.studentDataInstance = this.computedStudentData;
         this.sortedInstance;
 
@@ -45,8 +79,11 @@ class StudentListing {
             this.usingPref = e.target.checked
             this.sortList()
         })
+
+        this.generate()
     }
 
+    // Called by user
     search(e) {
         const searchValue = e.target.value.toLowerCase()
         const newStudentData = [...this.computedStudentData]
@@ -71,10 +108,7 @@ class StudentListing {
     }
 
     sortList() {
-        const randomised = this.studentDataInstance.sort(randomiser);  
-        function randomiser(a, b) {  
-            return 0.5 - Math.random();
-        }
+        const randomised = random(this.studentDataInstance)
 
         const nameType = this.usingPref ? 'preferred' : 'first'
         let sorted
@@ -98,7 +132,6 @@ class StudentListing {
         }
         
         this.sortedInstance = sorted
-
         this.generateStudentListing()
     }
 
@@ -113,97 +146,8 @@ class StudentListing {
                     return
                 }    
             }
-                
-            const profileWrapper = document.createElement("div");
-            profileWrapper.className = "profile-container fadein-quick headshot-hover";
-
-            // Create a name h3 tag for each student
-            const studentName = document.createElement("h3");
-            studentName.className="student-name";
-            studentName.innerText = (this.usingPref ? student.name.preferred : student.name.first) + ' ' + student.name.last
-
-            const studentSpec = document.createElement('div');
-            studentSpec.className = 'student-major-container';
-
-            const majorCont = document.createElement('div');
-            majorCont.className = 'is-flex spaced';
-
-            student.majors.forEach(major => {
-                if (!majorImages[major.id]) return
-                const majorBall = document.createElement("img");
-                majorBall.className = "student-major";
-                majorBall.setAttribute("src", majorImages[major.id]);
-                majorBall.setAttribute("alt", major.title);
-                majorCont.appendChild(majorBall);
-            })
-
-            studentSpec.appendChild(majorCont);
-
-            // Create an image tag for each student
-            const studentImgPro = document.createElement("img");
-            studentImgPro.dataset.studentId = student.id
-            studentImgPro.className = "student-headshot headshot-pro";
-            studentImgPro.dataset.headshotPro = true
-            studentImgPro.setAttribute("src", student.thumb.pro);
-            studentImgPro.setAttribute("alt", `${student.name.first} Pro Headshot`);
-
-            const studentImgFun = document.createElement("img");
-            studentImgFun.dataset.studentId = student.id
-            studentImgFun.className = "student-headshot";
-            studentImgFun.dataset.headshotFun = true
-            studentImgFun.setAttribute("src", student.thumb.fun);
-            studentImgPro.setAttribute("alt", `${student.name.first} Fun Headshot`);
-
-            const studentImgLink = document.createElement('a')
-            studentImgLink.href = `/student/${student.id}`;
-            const studentImgCont = document.createElement('div')
-            studentImgCont.className = 'portfolio-image listing-headshot'
-
-
-            studentImgCont.appendChild(studentImgPro);
-            studentImgCont.appendChild(studentImgFun);
-            studentImgLink.appendChild(studentImgCont);
-            profileWrapper.appendChild(studentImgLink);
-
-            // Creates Container for both buttons
-            const btnCont = document.createElement('div')      
-            btnCont.className = "profile-btn-cont";
-
-            // Create a button that links to their portfolio
-            const arrLink = document.createElement('a')
-            arrLink.href = `/student/${student.id}`;
-            const portBtn = document.createElement('button');
-            portBtn.className = "button is-black is-small";
-            const arrSpan = document.createElement('span')
-            arrSpan.className = "align-arrow"
-            arrSpan.innerText = ">"
-            portBtn.appendChild(arrSpan)
-
-            arrLink.appendChild(portBtn);
-            btnCont.appendChild(arrLink);
-
-            // Create a button that links to the student's individual profile
-            if (student.portfolio) {
-                const profileLink = document.createElement('a')
-                profileLink.href = student.portfolio
-                profileLink.target = "_blank" 
-                profileLink.rel = "noopener noreferrer"
-                
-                profileLink.className = 'profile-link'
-                const profileBtn = document.createElement('button');
-                profileBtn.className = "button is-light is-small";
-                profileBtn.innerText = "Portfolio"
-                profileLink.appendChild(profileBtn);
-                btnCont.appendChild(profileLink);
-            }
-
-            studentSpec.appendChild(btnCont);
-
-            // Append name tag and spec to student's container
-            profileWrapper.appendChild(studentName);
-            profileWrapper.appendChild(studentSpec);
-
-            this.studentArray.push(profileWrapper)
+            const studentCard = createProfileCard(student, this.usingPref)
+            this.studentArray.push(studentCard)
         })
 
         this.render()
@@ -215,4 +159,3 @@ class StudentListing {
         })
     }
 }
-export { StudentListing }
