@@ -341,8 +341,9 @@ input {
 }
 
 .error-page {
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
   text-align: center;
 }
