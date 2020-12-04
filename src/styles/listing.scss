@@ -191,6 +191,13 @@
         & > * + * {
             margin-left: 0.5rem;
         }
+        .is-disabled {
+            cursor: default;
+            background-color: $b-dark-gray;
+            &:hover {
+                background-color: $b-dark-gray !important;
+            }
+        }
     }
 }
 .profile-link {

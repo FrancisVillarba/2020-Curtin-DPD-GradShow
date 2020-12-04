@@ -1,6 +1,10 @@
 import majorImages from '../../_data/majorImages'
 
-export default function createCardCore(profileWrapper, student, usingPref = true) {
+export default function createCardCore(
+  profileWrapper,
+  student,
+  usingPref = true
+) {
   const studentName = document.createElement('h4')
   studentName.className = 'student-name'
   studentName.innerText =
@@ -14,15 +18,16 @@ export default function createCardCore(profileWrapper, student, usingPref = true
   const majorCont = document.createElement('div')
   majorCont.className = 'is-flex spaced'
 
-  student.majors.forEach(major => {
-    if (!majorImages[major.id]) return
-    const majorBall = document.createElement('img')
-    majorBall.className = 'student-major'
-    majorBall.setAttribute('src', majorImages[major.id])
-    majorBall.setAttribute('alt', major.title)
-    majorCont.appendChild(majorBall)
-  })
-
+  if (student.majors) {
+    student.majors.forEach(major => {
+      if (!majorImages[major.id]) return
+      const majorBall = document.createElement('img')
+      majorBall.className = 'student-major'
+      majorBall.setAttribute('src', majorImages[major.id])
+      majorBall.setAttribute('alt', major.title)
+      majorCont.appendChild(majorBall)
+    })
+  }
   studentSpec.appendChild(majorCont)
 
   // Creates Container for both buttons
@@ -30,8 +35,6 @@ export default function createCardCore(profileWrapper, student, usingPref = true
   btnCont.className = 'profile-btn-cont'
 
   // Create a button that links to their portfolio
-  const arrLink = document.createElement('a')
-  arrLink.href = `/student/${student.id}`
   const portBtn = document.createElement('button')
   portBtn.className = 'button is-black is-small'
   const arrSpan = document.createElement('span')
@@ -39,8 +42,15 @@ export default function createCardCore(profileWrapper, student, usingPref = true
   arrSpan.innerText = '>'
   portBtn.appendChild(arrSpan)
 
-  arrLink.appendChild(portBtn)
-  btnCont.appendChild(arrLink)
+  if (student.id) {
+    const arrLink = document.createElement('a')
+    arrLink.href = `/student/${student.id}`
+    arrLink.appendChild(portBtn)
+    btnCont.appendChild(arrLink)
+  } else {
+    portBtn.classList.add('is-disabled')
+    btnCont.appendChild(portBtn)
+  }
 
   // Create a button that links to the student's individual profile
   if (student.portfolio) {

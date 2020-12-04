@@ -72,7 +72,10 @@ function init() {
         })
     }
     if (document.querySelector(".award-container")) {
-      const list = new AwardListing()        
+      const allAwards = document.querySelectorAll(".award-container")
+      allAwards.forEach(award => {
+        const list = new AwardListing(award)        
+      })
     }
     handleStudentPage()
 

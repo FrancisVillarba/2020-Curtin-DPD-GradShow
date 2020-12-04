@@ -29,9 +29,9 @@ const random = (list) => {
 }
 
 export class AwardListing {
-    constructor() {
-        this.profileContainer = document.querySelector(".award-container");
-        this.awardWinners = computeStudents(awardWinners.students)
+    constructor(cont) {
+        this.profileContainer = cont;
+        this.awardWinners = computeStudents(awardWinners.students.[cont.dataset.award])
         this.companies = awardWinners.companies
         this.studentArray = []
         this.generate()
