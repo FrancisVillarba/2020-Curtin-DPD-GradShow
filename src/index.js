@@ -20,11 +20,11 @@ const swup = new Swup({
   ]
 });
 
-import { StudentListing } from './Components/StudentListing';
+import { StudentListing, AwardListing } from './Components/StudentListing';
 import { handleStudentPage } from './student'
 import { setupEntries } from './observer'
 
-console.log("%cWant some Nice Music? Check out https://poolside.fm/ (no affiliation)", "color:#a55ba7; font-family: sans-serif; font-size: 12px; line-height: 30px");
+console.log("%cWant some Nice Music? Check out https://poolside.fm/ (no affiliation)", "color:#a55ba7; font-family: sans-serif; font-size: 12px; padding: 10px 0 23px;");
 
 // listen for nav being toggled
 const burger = document.querySelector(".navbar-burger");
@@ -65,13 +65,17 @@ function init() {
     
     if (document.querySelector(".student-profile-container")) {
         const majorid = document.querySelector('.major-title').dataset.majorId
-        const DDListing = new StudentListing(majorid)
-        DDListing.generate();
-        
+        const list = new StudentListing(majorid)        
         let searchBar = document.querySelector(".search-bar");
         searchBar.addEventListener("input", (e) => {
-            DDListing.search(e);
+            list.search(e);
         })
+    }
+    if (document.querySelector(".award-container")) {
+      const allAwards = document.querySelectorAll(".award-container")
+      allAwards.forEach(award => {
+        const list = new AwardListing(award)        
+      })
     }
     handleStudentPage()
 
